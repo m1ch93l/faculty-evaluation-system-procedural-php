@@ -7,7 +7,7 @@
 <body>
 	<?php include'navbar.php'; ?>
 <div class="content">
-	<?php include'student_list.php' ?>
+	
 </div>
 </body>
 </html>

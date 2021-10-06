@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bcc_evaluation_record";
+$dbname = "bcc_evaluation";
 
 $koneksyon = new mysqli($servername, $username, $password, $dbname);
 

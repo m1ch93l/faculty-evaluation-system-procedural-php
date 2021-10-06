@@ -2,8 +2,18 @@
 
 <!-- The sidebar -->
 <div class="sidebar">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
+  <a href="#about">Dashboard</a>
+  <a href="#services">Subject</a>
+  <a href="#clients">Classes</a>
+  <a href="#contact">Academic Year</a>
+  <a href="#contact">Questionaire</a>
+  <a href="#contact">Evaluation Criteria</a>
+  <a href="#contact">Faculty</a>
+  <a href="student_list.php">Student</a>
+  <a href="#contact">Evaluation Report</a>
+  <a href="#contact">Users</a>
+  <a href="#contact">Logout</a>
 </div>
+
+<!-- Page content -->
+<div class="content">
