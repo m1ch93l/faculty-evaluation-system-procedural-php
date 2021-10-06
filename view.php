@@ -4,7 +4,7 @@ include'koneksyon.php';
 $qryview = "SELECT * FROM student_list";
 $result = mysqli_query($koneksyon, $qryview);
 
-echo "<h2>Student List</h2>";
+echo "<h1>Student List</h1>";
 if(mysqli_num_rows($result) > 0){
 	echo "<table border='1'>";
 	echo "<tr>";
