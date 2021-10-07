@@ -12,13 +12,17 @@ if(mysqli_num_rows($result) > 0){
 	echo "<td>First Namer</td>";
 	echo "<td>Last Name</td>";
 	echo "<td>Middle Name</td>";
+	echo "<td>Action</td>";
+	echo "<td>Action</td>";
 	echo "<tr>";
 	while($row = mysqli_fetch_assoc($result)){
 		echo "<tr>";
-			echo "<td>".$row["s_num"]."</td>";
-			echo "<td>".$row["fname"]."</td>";
-			echo "<td>".$row["lname"]."</td>";
-			echo "<td>".$row["mname"]."</td>";
+			echo "<td>".$row['s_num']."</td>";
+			echo "<td>".$row['fname']."</td>";
+			echo "<td>".$row['lname']."</td>";
+			echo "<td>".$row['mname']."</td>";
+			echo "<td><a href='viewedit.php'>Edit</a>";
+			echo "<td><a href='delete.php'>Delete</a>";
 		echo "</tr>";
 	}
 	echo "</table>";
