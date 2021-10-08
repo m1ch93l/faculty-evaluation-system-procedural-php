@@ -66,7 +66,7 @@ button:hover{
     		<label for="mname">Middle Name:</label><br>
     		<input type="text" id="mname" name="mname"><br>
     		<input type="submit" id="" name="btnsubmit">
-        <button class="btn"><a href="student_list.php">Cancel</a></button>
+        <button><a href="student_list.php">Cancel</a></button>
 	   </form>
 	</div>
 	

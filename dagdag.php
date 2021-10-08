@@ -7,7 +7,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $mname = $_POST['mname'];
 
-$dagdag = "INSERT INTO `student_list` (s_num, fname, lname, mname) VALUES ('$snum', '$fname', '$lname', '$mname')";
+$dagdag = "INSERT INTO student_list (s_num, fname, lname, mname) VALUES ('$snum', '$fname', '$lname', '$mname')";
 
 if (mysqli_query($koneksyon, $dagdag)){
 	echo "New records has been added!";

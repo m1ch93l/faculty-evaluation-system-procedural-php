@@ -21,8 +21,8 @@ if(mysqli_num_rows($result) > 0){
 			echo "<td>".$row['fname']."</td>";
 			echo "<td>".$row['lname']."</td>";
 			echo "<td>".$row['mname']."</td>";
-			echo "<td><a href='viewedit.php'>Edit</a>";
-			echo "<td><a href='delete.php'>Delete</a>";
+			echo "<td><a href='viewedit.php'>Edit</a></td>" ;
+			echo "<td><a href='delete.php'>Delete</a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";
@@ -31,4 +31,5 @@ else
 {
 	echo "No records found!";
 }
+
 ?>

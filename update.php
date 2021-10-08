@@ -18,8 +18,5 @@ if (mysqli_query($koneksyon, $update))
 else{
 	echo "Error in updating record";
 }
-
-
-
-
+header("location: student_list.php");
 ?>
