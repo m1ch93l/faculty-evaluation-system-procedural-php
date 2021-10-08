@@ -2,7 +2,7 @@
 include'navbar.php';
 ?>
 <style>
-input[type=text], select {
+input[type=text]{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -34,25 +34,19 @@ div {
   padding: 20px;
 }
 button{
-  width: 100%;
-  padding: 12px 20px;
+ width: 100%;
+  background-color: #6fbfe6;
+  color: white;
+  padding: 14px 20px;
   margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
-  box-sizing: border-box;
-  align-content: center;
+  cursor: pointer;
   background-color: #cdcbcb;
-}
-button a{
-  text-decoration: none;
-  color: #fff;
 }
 button:hover{
   background-color: #b4b3b3;
 }
-
-
 </style>
 	<div class="content">
 		<h1>Add Student</h1>
@@ -65,8 +59,8 @@ button:hover{
     		<input type="text" id="lname" name="lname"><br>
     		<label for="mname">Middle Name:</label><br>
     		<input type="text" id="mname" name="mname"><br>
-    		<input type="submit" id="" name="btnsubmit">
-        <button><a href="student_list.php">Cancel</a></button>
+    		<input type="submit" name="btnsubmit">
+        <button onclick="student_list.php">Cancel</button>
 	   </form>
 	</div>
 	

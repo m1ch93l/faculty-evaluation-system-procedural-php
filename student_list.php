@@ -1,10 +1,7 @@
 <?php include'navbar.php'; ?>
 <style>
-.student_list{
-	width: 100%;
-}
 button{
-  width: 100%;
+ width: 100%;
   background-color: #6fbfe6;
   color: white;
   padding: 14px 20px;
@@ -17,16 +14,13 @@ button{
 button:hover{
   background-color: #35afeb;
 }
-button a{
-  text-decoration: none;
-  color: #fff;
-  width: 100%;
-}
 </style>
 <body>
 	<div class="student_list">
 		<div class="content">
-			<button><a href="new_student.php">Add New</a></button>
+      <form action="new_student.php">
+         <button type="submit">Add New</button>
+      </form>
 			<?php include'view.php'; ?>
 		</div>
 	</div>
