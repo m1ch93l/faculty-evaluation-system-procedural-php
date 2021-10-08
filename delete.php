@@ -2,7 +2,7 @@
 
 include 'koneksyon.php';
 
-$snum = $_GET['snum']
+$snum = $_GET['txtstudentnum']
 
 $delete = "DELETE FROM student_list WHERE s_num = '$snum'";
 

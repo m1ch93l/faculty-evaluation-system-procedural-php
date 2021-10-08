@@ -9,7 +9,7 @@ if(mysqli_num_rows($result) > 0){
 	echo "<table border='1'>";
 	echo "<tr>";
 	echo "<td>Student Number</td>";
-	echo "<td>First Namer</td>";
+	echo "<td>First Name</td>";
 	echo "<td>Last Name</td>";
 	echo "<td>Middle Name</td>";
 	echo "<td>Action</td>";
