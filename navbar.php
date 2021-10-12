@@ -12,7 +12,7 @@
   <a href="student_list.php">Student</a>
   <a href="#contact">Evaluation Report</a>
   <a href="#contact">Users</a>
-  <a href="#contact">Logout</a>
+  <a href="logout.php">Logout</a>
 </div>
 
 <!-- Page content -->
