@@ -6,8 +6,8 @@ $result = mysqli_query($koneksyon, $qryview);
 
 echo "<h1>Student List</h1>";
 if(mysqli_num_rows($result) > 0){
-	echo "<table border='1'>";
-	echo "<tr>";
+	echo "<table border='1' width='100%'>";
+	echo "<tr align='center'>";
 	echo "<td>Student Number</td>";
 	echo "<td>First Name</td>";
 	echo "<td>Last Name</td>";
@@ -21,10 +21,10 @@ if(mysqli_num_rows($result) > 0){
 			echo "<td>".$row['fname']."</td>";
 			echo "<td>".$row['lname']."</td>";
 			echo "<td>".$row['mname']."</td>";
-			echo "<td><a href='viewedit.php?snum=".$row ["s_num"]."'>Edit</a></td>";
+			echo "<td align='center'><a href='viewedit.php?snum=".$row ["s_num"]."' >Edit</a></td>";
 
-   			echo "<td>";
-   			echo "<a onClick=\"javascript: return confirm('Please confirm deletion');\" href='delete.php?snum=".$row['s_num']."'>Delete</a>";
+   			echo "<td align='center'>";
+   			echo "<a onClick=\"javascript: return confirm('Please confirm deletion');\" href='delete.php?snum=".$row['s_num']."' >Delete</a>";
    			echo "</td>";
 
 		echo "</tr>";
