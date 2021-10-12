@@ -2,8 +2,9 @@
 include'navbar.php';
 include 'koneksyon.php';
 
+$snum = $_GET['snum'];
 
-$qryview = "SELECT `s_num`, `fname`, `lname`, `mname` FROM `student_list`";
+$qryview = "SELECT * FROM student_list WHERE s_num='$snum'";
 $result = mysqli_query($koneksyon, $qryview);
 
 echo "<style>";
@@ -50,6 +51,7 @@ button:hover{
 echo "</style>";
 echo "<div class='content'>";
 echo "<H2>STUDENT INFORMATION</H2>";
+
 if(mysqli_num_rows($result) > 0)
 {
 	echo "<form action='update.php' method='post'>";
@@ -60,11 +62,16 @@ echo "First Name <input type='text' name='txtfname' value='".$row["fname"]."'><b
 echo "Last Name:<input type='text' name='txtlname' value='".$row["lname"]."'><br>";
 echo "Middle Name<input type='text' name='txtmname' value='".$row["mname"]."'><br>";
 echo "<input type='submit' value='UPDATE'>";
-echo "<button onclick='student_list.php'>Cancel</button>";
 		
 	echo "</form>";
-	echo "</div>";
 
+  echo "<form action='student_list.php'>";
+  echo "<button type='submit'>Cancel</button>";
+  echo "</form>";
+	echo "</div>";
+}
+else{
+  echo "No records found";
 }
 
 ?>

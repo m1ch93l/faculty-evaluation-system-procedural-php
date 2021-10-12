@@ -2,9 +2,9 @@
 
 include 'koneksyon.php';
 
-$snum = $_GET['txtstudentnum']
+$snum = $_GET['snum'];
 
-$delete = "DELETE FROM student_list WHERE s_num = '$snum'";
+$delete = "DELETE FROM student_list WHERE s_num= '$snum' ";
 
 if (mysqli_query($koneksyon, $delete))
 {
@@ -13,5 +13,6 @@ if (mysqli_query($koneksyon, $delete))
 else{
 	echo "Error in deleting record";
 }
+	header('location: student_list.php');
 
 ?>
