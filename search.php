@@ -11,7 +11,10 @@ $qryview = "SELECT * FROM student_list WHERE s_num = '$snum'";
 $result = mysqli_query($koneksyon, $qryview);
 
 echo "<style>";
-echo "input[type=text], select {
+echo ".f1{
+  margin-top: 50px;
+}
+input[type=text], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -54,7 +57,7 @@ button:hover{
 echo "</style>";
 echo "<div class='content'>";
 
-echo "<H2>STUDENT INFORMATION</H2>";
+echo "<H2 class='f1'>STUDENT INFORMATION</H2>";
 if(mysqli_num_rows($result) > 0)
 {
 	echo "<table BORDER='1'>";

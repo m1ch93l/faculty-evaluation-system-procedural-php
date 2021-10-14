@@ -2,9 +2,12 @@
 include'navbar.php';
 include 'koneksyon.php';
 
-$snum = $_GET['snum'];
+$snum = $_POST['txtsnum'];
 
-$qryview = "SELECT * FROM student_list WHERE s_num='$snum'";
+//SELECT column1, column2.. FROM tablename
+//SELECT * FROM tablename
+
+$qryview = "SELECT * FROM faculty_list WHERE f_num = '$snum'";
 $result = mysqli_query($koneksyon, $qryview);
 
 echo "<style>";
@@ -53,28 +56,34 @@ button:hover{
 ";
 echo "</style>";
 echo "<div class='content'>";
-echo "<H2 class='f1'>STUDENT INFORMATION</H2>";
 
+echo "<H2 class='f1'>STUDENT INFORMATION</H2>";
 if(mysqli_num_rows($result) > 0)
 {
-	echo "<form action='update.php' method='post'>";
-		$row = mysqli_fetch_assoc($result);
-	
-echo "Student Number: <input type='text' readonly name='txtstudentnum' value='".$row["s_num"]."'><br>";
-echo "First Name <input type='text' name='txtfname' value='".$row["fname"]."'><br>";
-echo "Last Name:<input type='text' name='txtlname' value='".$row["lname"]."'><br>";
-echo "Middle Name<input type='text' name='txtmname' value='".$row["mname"]."'><br>";
-echo "<input type='submit' value='UPDATE'>";
-		
-	echo "</form>";
-
-  echo "<form action='student_list.php'>";
-  echo "<button type='submit'>Cancel</button>";
-  echo "</form>";
+	echo "<table BORDER='1'>";
+	echo"<tr>";
+	echo "<td>STUDENT NUMBER</td>";
+	echo "<td>FIRST NAME</td>";
+	echo "<td>LAST NAME</td>";
+	echo "<td>MIDDLE NAME</td>";
+	echo"</tr>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo"<tr>";
+			echo "<td>".$row["f_num"]."</td>";
+			echo "<td>".$row["fname"]."</td>";
+			echo "<td>".$row["lname"]."</td>";
+			echo "<td>".$row["mname"]."</td>";
+			
+		echo"</tr>";
+	}
+	echo "</table>";
 	echo "</div>";
+
 }
-else{
-  echo "No records found";
+else
+{
+	echo "No record/s found!";	
 }
 
 ?>
