@@ -4,8 +4,8 @@
 <!-- The sidebar -->
 <div class="sidebar">
   <a href="dashboard.php">Dashboard</a>
-  <a href="#services">Subject</a>
-  <a href="#clients">Classes</a>
+  <a href="subject_list.php">Subject</a>
+  <a href="class_list.php">Classes</a>
   <a href="#contact">Academic Year</a>
   <a href="#contact">Questionaire</a>
   <a href="#contact">Evaluation Criteria</a>
