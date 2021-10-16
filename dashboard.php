@@ -10,15 +10,16 @@
 .grid-item{
 	background-color: #fff;
 	border: 1px solid rgba(0, 0, 0, 0.8);
-	padding: 20px;
-	font-size: 30px;
+	padding: 1px;
+	font-size: 25px;
 	text-align: center;
+	width: 100%;
 }
 @media screen and (max-width: 700px) {
 	.grid-container{
 	display: grid;
 	grid-template-columns: auto auto auto;
-	background-color: #2196f3;
+	background-color: #1849d7;
 	display: inline-block;
 	padding: 5px;
 	height: auto;

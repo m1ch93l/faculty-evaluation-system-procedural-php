@@ -3,35 +3,30 @@ header{
   height: 40px;
   margin-top: 0;
   padding-left: 220px;
-  background-color: #f1f1f1;
+  background-color: #ffd700;
   position: fixed;
   font-size: 30px;
 }
 
-.sidebar {
+.gilidbar {
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #f1f1f1;
   position: fixed;
   height: 100%;
   overflow: auto;
+  background-color: #f1f1f1;
 }
 
-.sidebar a {
+.gilidbar a {
   display: block;
   color: black;
   padding: 16px;
   text-decoration: none;
 }
 
-.sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: #555;
+.gilidbar a:hover {
+  background-color: blue;
   color: white;
 }
 
@@ -49,12 +44,12 @@ header{
     width: 100%;
     text-align: center;
   }
-  .sidebar{
+  .gilidbar{
     width: 100%;
     height: auto;
     position: relative;
   }
-  .sidebar a{
+  .gilidbar a{
     float: left;
   }
   div.content {
@@ -62,8 +57,8 @@ header{
   }
 }
 
-@media screen and (max-width: 500px) {
-  .sidebar a{
+@media screen and (max-width: 400px) {
+  .gilidbar a{
     text-align: center;
     float: none;
   }
