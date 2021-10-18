@@ -1,6 +1,4 @@
-<?php
-
-include'koneksyon.php';
+<?php include'koneksyon.php';
 
 $snum = $_POST['snum'];
 $fname = $_POST['fname'];
@@ -11,7 +9,6 @@ $dagdag = "INSERT INTO student_list (s_num, fname, lname, mname) VALUES ('$snum'
 
 if (mysqli_query($koneksyon, $dagdag)){
 	echo "New records has been added!";
-}
 else{
 	echo "Error in adding new records";
 }

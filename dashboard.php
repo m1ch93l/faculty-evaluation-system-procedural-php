@@ -1,5 +1,6 @@
 <?php include'navbar.php'; ?>
 <style>
+	
 .grid-container{
 	display: grid;
 	grid-gap: 50px 100px;
