@@ -2,8 +2,8 @@
 <!-- sarili kong style -->
 <link rel="stylesheet" type="text/css" href="css/main-content.css">
 
-<!-- kinuha ko sa font awesome free 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">-->
+<!-- kinuha ko sa font awesome free -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     
 
 </head>
@@ -14,17 +14,50 @@
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
     <div class="sm-wrapper">
       <!--<div class="logo"><img src="img/bcc.png" style="width: 70; height: 70; padding-left: 50px;"></div>-->
-      <a class="fas fa-home" href="dashboard.php"> Dashboard</a>
-      <a class="fas fa-book" href="subject_list.php"> Subject</a>
-      <a class="fas fa-list-ul" href="class_list.php"> Classes</a>
-      <a class="fas fa-layer-group" href="academic_list.php"> Academic Year</a>
-      <a class="fas fa-question-circle" href="questionnaire.php"> Questionaire</a>
-      <a class="fas fa-list-ol" href="criteria_list.php"> Evaluation Criteria</a>
-      <a class="fas fa-chalkboard-teacher" href="faculty_list.php"> Faculty</a>
-      <a class="fas fa-user-graduate" href="student_list.php"> Student</a>
-      <a class="fas fa-flag" href="report.php"> Evaluation Report</a>
-      <a class="fas fa-users" href="user_list.php"> Users</a>
-      <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a>
+      <a href="dashboard.php">
+          <span class="fas fa-fw fa-home"></span>
+          Dashboard
+      </a>
+      <a href="subject_list.php">
+          <span class="fas fa-fw fa-book"></span>
+          Subject
+      </a>
+      <a href="class_list.php">
+          <span class="fas fa-fw fa-list-ul"></span>
+          Classes
+      </a>
+      <a href="academic_list.php">
+          <span class="fas fa-fw fa-layer-group"></span>
+          Academic Year
+      </a>
+      <a href="questionnaire.php">
+          <span class="fas fa-fw fa-question-circle"></span>
+          Questionaire
+      </a>
+      <a href="criteria_list.php">
+          <span class="fas fa-fw fa-list-ol"></span>
+          Evaluation Criteria
+      </a>
+      <a href="faculty_list.php">
+          <span class="fas fa-chalkboard-teacher"></span>
+          Faculty
+      </a>
+      <a href="student_list.php">
+          <span class="fas fa-fw fa-user-graduate"></span>
+          Student
+      </a>
+      <a href="report.php">
+          <span class="fas fa-fw fa-flag"></span>
+          Evaluation Report
+      </a>
+      <a href="user_list.php">
+          <span class="fas fa-fw fa-users"></span>
+          Users
+      </a>
+      <a href="logout.php">
+          <span class="fas fa-fw fa-sign-out-alt"></span>
+          Logout
+      </a>
     </div>
   </div>
   <div id="pg-content">
