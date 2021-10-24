@@ -5,7 +5,6 @@
 <!-- kinuha ko sa font awesome free -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     
-
 </head>
 
 <body>
@@ -14,50 +13,16 @@
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
     <div class="sm-wrapper">
       <!--<div class="logo"><img src="img/bcc.png" style="width: 70; height: 70; padding-left: 50px;"></div>-->
-      <a href="dashboard.php">
-          <span class="fas fa-fw fa-home"></span>
-          Dashboard
-      </a>
-      <a href="subject_list.php">
-          <span class="fas fa-fw fa-book"></span>
-          Subject
-      </a>
-      <a href="class_list.php">
-          <span class="fas fa-fw fa-list-ul"></span>
-          Classes
-      </a>
-      <a href="academic_list.php">
-          <span class="fas fa-fw fa-layer-group"></span>
-          Academic Year
-      </a>
-      <a href="questionnaire.php">
-          <span class="fas fa-fw fa-question-circle"></span>
-          Questionaire
-      </a>
-      <a href="criteria_list.php">
-          <span class="fas fa-fw fa-list-ol"></span>
-          Evaluation Criteria
-      </a>
-      <a href="faculty_list.php">
-          <span class="fas fa-chalkboard-teacher"></span>
-          Faculty
-      </a>
-      <a href="student_list.php">
-          <span class="fas fa-fw fa-user-graduate"></span>
-          Student
-      </a>
-      <a href="report.php">
-          <span class="fas fa-fw fa-flag"></span>
-          Evaluation Report
-      </a>
-      <a href="user_list.php">
-          <span class="fas fa-fw fa-users"></span>
-          Users
-      </a>
-      <a href="logout.php">
-          <span class="fas fa-fw fa-sign-out-alt"></span>
-          Logout
-      </a>
+
+      <?php
+        require_once 'navbar_items.php';
+        foreach ($items as $item) {
+            echo "<a href='" . $item['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item['page'] ? " class='active'" : "") . ">";
+            echo "<span class='fas fa-fw " . $item['icon'] . "'></span> ";
+            echo $item['label'];
+            echo "</a>";
+        }
+      ?>
     </div>
   </div>
   <div id="pg-content">
