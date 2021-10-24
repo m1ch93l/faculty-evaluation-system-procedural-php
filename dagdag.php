@@ -9,7 +9,7 @@ $dagdag = "INSERT INTO student_list (s_num, fname, lname, mname) VALUES ('$snum'
 
 if (mysqli_query($koneksyon, $dagdag)){
 	echo "New records has been added!";
-else{
+}else{
 	echo "Error in adding new records";
 }
 header( "Location: student_list.php" );

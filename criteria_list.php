@@ -1,8 +1,8 @@
 <?php include'navbar.php'; ?>
 
 <body>
-		<div class="content">
-      <h1 class="f1">Add Criteria</h1>
+		<div class="main-body">
+      <h1>Add Criteria</h1>
          <form action="dagdag_criteria.php" method="post">
             <label for="criteria">Criteria:</label><br>
             <input type="text" id="criteria" name="criteria"><br>

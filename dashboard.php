@@ -1,4 +1,5 @@
 <?php include'navbar.php'; ?>
+<!--
 <style>
 	
 .grid-container{
@@ -27,11 +28,24 @@
 	width: 100%;
 }
 </style>
+
 <div class="content">
-	<h1 class="f1">Home Page</h1>
+	<h5 class="f1">Welcome Administrator</h5>
 	<div class="grid-container">
 		<div class="grid-item fas fa-users">Total Students<?php include'count_student.php'; echo $output;?></div>
 		<div class="grid-item fas fa-chalkboard-teacher">Total Faculty<?php include'count_faculty.php'; echo $output;?></div>
 		<div class="grid-item">Questions Answered</div>
 	</div>
+</div>-->
+
+<!--Main content -->
+<div class="main-body">
+	<h5>Welcome Administrator</h5>
+		<div class="grid">
+		  <div class="g-col-6">Total Students<?php include'count_student.php'; echo $output;?></div>
+		  <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
+
+		  <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
+		  <div class="g-col-6">.g-col-6</div>
+		</div>
 </div>

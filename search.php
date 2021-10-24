@@ -55,9 +55,9 @@ button:hover{
 }
 ";
 echo "</style>";
-echo "<div class='content'>";
+echo "<div class='main-body'>";
 
-echo "<H2 class='f1'>STUDENT INFORMATION</H2>";
+echo "<H2>STUDENT INFORMATION</H2>";
 if(mysqli_num_rows($result) > 0)
 {
 	echo "<table BORDER='1'>";

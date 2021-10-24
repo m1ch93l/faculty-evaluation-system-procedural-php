@@ -75,13 +75,16 @@ header{
   margin-top: 50px;
 }
 
+
 /*Main Content, Button, Search Bar, Add new*/
 
 .f1{
   margin-top: 50px;
 }
+
+
 button{
- width: 100%;
+  width: 100%;
   background-color: #6fbfe6;
   color: white;
   padding: 14px 20px;

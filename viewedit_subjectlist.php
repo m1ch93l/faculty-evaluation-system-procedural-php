@@ -8,9 +8,7 @@ $qryview = "SELECT * FROM subject_list WHERE subject_code='$scode'";
 $result = mysqli_query($koneksyon, $qryview);
 
 echo "<style>";
-echo ".f1{
-  margin-top: 50px;
-}
+echo "
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -52,8 +50,8 @@ button:hover{
 }
 ";
 echo "</style>";
-echo "<div class='content'>";
-echo "<H2 class='f1'>Subject List</H2>";
+echo "<div class='main-body'>";
+echo "<H2>Subject List</H2>";
 
 if(mysqli_num_rows($result) > 0)
 {
