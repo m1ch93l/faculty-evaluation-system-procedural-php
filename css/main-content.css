@@ -39,7 +39,8 @@ body{
   font-size: 50px;
   margin-left: 50px;
 }
-.sm-wrapper a:hover{
+.sm-wrapper a:hover,
+.sm-wrapper a.active {
   background-color: #b09335;
 }
 
