@@ -1,4 +1,3 @@
-<?php echo md5("123"); ?>
 <?php 
    session_start();
    if (!isset($_SESSION['username']) && !isset($_SESSION['id'])) {   ?>
@@ -50,6 +49,7 @@
 		          name="role" 
 		          aria-label="Default select example">
 			  <option selected value="user">User</option>
+			  <option value="faculty">Faculty</option>
 			  <option value="admin">Admin</option>
 		  </select><br>
 		 

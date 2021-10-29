@@ -27,9 +27,16 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
         $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
         $result = mysqli_query($koneksyon, $sql);
 
+        $sql1 = "SELECT * FROM student_list WHERE username='$username' AND password='$password' ";
+        $result1 = mysqli_query($koneksyon, $sql1);
+
+        $sql2 = "SELECT * FROM faculty_list WHERE username='$username' AND password='$password' ";
+        $result2 = mysqli_query($koneksyon, $sql2);
+
         if (mysqli_num_rows($result) === 1) {
         	// the user name must be unique
         	$row = mysqli_fetch_assoc($result);
+
         	if ($row['password'] === $password && $row['role'] == $role) {
         		$_SESSION['name'] = $row['name'];
         		$_SESSION['id'] = $row['id'];
@@ -41,10 +48,39 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
         	}else {
         		header("Location: ../index.php?error=Incorect User name or password");
         	}
+        }elseif(mysqli_num_rows($result1) === 1){
+        	// the user name must be unique
+        	$row = mysqli_fetch_assoc($result1);
+
+        	if ($row['password'] === $password && $row['role'] == $role) {
+        		$_SESSION['name'] = $row['name'];
+        		$_SESSION['id'] = $row['id'];
+        		$_SESSION['role'] = $row['role'];
+        		$_SESSION['username'] = $row['username'];
+
+        		header("Location: ../evaluate.php");
+
+        	}else {
+        		header("Location: ../index.php?error=Incorect User name or password");
+        	}
+        }elseif(mysqli_num_rows($result2) === 1){
+        	// the user name must be unique
+        	$row = mysqli_fetch_assoc($result2);
+
+        	if ($row['password'] === $password && $row['role'] == $role) {
+        		$_SESSION['name'] = $row['name'];
+        		$_SESSION['id'] = $row['id'];
+        		$_SESSION['role'] = $row['role'];
+        		$_SESSION['username'] = $row['username'];
+
+        		header("Location: ../evaluation_result.php");
+
+        	}else {
+        		header("Location: ../index.php?error=Incorect User name or password");
+        	}
         }else {
         	header("Location: ../index.php?error=Incorect User name or password");
         }
-
 	}
 	
 }else {

@@ -178,7 +178,7 @@ body{
       <!--<div class="logo"><img src="img/bcc.png" style="width: 70; height: 70; padding-left: 50px;"></div>-->
 
       <?php
-        require_once 'navbar_items.php';
+        require_once 'navbar-items/navbar_items.php';
         foreach ($items as $item) {
             echo "<a href='" . $item['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item['page'] ? " class='active'" : "") . ">";
             echo "<span class='fas fa-fw " . $item['icon'] . "'></span> ";
@@ -194,15 +194,23 @@ body{
       <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
     </div>
   </div>
-</body>
 
 <?php } elseif ($_SESSION['role'] == 'user') { ?>
 
       <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
         <div class="sm-wrapper">
-          <a class="fas fa-book" href="evaluate.php"> Evaluate</a>
-          <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a>
+          <?php
+            require_once 'navbar-items/navbar_items_students.php';
+            foreach ($items_students as $item22) {
+                echo "<a href='" . $item22['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item22['page'] ? " class='active'" : "") . ">";
+                echo "<span class='fas fa-fw " . $item22['icon'] . "'></span> ";
+                echo $item22['label'];
+                echo "</a>";
+            }
+          ?>
+          <!--<a class="fas fa-book" href="evaluate.php"> Evaluate</a>
+          <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a> -->
         </div>
       </div>
         <div id="pg-content">
@@ -211,9 +219,29 @@ body{
             <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
           </div>
         </div>
+</body>
 
-<?php }else{ }
-
-?>
-
-<?php } ?>
+<?php }elseif ($_SESSION['role'] == 'faculty') { ?> 
+  <div id="mySidemenu" class="sidemenu">
+        <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
+        <div class="sm-wrapper">
+          <?php
+            require_once 'navbar-items/navbar_items_faculty.php';
+            foreach ($items_faculty as $item33) {
+                echo "<a href='" . $item33['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item33['page'] ? " class='active'" : "") . ">";
+                echo "<span class='fas fa-fw " . $item33['icon'] . "'></span> ";
+                echo $item33['label'];
+                echo "</a>";
+            }
+          ?>
+          <!--<a class="fas fa-book" href="evaluate.php"> Evaluate</a>
+          <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a> -->
+        </div>
+      </div>
+        <div id="pg-content">
+          <div class="title_bg">
+            <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
+            <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
+          </div>
+        </div>
+} <?php } ?> } <?php } ?>

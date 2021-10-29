@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 06:09 AM
+-- Generation Time: Oct 29, 2021 at 11:13 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -97,16 +97,20 @@ CREATE TABLE `faculty_list` (
   `id` int(30) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
-  `mname` varchar(30) NOT NULL
+  `mname` varchar(30) NOT NULL,
+  `role` enum('faculty') NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty_list`
 --
 
-INSERT INTO `faculty_list` (`id`, `fname`, `lname`, `mname`) VALUES
-(1, 'Jocelyn', 'Beriña', 'M'),
-(2, 'Kaven Rey', 'Batac', 'B');
+INSERT INTO `faculty_list` (`id`, `fname`, `lname`, `mname`, `role`, `username`, `password`, `name`) VALUES
+(1, 'Jocelyn', 'Beriña', 'M', 'faculty', 'jocelyn', '5e8ff9bf55ba3508199d22e984129be6', 'Jocelyn'),
+(2, 'Kaven Rey', 'Batac', 'B', 'faculty', 'kev', '202cb962ac59075b964b07152d234b70', 'Kaven Ray');
 
 -- --------------------------------------------------------
 
@@ -149,15 +153,19 @@ CREATE TABLE `student_list` (
   `s_num` varchar(255) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
-  `mname` varchar(30) NOT NULL
+  `mname` varchar(30) NOT NULL,
+  `role` enum('user') NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student_list`
 --
 
-INSERT INTO `student_list` (`id`, `s_num`, `fname`, `lname`, `mname`) VALUES
-(44, '123', 'Michael', 'Banaria', 'bolo');
+INSERT INTO `student_list` (`id`, `s_num`, `fname`, `lname`, `mname`, `role`, `username`, `password`, `name`) VALUES
+(44, '123-45', 'Michael', 'Banaria', 'Bolo', 'user', 'what', '5e8ff9bf55ba3508199d22e984129be6', 'Michael');
 
 -- --------------------------------------------------------
 
@@ -185,7 +193,6 @@ INSERT INTO `subject_list` (`subject_code`, `description`) VALUES
 
 CREATE TABLE `users` (
   `id` int(30) NOT NULL,
-  `user_id` int(30) NOT NULL,
   `role` enum('user','admin') CHARACTER SET utf8mb4 NOT NULL,
   `username` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
@@ -196,8 +203,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `role`, `username`, `password`, `name`) VALUES
-(16, 44, 'user', 'mic', '4eea1e5de59fbc61cb3ab480dbbf6a5f', 'administrator');
+INSERT INTO `users` (`id`, `role`, `username`, `password`, `name`) VALUES
+(18, 'admin', 'teamcapslock', '5e8ff9bf55ba3508199d22e984129be6', 'administrator');
 
 --
 -- Indexes for dumped tables
@@ -243,8 +250,7 @@ ALTER TABLE `student_list`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -290,17 +296,7 @@ ALTER TABLE `student_list`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `student_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
