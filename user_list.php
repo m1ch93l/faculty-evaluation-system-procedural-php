@@ -1,9 +1,12 @@
 <?php include'navbar.php'; ?>
-
 <body>
 		<div class="main-body">
-      <form action="#new_student.php">
-         <button type="submit">Add New</button>
+      <form action="new_user.php">
+        <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label><br>
+                <input type="text" id="password" name="password"><br>
+         <button type="submit" name="btnsubmit">Add New</button>
       </form>
 			<?php 
             include'koneksyon.php';

@@ -165,8 +165,6 @@ body{
 .new_sidepanel button:hover{
   background-color:#cdcbcb ;
 }
-
-/*Table design*/
 </style>
 
 <body>
@@ -195,7 +193,7 @@ body{
     </div>
   </div>
 
-<?php } elseif ($_SESSION['role'] == 'user') { ?>
+<?php } elseif ($_SESSION['role'] == 'student') { ?>
 
       <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>

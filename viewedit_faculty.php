@@ -2,9 +2,9 @@
 include'navbar.php';
 include 'koneksyon.php';
 
-$snum = $_GET['fnum'];
+$id = $_GET['id'];
 
-$qryview = "SELECT * FROM faculty_list WHERE f_num='$snum'";
+$qryview = "SELECT * FROM faculty_list WHERE id='$id'";
 $result = mysqli_query($koneksyon, $qryview);
 
 echo "<style>";
@@ -57,8 +57,7 @@ if(mysqli_num_rows($result) > 0)
 {
 	echo "<form action='update_faculty.php' method='post'>";
 		$row = mysqli_fetch_assoc($result);
-	
-echo "Student Number: <input type='text' readonly name='txtfacultynum' value='".$row["f_num"]."'><br>";
+
 echo "First Name <input type='text' name='txtfname' value='".$row["fname"]."'><br>";
 echo "Last Name:<input type='text' name='txtlname' value='".$row["lname"]."'><br>";
 echo "Middle Name<input type='text' name='txtmname' value='".$row["mname"]."'><br>";

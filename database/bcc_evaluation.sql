@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 11:13 AM
+-- Generation Time: Oct 30, 2021 at 12:31 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -109,8 +109,7 @@ CREATE TABLE `faculty_list` (
 --
 
 INSERT INTO `faculty_list` (`id`, `fname`, `lname`, `mname`, `role`, `username`, `password`, `name`) VALUES
-(1, 'Jocelyn', 'Beriña', 'M', 'faculty', 'jocelyn', '5e8ff9bf55ba3508199d22e984129be6', 'Jocelyn'),
-(2, 'Kaven Rey', 'Batac', 'B', 'faculty', 'kev', '202cb962ac59075b964b07152d234b70', 'Kaven Ray');
+(1, 'Jocelyn', 'Beriña', 'M', 'faculty', 'jocelyn', '$2y$10$fFsRXfbGagCzmdBJnIxNr.6NiSyr/lAQgpf4irM57C4KUUmOCoFoG', 'Jocelyn');
 
 -- --------------------------------------------------------
 
@@ -154,7 +153,7 @@ CREATE TABLE `student_list` (
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `mname` varchar(30) NOT NULL,
-  `role` enum('user') NOT NULL,
+  `role` enum('student') NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(30) NOT NULL
@@ -165,7 +164,8 @@ CREATE TABLE `student_list` (
 --
 
 INSERT INTO `student_list` (`id`, `s_num`, `fname`, `lname`, `mname`, `role`, `username`, `password`, `name`) VALUES
-(44, '123-45', 'Michael', 'Banaria', 'Bolo', 'user', 'what', '5e8ff9bf55ba3508199d22e984129be6', 'Michael');
+(44, '123-45', 'Michael', 'Banaria', 'Bolo', 'student', 'michael', '$2y$10$fFsRXfbGagCzmdBJnIxNr.6NiSyr/lAQgpf4irM57C4KUUmOCoFoG', 'Michael'),
+(51, '897', 'gracel mae', 'Banaria', 'bolo', 'student', 'gracel', '$2y$10$WajZP3zHtPphVQppe0C4teY06DeuNfxfK6tU9MmxgVlgUTblXZYiC', 'gracel mae');
 
 -- --------------------------------------------------------
 
@@ -204,7 +204,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `username`, `password`, `name`) VALUES
-(18, 'admin', 'teamcapslock', '5e8ff9bf55ba3508199d22e984129be6', 'administrator');
+(18, 'admin', 'teamcapslock', '$2y$10$tApwfgU8Ak6CkqDyae9tG.nHLU9rhDC.snYBfRAqkD32xIyD5fgUC', 'administrator');
 
 --
 -- Indexes for dumped tables
@@ -290,13 +290,13 @@ ALTER TABLE `question_list`
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

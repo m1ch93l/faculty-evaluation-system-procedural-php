@@ -22,7 +22,7 @@
 <body>
       <div class="center-div">
       	<form 
-      	      action="php/check-login.php" 
+      	      action="php/check_password.php" 
       	      method="post">
       	      <h1 align="center">LOGIN</h1>
       	      <?php if (isset($_GET['error'])) { ?>
@@ -48,7 +48,7 @@
 		  <select
 		          name="role" 
 		          aria-label="Default select example">
-			  <option selected value="user">User</option>
+			  <option selected value="student">Student</option>
 			  <option value="faculty">Faculty</option>
 			  <option value="admin">Admin</option>
 		  </select><br>
