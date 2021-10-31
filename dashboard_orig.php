@@ -40,12 +40,12 @@
 
 <!--Main content -->
 <div class="main-body">
-	<h5>Welcome Administrator</h5>
-		<div class="grid">
-		  <div class="g-col-6">Total Students<?php include'count_student.php'; echo $output;?></div>
-		  <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
+    <h5>Welcome Administrator</h5>
+    <div class="grid">
+        <div class="g-col-6">Total Students<?php include'count_student.php'; echo $output;?></div>
+        <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
 
-		  <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
-		  <div class="g-col-6">.g-col-6</div>
-		</div>
+        <div class="g-col-6"><?php include'count_faculty.php'; echo $output;?></div>
+        <div class="g-col-6">.g-col-6</div>
+    </div>
 </div>

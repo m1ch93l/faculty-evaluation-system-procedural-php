@@ -178,7 +178,7 @@ body{
       <?php
         require_once 'navbar-items/navbar_items.php';
         foreach ($items as $item) {
-            echo "<a href='" . $item['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item['page'] ? " class='active'" : "") . ">";
+            echo "<a href='" . $item['pages'][0] . "'" . (in_array(basename($_SERVER['SCRIPT_NAME']), $item['pages']) ? " class='active'" : "") . ">";
             echo "<span class='fas fa-fw " . $item['icon'] . "'></span> ";
             echo $item['label'];
             echo "</a>";
@@ -201,7 +201,7 @@ body{
           <?php
             require_once 'navbar-items/navbar_items_students.php';
             foreach ($items_students as $item22) {
-                echo "<a href='" . $item22['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item22['page'] ? " class='active'" : "") . ">";
+                echo "<a href='" . $item22['pages'][0] . "'" . (in_array(basename($_SERVER['SCRIPT_NAME']), $item22['pages']) ? " class='active'" : "") . ">";
                 echo "<span class='fas fa-fw " . $item22['icon'] . "'></span> ";
                 echo $item22['label'];
                 echo "</a>";
@@ -226,7 +226,7 @@ body{
           <?php
             require_once 'navbar-items/navbar_items_faculty.php';
             foreach ($items_faculty as $item33) {
-                echo "<a href='" . $item33['page'] . "'" . (basename($_SERVER['SCRIPT_NAME']) == $item33['page'] ? " class='active'" : "") . ">";
+                echo "<a href='" . $item33['pages'][0] . "'" . (in_array(basename($_SERVER['SCRIPT_NAME']), $item33['pages']) ? " class='active'" : "") . ">";
                 echo "<span class='fas fa-fw " . $item33['icon'] . "'></span> ";
                 echo $item33['label'];
                 echo "</a>";

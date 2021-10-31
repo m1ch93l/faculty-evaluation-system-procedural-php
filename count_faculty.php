@@ -1,11 +1,13 @@
-<?php include'koneksyon.php'; 
+<?php
 
-$query = "SELECT COUNT(f_num) AS count FROM faculty_list ";
+    include'koneksyon.php';
 
-$result =mysqli_query($koneksyon, $query);
+    $query = "SELECT COUNT(f_num) AS count FROM faculty_list ";
 
-while ($row = mysqli_fetch_assoc($result)) {
-	$output = "<br>".$row['count'];
-}
+    $result =mysqli_query($koneksyon, $query);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $output = "<br>".$row['count'];
+    }
 
 ?>
