@@ -1,65 +1,66 @@
 <?php
-include'navbar.php';
-include 'koneksyon.php';
 
-$snum = $_POST['txtsnum'];
+    include'navbar.php';
+    include 'koneksyon.php';
 
-//SELECT column1, column2.. FROM tablename
-//SELECT * FROM tablename
+    $snum = $_POST['txtsnum'];
 
-$qryview = "SELECT * FROM student_list WHERE s_num = '$snum'";
-$result = mysqli_query($koneksyon, $qryview);
+    //SELECT column1, column2.. FROM tablename
+    //SELECT * FROM tablename
 
-echo "<style>";
-echo ".f1{
-  margin-top: 50px;
-}
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  align-content: center;
-}
+    $qryview = "SELECT * FROM student_list WHERE s_num = '$snum'";
+    $result = mysqli_query($koneksyon, $qryview);
 
-input[type=submit]{
-  width: 100%;
-  background-color: #6fbfe6;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    echo "<style>";
+        echo ".f1{
+          margin-top: 50px;
+        }
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          align-content: center;
+        }
+        
+        input[type=submit]{
+          width: 100%;
+          background-color: #6fbfe6;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        input[type=submit]:hover{
+          background-color: #35afeb;
+        }
+        button{
+         width: 100%;
+          background-color: #6fbfe6;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          background-color: #cdcbcb;
+        }
+        button:hover{
+          background-color: #b4b3b3;
+        }
+        ";
+    echo "</style>";
 
-input[type=submit]:hover{
-  background-color: #35afeb;
-}
-button{
- width: 100%;
-  background-color: #6fbfe6;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #cdcbcb;
-}
-button:hover{
-  background-color: #b4b3b3;
-}
-";
-echo "</style>";
 echo "<div class='main-body'>";
 
 echo "<H2>STUDENT INFORMATION</H2>";
-if(mysqli_num_rows($result) > 0)
-{
+if(mysqli_num_rows($result) > 0) {
 	echo "<table BORDER='1'>";
 	echo"<tr>";
 	echo "<td>STUDENT NUMBER</td>";
@@ -67,8 +68,7 @@ if(mysqli_num_rows($result) > 0)
 	echo "<td>LAST NAME</td>";
 	echo "<td>MIDDLE NAME</td>";
 	echo"</tr>";
-	while($row = mysqli_fetch_assoc($result))
-	{
+	while($row = mysqli_fetch_assoc($result)) {
 		echo"<tr>";
 			echo "<td>".$row["s_num"]."</td>";
 			echo "<td>".$row["fname"]."</td>";
@@ -79,10 +79,8 @@ if(mysqli_num_rows($result) > 0)
 	}
 	echo "</table>";
 	echo "</div>";
-
 }
-else
-{
+else {
 	echo "No record/s found!";	
 }
 

@@ -1,12 +1,14 @@
-<?php 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bcc_evaluation";
+<?php
 
-$koneksyon = new mysqli($servername, $username, $password, $dbname);
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "bcc_evaluation";
 
-if ($koneksyon->connect_error){
-	die("connection failed:" . $koneksyon->connect_error);
-}
+    $koneksyon = new mysqli($servername, $username, $password, $dbname);
+
+    if ($koneksyon->connect_error){
+        die("connection failed:" . $koneksyon->connect_error);
+    }
+
 ?>

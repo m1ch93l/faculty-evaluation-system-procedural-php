@@ -1,14 +1,17 @@
-<?php include'koneksyon.php';
+<?php
 
-$criteria = $_POST['criteria'];
+    include'koneksyon.php';
 
-$dagdag = "INSERT INTO criteria_list (criteria) VALUES ('$criteria')";
+    $criteria = $_POST['criteria'];
 
-if (mysqli_query($koneksyon, $dagdag)){
-	echo "New records has been added!";
-}
-else{
-	echo "Error in adding new records";
-}
-header( "Location: criteria_list.php" );
+    $dagdag = "INSERT INTO criteria_list (criteria) VALUES ('$criteria')";
+
+    if (mysqli_query($koneksyon, $dagdag)){
+        echo "New records has been added!";
+    }
+    else{
+        echo "Error in adding new records";
+    }
+    header( "Location: criteria_list.php" );
+
 ?>

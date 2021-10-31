@@ -4,57 +4,57 @@
         [
             'label' => 'Dashboard',
             'icon'  => 'fa-home',
-            'page'  => 'dashboard.php'
+            'pages' => ['dashboard.php']
         ],
         [
             'label' => 'Subject',
             'icon'  => 'fa-book',
-            'page'  => 'subject_list.php'
+            'pages' => ['subject_list.php', 'viewedit_subjectlist.php']
         ],
         [
             'label' => 'Classes',
             'icon'  => 'fa-list-ul',
-            'page'  => 'class_list.php'
+            'pages' => ['class_list.php', 'viewedit_classlist.php']
         ],
         [
             'label' => 'Academic Year',
             'icon'  => 'fa-layer-group',
-            'page'  => 'academic_list.php'
+            'pages' => ['academic_list.php']
         ],
         [
             'label' => 'Questionaire',
             'icon'  => 'fa-question-circle',
-            'page'  => 'questionnaire.php'
+            'pages' => ['questionnaire.php']
         ],
         [
             'label' => 'Evaluation Criteria',
             'icon'  => 'fa-list-ol',
-            'page'  => 'criteria_list.php'
+            'pages' => ['criteria_list.php', 'viewedit_criterialist.php']
         ],
         [
             'label' => 'Faculty',
             'icon'  => 'fa-chalkboard-teacher',
-            'page'  => 'faculty_list.php'
+            'pages' => ['faculty_list.php', 'viewedit_faculty.php']
         ],
         [
             'label' => 'Student',
             'icon'  => 'fa-user-graduate',
-            'page'  => 'student_list.php'
+            'pages' => ['student_list.php', 'viewedit.php']
         ],
         [
             'label' => 'Evaluation Report',
             'icon'  => 'fa-fw fa-flag',
-            'page'  => 'report.php'
+            'pages' => ['report.php']
         ],
         [
             'label' => 'Users',
             'icon'  => 'fa-users',
-            'page'  => 'user_list.php'
+            'pages' => ['user_list.php']
         ],
         [
             'label' => 'Logout',
             'icon'  => 'fa-sign-out-alt',
-            'page'  => 'logout.php'
+            'pages' => ['logout.php']
         ],
     ]
 
