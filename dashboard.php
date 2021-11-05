@@ -1,6 +1,5 @@
 <?php include'navbar.php'; ?>
-<!DOCTYPE html>
-<html>
+
 <head>
 	<title>HOME PAGE</title>
 </head>
@@ -11,4 +10,3 @@
       </div>
    </div>
 </body>
-</html>

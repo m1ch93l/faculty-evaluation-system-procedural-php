@@ -182,8 +182,7 @@ body{
   <div id="mySidemenu" class="sidemenu">
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
     <div class="sm-wrapper">
-      <!--<div class="logo"><img src="img/bcc.png" style="width: 70; height: 70; padding-left: 50px;"></div>-->
-
+      
       <?php
         require_once 'navbar-items/navbar_items.php';
         foreach ($items as $item) {
@@ -251,4 +250,6 @@ body{
   </header>
 </body>
 
-} <?php } ?> } <?php } ?>
+} <?php } ?> } <?php }else{
+  header("location: index.php");
+} ?>
