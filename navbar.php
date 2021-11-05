@@ -13,7 +13,16 @@
 <!-- para mag-adopt yung pixels sa mobile -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-<script src="open_close.js"></script>
+<script>
+  function openSM(){
+    document.getElementById("mySidemenu").style.width = "350px";
+    document.getElementById("pg-content").style.marginleft = "350px";
+  }
+  function closeSM(){
+    document.getElementById("mySidemenu").style.width = "0";
+    document.getElementById("pg-content").style.marginleft = "0";
+  }
+</script>
 
 </head>
 
@@ -21,7 +30,7 @@
   /* Main Content */
 body{
   margin: 0;
-  overflow: hidden;
+  
   background-color: #eae7dc;
 }
 
@@ -45,7 +54,7 @@ body{
 .sidemenu a{
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   color: #fff;
   display: block;
   letter-spacing: 2px;
@@ -82,7 +91,6 @@ body{
   margin-left: 10px;
   margin-right: 10px;
 }
-
 /* form collapse */
 
 .new_sidepanel  {
@@ -169,6 +177,7 @@ body{
 
 <body>
 <!-- The sidebar -->
+<header>
 <?php if ($_SESSION['role'] == 'admin') { ?>
   <div id="mySidemenu" class="sidemenu">
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
@@ -192,7 +201,6 @@ body{
       <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
     </div>
   </div>
-
 <?php } elseif ($_SESSION['role'] == 'student') { ?>
 
       <div id="mySidemenu" class="sidemenu">
@@ -217,8 +225,6 @@ body{
             <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
           </div>
         </div>
-</body>
-
 <?php }elseif ($_SESSION['role'] == 'faculty') { ?> 
   <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
@@ -242,4 +248,7 @@ body{
             <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
           </div>
         </div>
+  </header>
+</body>
+
 } <?php } ?> } <?php } ?>

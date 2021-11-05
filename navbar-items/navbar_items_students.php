@@ -2,7 +2,7 @@
 
     $items_students = [
         [
-            'label' => 'Subject',
+            'label' => 'Evaluate',
             'icon'  => 'fa-book',
             'pages' => ['evaluate.php']
         ],

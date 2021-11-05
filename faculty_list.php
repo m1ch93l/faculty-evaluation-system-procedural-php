@@ -92,15 +92,16 @@
         text-align: left;
       }
     }
+  .search{
+  padding: 9px 15px;
+  margin-bottom: 5px;
+}
 </style>
 <body>
     <?php include'navbar.php'; ?>
     <div class="main-body">
-        <form action="faculty_list.php" method="post">
-            <label for="snum">Faculty Number:</label><br>
-            <input type="text" id="txtsnum" name="txtsnum"><br>
-            <input type="submit" id="btnsearch" name="btnsearch" value="SEARCH">
-        </form>
+
+        <input class="search" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Name" title="Type in a name"><br>
 
         <button class="openbtn" onclick="openNav()">Add New</button>
         <div id="mySidepanel" class="new_sidepanel">
@@ -128,7 +129,7 @@
             echo "<div class='main'>";
             echo "<h1>Faculty List</h1>";
             if(mysqli_num_rows($result) > 0) {
-                echo "<table class='table'>";
+                echo "<table class='table' id='myTable'>";
                 echo "<thead align='center'>";
                 echo "<tr>";
                 echo "<th>First Name</th>";
@@ -162,16 +163,6 @@
     </div>
 </body>
 
-<script>
-
-    function openNav() {
-      document.getElementById("mySidepanel").style.width = "350px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidepanel").style.width = "0";
-    }
-
-</script>
+<?php include'footer.php'; ?>
 
 

@@ -26,12 +26,14 @@
     }
 
 ?>
+
 <style>
     /*Table design*/
     main{
       margin:0;
       padding:20px;
       font-family: sans-serif;
+      position: relative;
     }
     *{
       box-sizing: border-box;
@@ -68,7 +70,6 @@
       .table thead{
         display: none;
       }
-
       .table, .table tbody, .table tr, .table td{
         display: block;
         width: 100%;
@@ -93,15 +94,35 @@
         text-align: left;
       }
     }
+  #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+.search{
+  padding: 9px 15px;
+  margin-bottom: 5px;
+}
 </style>
 <body>
-    <?php include'navbar.php'; ?>
+  <?php include'navbar.php'; ?>
     <div class="main-body">
-        <form action="search.php" method="post">
-            <label for="snum">Student Number:</label><br>
-            <input type="text" id="txtsnum" name="txtsnum"><br>
-            <input type="submit" id="btnsearch" name="btnsearch" value="SEARCH">
-        </form>
+
+        <input class="search" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Student Number" title="Type in a name"><br>
 
         <button class="openbtn" onclick="openNav()">Add New</button>
         <div id="mySidepanel" class="new_sidepanel">
@@ -126,6 +147,7 @@
                  <button type="submit">Cancel</button>
             </form>
         </div>
+
         <?php
             include'koneksyon.php';
 
@@ -135,15 +157,13 @@
             echo "<div class='main'>";
             echo "<h1>Student List</h1>";
             if(mysqli_num_rows($result) > 0){
-                echo "<table class='table'>";
+                echo "<table class='table' id='myTable'>";
                 echo "<thead align='center'>";
-                echo "<tr>";
                 echo "<th>Student Number</th>";
                 echo "<th>First Name</th>";
                 echo "<th>Last Name</th>";
                 echo "<th>Middle Name</th>";
                 echo "<th>Action</th>";
-                echo "</tr>";
                 echo "</thead>";
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<tbody>";
@@ -169,16 +189,6 @@
             }
         ?>
     </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </body>
-
-<script>
-
-    function openNav() {
-      document.getElementById("mySidepanel").style.width = "350px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidepanel").style.width = "0";
-    }
-
-</script>
+<?php include'footer.php'; ?>
