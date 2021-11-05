@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2021 at 12:31 PM
+-- Generation Time: Nov 05, 2021 at 07:23 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -47,6 +47,24 @@ INSERT INTO `academic_list` (`id`, `year`, `semester`, `is_default`, `status`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `choice`
+--
+
+CREATE TABLE `choice` (
+  `id` int(30) NOT NULL,
+  `rate` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `choice`
+--
+
+INSERT INTO `choice` (`id`, `rate`) VALUES
+(1, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `class_list`
 --
 
@@ -81,11 +99,8 @@ CREATE TABLE `criteria_list` (
 --
 
 INSERT INTO `criteria_list` (`id`, `criteria`, `order_by`) VALUES
-(1, 'Criteria 445', 1),
-(2, 'Criteria 445', 2),
-(4, 'Criteria 445', 3),
-(6, 'Criteria 445', 0),
-(10, 'criteria 255', 0);
+(1, 'Criteria 1', 1),
+(10, 'Criteria 2', 0);
 
 -- --------------------------------------------------------
 
@@ -131,15 +146,9 @@ CREATE TABLE `question_list` (
 
 INSERT INTO `question_list` (`id`, `academic_id`, `question`, `order_by`, `criteria_id`) VALUES
 (1, 3, 'Sample Question', 0, 1),
-(3, 3, 'Test', 2, 2),
-(5, 0, 'Question 101', 0, 1),
 (6, 3, 'Sample 101', 1, 1),
 (7, 3, 'how frequently recorded attendance?', 3, 4),
-(8, 2, 'sample 1', 0, 1),
-(9, 2, 'sample 2', 1, 2),
-(10, 2, 'sample 3', 2, 4),
-(11, 5, 'teacher always present', 0, 5),
-(12, 5, 'hahhaha', 1, 4);
+(11, 5, 'teacher always present', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +174,9 @@ CREATE TABLE `student_list` (
 
 INSERT INTO `student_list` (`id`, `s_num`, `fname`, `lname`, `mname`, `role`, `username`, `password`, `name`) VALUES
 (44, '123-45', 'Michael', 'Banaria', 'Bolo', 'student', 'michael', '$2y$10$fFsRXfbGagCzmdBJnIxNr.6NiSyr/lAQgpf4irM57C4KUUmOCoFoG', 'Michael'),
-(51, '897', 'gracel mae', 'Banaria', 'bolo', 'student', 'gracel', '$2y$10$WajZP3zHtPphVQppe0C4teY06DeuNfxfK6tU9MmxgVlgUTblXZYiC', 'gracel mae');
+(51, '897', 'gracel mae', 'Banaria', 'bolo', 'student', 'gracel', '$2y$10$WajZP3zHtPphVQppe0C4teY06DeuNfxfK6tU9MmxgVlgUTblXZYiC', 'gracel mae'),
+(52, '825', 'Mary', 'banaria', 'Lomeda', 'student', 'mary', '$2y$10$dQZMf3ZccKohgevegM3gM.JnXo0Vgc06Oiu/X6z7UCgup33UxA6Vu', 'Mary'),
+(53, '0362', 'cecelia', 'banaria', 'bolo', 'student', 'cecilia', '$2y$10$LnA2usrD42h4OJl85om6IOb/f0RuubG9hq8JlBnZwNg2R6cj91JeO', 'cecelia');
 
 -- --------------------------------------------------------
 
@@ -217,6 +228,12 @@ ALTER TABLE `academic_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `choice`
+--
+ALTER TABLE `choice`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `class_list`
 --
 ALTER TABLE `class_list`
@@ -263,6 +280,12 @@ ALTER TABLE `academic_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `choice`
+--
+ALTER TABLE `choice`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `class_list`
 --
 ALTER TABLE `class_list`
@@ -290,7 +313,7 @@ ALTER TABLE `question_list`
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `users`
