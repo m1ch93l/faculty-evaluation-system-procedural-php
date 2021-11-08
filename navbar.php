@@ -30,7 +30,6 @@
   /* Main Content */
 body{
   margin: 0;
-  
   background-color: #eae7dc;
 }
 
@@ -173,6 +172,19 @@ body{
 .new_sidepanel button:hover{
   background-color:#cdcbcb ;
 }
+.open{
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff;
+  display: inline-block;
+  position: absolute;
+  margin-left: 10px
+}
+@media(max-width: 500px){
+  .open{
+    font-size: 55px;
+  }
+}
 </style>
 
 <body>
@@ -196,7 +208,7 @@ body{
   </div>
   <div id="pg-content">
     <div class="title_bg">
-      <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
+      <div class="open" onclick="openSM()">&#9776;</div>
       <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
     </div>
   </div>

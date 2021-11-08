@@ -41,7 +41,8 @@
                                             </td>
                                             <?php for($c=1;$c<=5;$c++){ ?>
                                             <td>
-                                                <input type="radio" value="<?php echo $c; ?>" <?php echo $c == 5 ? "checked" : '' ?>>
+                                                <input type="radio" name="rate[<?php echo $row['id'] ?>]" <?php echo $c == 5 ? "checked" : '' ?> id="qradio<?php echo $row['id'].'_'.$c ?>" value="<?php echo $c ?>">
+                                                <label for="qradio<?php echo $row['id'].'_'.$c ?>">
                                             </td>
                                             <?php } ?>
                                         </tr>

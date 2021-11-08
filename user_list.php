@@ -65,8 +65,8 @@
       }
     }
 </style>
-<?php include'navbar.php'; ?>
 <body>
+  <?php include'navbar.php'; ?>
     <div class="main-body">
         <button class="openbtn" onclick="openNav()">Add New</button>
             <div id="mySidepanel" class="new_sidepanel">
@@ -91,15 +91,13 @@
             if(mysqli_num_rows($result) > 0){
                 echo "<table class='table'>";
                 echo "<thead align='center'>";
-                echo "<tr>";
                 echo "<th>Username</th>";
                 echo "<th>Action</th>";
-                echo "<tr>";
                 echo "</thead>";
                 while($row = mysqli_fetch_assoc($result)){
                     echo "<tbody>";
                     echo "<tr>";
-                    echo "<td data-label='Password'>".$row['password']."</td>";
+                    echo "<td data-label='Username'>".$row['username']."</td>";
                     echo "<td>";
                     echo "<div class='action_btn'>";
                     echo "<button class='fas fa-user-edit'><a href='viewedituser.php?user=".$row["username"]."' >Edit</a></button>";

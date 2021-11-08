@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2021 at 07:23 AM
+-- Generation Time: Nov 08, 2021 at 01:54 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -60,7 +60,9 @@ CREATE TABLE `choice` (
 --
 
 INSERT INTO `choice` (`id`, `rate`) VALUES
-(1, 3);
+(1, 3),
+(2, 0),
+(3, 0);
 
 -- --------------------------------------------------------
 
@@ -283,7 +285,7 @@ ALTER TABLE `academic_list`
 -- AUTO_INCREMENT for table `choice`
 --
 ALTER TABLE `choice`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `class_list`
