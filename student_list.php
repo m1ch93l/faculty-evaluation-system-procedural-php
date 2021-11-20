@@ -61,7 +61,7 @@
                     <td><?php echo $row['studentno']; ?></td>
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
-                    <td><a type="button" class="btn btn-primary" >EDIT</a></td>
+                    <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>">EDIT</a></td>
                     <td><input class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" value="DELETE"></td>
                 </tr>
             <?php } ?>
