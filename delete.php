@@ -2,9 +2,9 @@
 
     include 'koneksyon.php';
 
-    $snum = $_GET['snum'];
+    $row_id = $_GET['del_id'];
 
-    $delete = "DELETE FROM student_list WHERE s_num= '$snum' ";
+    $delete = "DELETE FROM students WHERE id = '$row_id' ";
 
     if (mysqli_query($koneksyon, $delete))
     {

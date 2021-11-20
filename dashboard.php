@@ -1,75 +1,68 @@
-<style>
-  .bodybox{
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .container{
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-  }
-  .box{
-    height: 100px;
-    border: 2px solid #000;
-    position: relative;
-  }
-  h2{
-    text-transform: uppercase;
-    align-content: center;
-    text-align: center;
-    margin: 0;
-  }
-</style>
+<?php include_once'navbar.php'; ?>
 <head>
 	<title>HOME PAGE</title>
 </head>
 <body>
-  <?php include'navbar.php'; ?>
-	<div class="main-body">
-    <h1>HELLO, <?=$_SESSION['name']?></h1>
-      <div class="bodybox">
-          <div class="container">
-            <div class="box">
-              <h2>Total Students
-                <?php
+  <div class="container mx-1 my-3 py-5">
+    <!-- Content Row -->
+    <div class="row">
 
-                    include'koneksyon.php';
-
-                    $query = "SELECT COUNT(s_num) AS count FROM student_list ";
-
-                    $result =mysqli_query($koneksyon, $query);
-
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $output = "<br>".$row['count'];
-                    }
-                    echo $output;
-                ?>
-              </h2>
-            </div>
-            <div class="box">
-              <h2>Total Faculty
-                <?php
-
-                    include'koneksyon.php';
-
-                    $query = "SELECT COUNT(fname) AS count FROM faculty_list ";
-
-                    $result =mysqli_query($koneksyon, $query);
-
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $output = "<br>".$row['count'];
-                    }
-                    echo $output;
-                ?>
-              </h2>
-            </div>
-            <div class="box">
-              <h2>Total Answered Question</h2>
-            </div>
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              Total Students</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
-   </div>
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              Total Faculties</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              Total Users</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </body>

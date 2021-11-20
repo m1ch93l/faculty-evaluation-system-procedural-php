@@ -12,9 +12,9 @@
             'pages' => ['subject_list.php', 'viewedit_subjectlist.php']
         ],
         [
-            'label' => 'Classes',
+            'label' => 'Department',
             'icon'  => 'fa-list-ul',
-            'pages' => ['class_list.php', 'viewedit_classlist.php']
+            'pages' => ['department.php']
         ],
         [
             'label' => 'Academic Year',
@@ -24,12 +24,7 @@
         [
             'label' => 'Questionaire',
             'icon'  => 'fa-question-circle',
-            'pages' => ['questionnaire.php']
-        ],
-        [
-            'label' => 'Evaluation Criteria',
-            'icon'  => 'fa-list-ol',
-            'pages' => ['criteria_list.php', 'viewedit_criterialist.php']
+            'pages' => ['question-list.php']
         ],
         [
             'label' => 'Faculty',

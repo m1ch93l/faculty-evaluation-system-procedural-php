@@ -16,13 +16,10 @@
                     </fieldset>
 
                     <?php include'koneksyon.php';
-
                             $qryview = "SELECT * FROM criteria_list";
                             $result = mysqli_query($koneksyon, $qryview);
-                            while($row = $result->fetch_assoc()) { ?>
+                            while($row = $result->fetch_assoc()): ?>
                         <form action="insert-data.php" method="post">
-                            
-
                             <table border="1">
                                 <thead>
                                     <tr>
@@ -33,23 +30,32 @@
                                         <th>4</th>
                                         <th>5</th>
                                     </tr>
-                            
+                                    <?php include'koneksyon.php';
+                                    $qryview1 = "SELECT * FROM question_list";
+                                    $result1 = mysqli_query($koneksyon, $qryview1);
+                                    while($row = $result1->fetch_assoc()): ?>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                
+                                                <?php echo $row['question'] ?>
+                                                <input type="hidden" name="qid[]" value="<?php echo $row['id'] ?>">
                                             </td>
-                                            <?php for($c=1;$c<=5;$c++){ ?>
+                                            <?php
+                                            for($c=1;$c<=5;$c++): ?>
                                             <td>
-                                                <input type="radio" name="rate[<?php echo $row['id'] ?>]" <?php echo $c == 5 ? "checked" : '' ?> id="qradio<?php echo $row['id'].'_'.$c ?>" value="<?php echo $c ?>">
-                                                <label for="qradio<?php echo $row['id'].'_'.$c ?>">
+                                                <div>
+                                                    <input type="radio" name="rate[<?php echo $row['id'] ?>]" <?php echo $c == 5 ? "checked" : '' ?> id="qradio<?php echo $row['id'].'_'.$c ?>" value="<?php echo $c ?>">
+                                                    <label for="qradio<?php echo $row['id'].'_'.$c ?>">
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <?php } ?>
+                                            <?php endfor; ?>
                                         </tr>
                                     </tbody>
+                                    <?php endwhile; ?>
                                 </thead>
                             </table>
-                            <?php } ?>
+                            <?php endwhile; ?>
                         <input type="submit" name="submit">
                         </form>
                 </div>

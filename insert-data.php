@@ -2,7 +2,7 @@
 
     include'koneksyon.php';
 
-    $rate = $_POST['rate'];
+    $rate = $_POST[$c];
 
     $dagdag = "INSERT INTO choice (rate) VALUES ('$rate')";
 

@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "bcc_evaluation";
+    $dbname = "fes";
 
     $koneksyon = new mysqli($servername, $username, $password, $dbname);
 

@@ -107,14 +107,14 @@
         <div id="mySidepanel" class="new_sidepanel">
             <h1 align="center">New Faculty</h1>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <form action="dagdag_faculty.php" method="post">
+            <form autocomplete="off" action="faculty_list.php" method="post">
                 <label for="fname">First Name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
                 <label for="lname">Last Name:</label><br>
                 <input type="text" id="lname" name="lname"><br>
                 <label for="mname">Middle Name:</label><br>
                 <input type="text" id="mname" name="mname"><br>
-                <input type="submit" name="btnsubmit">
+                <input type="submit" name="submit">
             </form>
             <form action="faculty_list.php">
                 <button type="submit">Cancel</button>

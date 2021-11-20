@@ -48,9 +48,21 @@
         button:hover{
           background-color: #b4b3b3;
         }
+        .padding{
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+        @media(max-width: 500px){
+          .padding{
+            width: 90%;
+          }
+        }
         ";
     echo "</style>";
     echo "<div class='main-body'>";
+    echo "<div class='padding'>";
     echo "<H2>FACULTY INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0)
@@ -68,6 +80,7 @@
         echo "<form action='faculty_list.php'>";
         echo "<button type='submit'>Cancel</button>";
         echo "</form>";
+        echo "</div>";
         echo "</div>";
     }
     else {

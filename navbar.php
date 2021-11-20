@@ -4,8 +4,17 @@
    if (isset($_SESSION['username']) && isset($_SESSION['id']))    { ?>
 
 <head>
-<!-- sarili kong style 
-<link rel="stylesheet" type="text/css" href="css/main-content.css"> -->
+  <!-- bootsrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- datatables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<!-- sarili kong style -->
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
 
 <!-- kinuha ko sa font awesome free -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -25,167 +34,6 @@
 </script>
 
 </head>
-
-<style>
-  /* Main Content */
-body{
-  margin: 0;
-  background-color: #eae7dc;
-}
-
-/* side menu */
-.sm-wrapper{
-  margin-top: 10px;
-}
-
-.sidemenu{
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #000080;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 10px;
-}
-.sidemenu a{
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 16px;
-  color: #fff;
-  display: block;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  transition: 0.3s;
-}
-.sidemenu .close{
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 50px;
-  margin-left: 50px;
-}
-.sm-wrapper a:hover,
-.sm-wrapper a.active {
-  background-color: #b09335;
-}
-
-/* main content */
-.title_bg{
-  background-color: #000080;
-  position: absolute;
-  width: 100%;
-}
-.bcctitlebar{
-  margin-left: 60px;
-  color: #fff;
-}
-#pg-content{
-  transition: margin-left 0.5s;
-}
-.main-body{
-  padding-top: 80px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-/* form collapse */
-
-.new_sidepanel  {
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 10px;
-}
-
-.new_sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  text-decoration: none;
-  color: black;
-}
-
-.new_sidepanel form{
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.openbtn {
-  font-size: 15px;
-  cursor: pointer;
-  background-color: #000080;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  text-align: left;
-}
-
-.openbtn:hover {
-  background-color:#002900;
-}
-
-.new_sidepanel form input[type=text]{
-  width: 100%;
-  padding: 7px 12px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  align-content: center;
-}
-
-.new_sidepanel form input[type=submit]{
-  width: 100%;
-  background-color: #000080;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.new_sidepanel form input[type=submit]:hover{
-  background-color: #35afeb;
-}
-.new_sidepanel button{
- width: 100%;
-  background-color: #000080;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: gray;
-}
-.new_sidepanel button:hover{
-  background-color:#cdcbcb ;
-}
-.open{
-  font-size: 40px;
-  cursor: pointer;
-  color: #fff;
-  display: inline-block;
-  position: absolute;
-  margin-left: 10px
-}
-@media(max-width: 500px){
-  .open{
-    font-size: 55px;
-  }
-}
-</style>
 
 <body>
 <!-- The sidebar -->
@@ -209,7 +57,7 @@ body{
   <div id="pg-content">
     <div class="title_bg">
       <div class="open" onclick="openSM()">&#9776;</div>
-      <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
+      <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
     </div>
   </div>
 <?php } elseif ($_SESSION['role'] == 'student') { ?>
@@ -226,14 +74,12 @@ body{
                 echo "</a>";
             }
           ?>
-          <!--<a class="fas fa-book" href="evaluate.php"> Evaluate</a>
-          <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a> -->
         </div>
       </div>
         <div id="pg-content">
           <div class="title_bg">
             <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
+            <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
           </div>
         </div>
 <?php }elseif ($_SESSION['role'] == 'faculty') { ?> 
@@ -249,14 +95,12 @@ body{
                 echo "</a>";
             }
           ?>
-          <!--<a class="fas fa-book" href="evaluate.php"> Evaluate</a>
-          <a class="fas fa-sign-out-alt" href="logout.php"> Logout</a> -->
         </div>
       </div>
         <div id="pg-content">
           <div class="title_bg">
             <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h3 class="bcctitlebar">BCC FACULTY EVALUATION SYSTEM</h3>
+            <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
           </div>
         </div>
   </header>
