@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Force https://www
+RewriteCond %{HTTP_HOST} ^bccevaluationsystem.online [NC]
+RewriteRule ^(.*)$ https://www.bccevaluationsystem.online/$1 [L,R=301,NC]
