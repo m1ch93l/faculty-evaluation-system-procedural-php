@@ -1,9 +1,11 @@
 /* Main Content */
 body{
     margin: 0;
-    background-color: #eae7dc;
+    background-image: url(../img/bcc_cover.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(3px);
   }
-  
   /* side menu */
   .sm-wrapper{
     margin-top: 10px;
@@ -46,7 +48,7 @@ body{
   /* main content */
   .title_bg{
     background-color: #000080;
-    position: absolute;
+    position: fixed;
     width: 100%;
   }
   .bcctitlebar{
@@ -55,6 +57,7 @@ body{
   }
   #pg-content{
     transition: margin-left 0.5s;
+    overflow: hidden;
   }
   .main-body{
     padding-top: 80px;
@@ -153,6 +156,6 @@ body{
   }
   @media(max-width: 500px){
     .open{
-      font-size: 40px;
+      font-size: 25px;
     }
   }

@@ -15,49 +15,47 @@
                        <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
                     </fieldset>
 
-                    <?php include'koneksyon.php';
-                            $qryview = "SELECT * FROM criteria_list";
-                            $result = mysqli_query($koneksyon, $qryview);
-                            while($row = $result->fetch_assoc()): ?>
-                        <form action="insert-data.php" method="post">
-                            <table border="1">
-                                <thead>
-                                    <tr>
-                                        <th class="thspace"><?php echo $row['criteria']; ?></th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                    </tr>
-                                    <?php include'koneksyon.php';
-                                    $qryview1 = "SELECT * FROM question_list";
-                                    $result1 = mysqli_query($koneksyon, $qryview1);
-                                    while($row = $result1->fetch_assoc()): ?>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <?php echo $row['question'] ?>
-                                                <input type="hidden" name="qid[]" value="<?php echo $row['id'] ?>">
-                                            </td>
-                                            <?php
-                                            for($c=1;$c<=5;$c++): ?>
-                                            <td>
-                                                <div>
-                                                    <input type="radio" name="rate[<?php echo $row['id'] ?>]" <?php echo $c == 5 ? "checked" : '' ?> id="qradio<?php echo $row['id'].'_'.$c ?>" value="<?php echo $c ?>">
-                                                    <label for="qradio<?php echo $row['id'].'_'.$c ?>">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <?php endfor; ?>
-                                        </tr>
-                                    </tbody>
-                                    <?php endwhile; ?>
-                                </thead>
-                            </table>
-                            <?php endwhile; ?>
-                        <input type="submit" name="submit">
-                        </form>
+                    <div class="container bg-primary">
+                <div class="card">
+                <?php
+
+                    $qryview = "SELECT * FROM criteria";
+                    $result = mysqli_query($koneksyon, $qryview);
+                        while($row = mysqli_fetch_array($result)) {
+                    ?>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"><?php echo $row['criteria']; ?></th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $tanong = "SELECT * FROM questions where criteria_id = {$row['id']}";
+                            $resulta = mysqli_query($koneksyon, $tanong);
+                            while($row1 = mysqli_fetch_array($resulta)){
+                                ?>
+                                <tr>
+                                    <td><?php echo $row1['question']; ?></td>
+                                        <form name="form">
+                                            <td><input type="radio" name="group1" value="1" checked></td>
+                                            <td><input type="radio" name="group1" value="2" ></td>
+                                            <td><input type="radio" name="group1" value="3" ></td>
+                                            <td><input type="radio" name="group1" value="4" ></td>
+                                            <td><input type="radio" name="group1" value="5" ></td>
+                                        </form>
+                                </tr>
+                                <?php } ?>
+                        </tbody> 
+                    </table>
+                    <?php } ?> 
+                </div>
+            </div>
                 </div>
             </div>
         </div>

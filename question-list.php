@@ -1,25 +1,47 @@
 <?php include_once'navbar.php'; ?>
 <body>
-    <div class="container p-4 my-5 mx-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <form action="">
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Criteria" aria-label="First name"><br>
-                        <label for="range">Range</label>
-                        <input type="text" class="form-control" placeholder="5" aria-label="Range"><br>
-                        <button type="submit" class="btn btn-primary">Add</button>
+    <div class="col">
+        <div class="container p-4 my-4 mx-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <form action="add-criteria.php" method="post">
+                    <div class="row">
+                        <div class="col">
+                                <input type="text" class="form-control" placeholder="Criteria" name="criteria"><br>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <form action="add-question.php" method="post">
+                    <div class="row">
+                        <div class="col">
+                            
+                            <select class="form-select" name="criteriaid" id="">
+                            <?php include_once'koneksyon.php'; 
+                                $view = "SELECT * FROM criteria";
+                                $res = mysqli_query($koneksyon, $view);
+                                while($row = mysqli_fetch_array($res)){
+                            ?>
+                                <option value="<?php echo $row['id']; ?>"> <?php echo $row['criteria']; ?> </option>
+                                <?php } ?>
+                            </select><br>
+                            
+                                <input type="text" class="form-control" placeholder="Question" name="question"><br>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
                     </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-            <div class="container p-2 m-2">
+    </div> 
+            <div class="container">
                 <div class="card">
                 <?php
-                    include_once'koneksyon.php';
 
                     $qryview = "SELECT * FROM criteria";
                     $result = mysqli_query($koneksyon, $qryview);
@@ -44,7 +66,13 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $row1['question']; ?></td>
-                                    <td><input type="radio"></td>
+                                        <form name="form">
+                                            <td><input type="radio" name="group1" value="1" checked></td>
+                                            <td><input type="radio" name="group1" value="2" ></td>
+                                            <td><input type="radio" name="group1" value="3" ></td>
+                                            <td><input type="radio" name="group1" value="4" ></td>
+                                            <td><input type="radio" name="group1" value="5" ></td>
+                                        </form>
                                 </tr>
                                 <?php } ?>
                         </tbody> 

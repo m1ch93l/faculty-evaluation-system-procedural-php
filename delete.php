@@ -2,17 +2,16 @@
 
     include 'koneksyon.php';
 
-    $row_id = $_GET['del_id'];
+    $id = $_GET['del'];
 
-    $delete = "DELETE FROM students WHERE id = '$row_id' ";
+    $delete = "DELETE FROM students WHERE person_id = '$id' ";
 
-    if (mysqli_query($koneksyon, $delete))
-    {
-        echo "Record has been deleted!";
+    $qry = mysqli_query($koneksyon, $delete);
+
+    if($qry){
+        $delete1 = "DELETE FROM user"
     }
-    else{
-        echo "Error in deleting record";
-    }
+   
     header("location: student_list.php");
 
 ?>

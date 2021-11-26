@@ -1,4 +1,5 @@
-<?php 
+
+<?php
    session_start();
    if (!isset($_SESSION['username']) && !isset($_SESSION['id'])) {
 ?>
@@ -24,7 +25,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image m-auto"></div>
-                            <img src="img/bcc_cover.jpg" alt="">
+                            <img src="img/bcc.png" alt="">
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center">
@@ -32,11 +33,11 @@
                                     </div>
                                     <form action="check-password.php" method="POST">
                                         <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"  name="username" required>
+                                        <input type="text" class="form-control" id="floatingInput"  name="username" placeholder="Username" required>
                                         <label for="floatingInput">Username</label>
                                         </div>
                                         <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingPassword" name="password" required>
+                                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
                                         <label for="floatingPassword">Password</label>
                                         <hr>
                                         </div>

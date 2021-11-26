@@ -14,7 +14,7 @@
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <!-- sarili kong style -->
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/haynaku.css">
 
 <!-- kinuha ko sa font awesome free -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -42,7 +42,6 @@
   <div id="mySidemenu" class="sidemenu">
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
     <div class="sm-wrapper">
-      
       <?php
         require_once 'navbar-items/navbar_items.php';
         foreach ($items as $item) {
@@ -57,7 +56,7 @@
   <div id="pg-content">
     <div class="title_bg">
       <div class="open" onclick="openSM()">&#9776;</div>
-      <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
+      <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
     </div>
   </div>
 <?php } elseif ($_SESSION['role'] == 'student') { ?>
@@ -79,7 +78,7 @@
         <div id="pg-content">
           <div class="title_bg">
             <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
+            <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
           </div>
         </div>
 <?php }elseif ($_SESSION['role'] == 'faculty') { ?> 
@@ -100,7 +99,7 @@
         <div id="pg-content">
           <div class="title_bg">
             <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h2 class="mx-2 px-5 text-white">FACULTY EVALUATION SYSTEM</h2>
+            <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
           </div>
         </div>
   </header>

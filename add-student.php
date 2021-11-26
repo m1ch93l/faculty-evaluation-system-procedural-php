@@ -1,9 +1,11 @@
 <?php
+    include_once'navbar.php';
     include_once'koneksyon.php';
 
     $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $pass = substr(str_shuffle($string),0,5);
 
+    $departmet_id = $_POST['departmentid'];
     $snum = $_POST['snum'];
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
@@ -12,15 +14,8 @@
     $systempass = $snum.$pass;
     $password = password_hash($systempass, PASSWORD_BCRYPT);
 
-    $dagdag = "INSERT INTO students (studentno, firstname, lastname) VALUES ('$snum','$fname','$lname')";
-    $g = mysqli_query($koneksyon, $dagdag);
+    $dagdag = "INSERT INTO students (studentno, username, firstname, lastname, usertype, password, department_id) VALUES ('$snum','$fname','$fname','$lname', '$usertype','$password', '$departmet_id')";
+    mysqli_query($koneksyon, $dagdag);
 
-    if($g){
-        $dagdag1 = "INSERT INTO users (username, password, usertype, name) VALUES ('$fname','$password','$usertype','$fname')";
-        $gna = mysqli_query($koneksyon, $dagdag1);
-    }
-    else{
-        echo "no data";
-    }
-    header("location: student_list.php");
+    header("Location: student_list.php");
 ?>

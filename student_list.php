@@ -18,6 +18,15 @@
         </div>
         <form action="add-student.php" method="post">
             <div class="modal-body">
+            <select class="form-select" name="departmentid" id="">
+                            <?php include_once'koneksyon.php'; 
+                                $view = "SELECT * FROM department";
+                                $result = mysqli_query($koneksyon, $view);
+                                while($row = mysqli_fetch_array($result)){
+                            ?>
+                                <option value="<?php echo $row['id']; ?>"> <?php echo $row['course'] ." ".$row['year'].$row['section']; ?> </option>
+                                <?php } ?>
+                            </select><br>
                 <input type="text" class="form-control" placeholder="Student No." name="snum"><br>
                 <input type="text" class="form-control" placeholder="Fisrt Name" name="firstname"><br>
                 <input type="text" class="form-control" placeholder="Last Name" name="lastname"><br>
@@ -84,9 +93,9 @@
 function deleteme(delid)
 {
     if(confirm("Do you really want to delete?")){
-        window.location.href='delete.php?del_id=' +delid+ '';
+        window.location.href='delete.php?del=' +delid+ '';
         return true;
     }
 }
 
-</script>
+</script> 

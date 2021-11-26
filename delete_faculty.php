@@ -2,17 +2,12 @@
 
     include 'koneksyon.php';
 
-    $fnum = $_GET['fnum'];
+    $fnum = $_GET['del_fid'];
 
-    $delete = "DELETE FROM student_list WHERE f_num= '$fnum' ";
+    $delete = "DELETE FROM faculties WHERE id = '$fnum' ";
 
-    if (mysqli_query($koneksyon, $delete))
-    {
-        echo "Record has been deleted!";
-    }
-    else{
-        echo "Error in deleting record";
-    }
+    mysqli_query($koneksyon, $delete);
+
     header("location: faculty_list.php");
 
 ?>
