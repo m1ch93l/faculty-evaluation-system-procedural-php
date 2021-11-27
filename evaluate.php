@@ -1,14 +1,26 @@
-<style>
-   .thspace{
-    padding: 0 50px;
-   }
-</style>
+
 <body>
 <?php include'navbar.php'; ?>
     <div class="main-body">
         <div>
-            <h1>HELLO, <?=$_SESSION['name']?></h1>
-            <div align="center" style="background: #f2f2f2; padding: 50px;">
+            <h1>HELLO, <?=$_SESSION['username']?></h1>
+                <div class="container">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-title text-center">
+                            <form action="" method="post">
+                            <?php include_once'koneksyon.php';
+                                $evalid = "SELECT * FROM evaluation";
+                                $result = mysqli_query($koneksyon, $evalid);
+                                    while($row = mysqli_fetch_array($result)){
+                            ?>
+                                <button type="submit" class="btn btn-primary" value="<?php echo $row['evaluationid'];?>"><?php echo $row['evaluationid'];?></button>
+                            <?php } ?>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            <div style="background: skyblue; padding: 50px;">
                 <div>
                     <fieldset>
                        <legend>Rating Legend</legend>
@@ -58,6 +70,7 @@
             </div>
                 </div>
             </div>
+
         </div>
    </div>
 </body>

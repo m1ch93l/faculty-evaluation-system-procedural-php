@@ -46,7 +46,7 @@
                               Total Faculties</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <?php
-                          $query2 = "SELECT COUNT(useridf) AS count1 FROM faculties";
+                          $query2 = "SELECT COUNT(fno) AS count1 FROM faculties";
                             $result1 =mysqli_query($koneksyon, $query2);
                             while ($row = mysqli_fetch_assoc($result1)) {
                                 $output1 = "<br>".$row['count1'];
