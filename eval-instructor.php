@@ -49,8 +49,15 @@
             </div>
             <div class="col">
                 <table>
-                    <tr>
-                        <td></td>
+                    <tr><?php
+                        $qry = "SELECT * FROM evaluation";
+                        $e = mysqli_query($koneksyon, $qry);
+                        while ($row = mysqli_fetch_array($e)){
+                    ?>
+                        <td><?php echo $row['facultyid']; ?></td>
+                        <td><?php echo $row['departmentid']; ?></td>
+                        <td><?php echo $row['subjectid']; ?></td>
+                    <?php } ?>
                     </tr>
                 </table>
             </div>
