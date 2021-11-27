@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2021 at 12:14 PM
+-- Generation Time: Nov 27, 2021 at 07:17 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -50,7 +50,7 @@ INSERT INTO `academic` (`id`, `academic_year`, `semester`) VALUES
 --
 
 CREATE TABLE `criteria` (
-  `id` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
   `criteria` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -61,7 +61,8 @@ CREATE TABLE `criteria` (
 INSERT INTO `criteria` (`id`, `criteria`) VALUES
 (1, 'CRITERIA 1'),
 (2, 'CRITERIA 2'),
-(3, 'CRITERIA 3');
+(8, 'criteria 103'),
+(9, 'Attendance 1');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ INSERT INTO `criteria` (`id`, `criteria`) VALUES
 --
 
 CREATE TABLE `department` (
-  `id` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
   `course` varchar(30) NOT NULL,
   `year` int(30) NOT NULL,
   `section` varchar(30) NOT NULL
@@ -81,11 +82,30 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
-(1, 'ACT', 1, 'A'),
-(2, 'BSIS', 2, 'A'),
-(3, 'BEED', 4, 'B'),
-(4, 'BSED', 1, 'C'),
-(5, 'ELX', 2, 'B');
+(1, 'ACT', 2, 'A'),
+(2, 'BSIS', 4, 'A'),
+(3, 'BEED', 3, 'C');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluation`
+--
+
+CREATE TABLE `evaluation` (
+  `evaluationid` int(30) NOT NULL,
+  `academicid` int(30) NOT NULL,
+  `departmentid` int(30) NOT NULL,
+  `subjectid` int(30) NOT NULL,
+  `facultyid` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`evaluationid`, `academicid`, `departmentid`, `subjectid`, `facultyid`) VALUES
+(4, 0, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -94,19 +114,21 @@ INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
 --
 
 CREATE TABLE `faculties` (
-  `id` tinyint(30) NOT NULL,
-  `useridf` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
   `fno` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `fname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL
+  `lname` varchar(255) NOT NULL,
+  `usertype` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculties`
 --
 
-INSERT INTO `faculties` (`id`, `useridf`, `fno`, `fname`, `lname`) VALUES
-(1, 3, '123', 'ivy', 'encarnacion');
+INSERT INTO `faculties` (`id`, `fno`, `username`, `fname`, `lname`, `usertype`, `password`) VALUES
+(1, '12-3', 'ivy', 'ivy', 'encarnacion', 'faculty', '$2y$10$LTJtpxGtFzjc9TZIidRUc.sZvyCuk.X5vwYpUGWrLqdvfhkC1rqfi');
 
 -- --------------------------------------------------------
 
@@ -115,8 +137,8 @@ INSERT INTO `faculties` (`id`, `useridf`, `fno`, `fname`, `lname`) VALUES
 --
 
 CREATE TABLE `questions` (
-  `id` tinyint(30) NOT NULL,
-  `criteria_id` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
+  `criteria_id` int(30) NOT NULL,
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -125,10 +147,13 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
-(1, 1, 'How frequently checked attendance?'),
-(2, 2, 'The instructor was well prepared for the class'),
-(3, 3, 'The instructor showed an interest in helping students learn'),
-(4, 1, 'The course was organized in a manner that helped understand the concepts');
+(1, 1, 'How Frequently checked Attendance'),
+(2, 2, 'show interest in topic'),
+(3, 1, 'sample'),
+(4, 2, 'what are you doing'),
+(5, 9, 'what are you doing'),
+(6, 9, 'hdahudhusa'),
+(8, 8, 'questions to be answer');
 
 -- --------------------------------------------------------
 
@@ -137,19 +162,24 @@ INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
 --
 
 CREATE TABLE `students` (
-  `id` tinyint(30) NOT NULL,
-  `userid` tinyint(30) NOT NULL,
-  `studentno` varchar(255) NOT NULL,
+  `id` int(30) NOT NULL,
+  `studentno` varchar(30) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `usertype` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `department_id` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `userid`, `studentno`, `firstname`, `lastname`) VALUES
-(0, 0, '99-123', 'Brian', 'Delos Santos');
+INSERT INTO `students` (`id`, `studentno`, `username`, `firstname`, `lastname`, `usertype`, `password`, `department_id`) VALUES
+(1, '16-1287', 'michael', 'michael', 'banaria', 'student', '$2y$10$LTJtpxGtFzjc9TZIidRUc.sZvyCuk.X5vwYpUGWrLqdvfhkC1rqfi', 2),
+(7, '12-345', 'Brian', 'Brian', 'Delos Santos', 'student', '$2y$10$zkRNnWvZVNhRGb4OYrjQAuj4JvI7Qa1mlZGNWt75wvMygvd2q/JTi', 2),
+(8, '21-5632', 'Olive', 'Olive', 'Briones', 'student', '$2y$10$7UZulzBJ4K1ktFWDqZP4TOSuvcZLdkoKSxXpip.El9TsxrjGiArHq', 3);
 
 -- --------------------------------------------------------
 
@@ -158,7 +188,7 @@ INSERT INTO `students` (`id`, `userid`, `studentno`, `firstname`, `lastname`) VA
 --
 
 CREATE TABLE `subject` (
-  `id` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
   `code` varchar(30) NOT NULL,
   `description` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -179,10 +209,10 @@ INSERT INTO `subject` (`id`, `code`, `description`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` tinyint(30) NOT NULL,
+  `id` int(30) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `usertype` varchar(30) NOT NULL,
+  `usertype` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -191,10 +221,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `usertype`, `name`) VALUES
-(0, 'Brian', '$2y$10$k9xfCn1lBqsI2xEx3tyGrOcbWLlgVIbGIhBAOUIHtx3qeQqu8wfGG', 'student', 'Brian'),
-(1, 'teamcapslock', '$2y$10$tApwfgU8Ak6CkqDyae9tG.nHLU9rhDC.snYBfRAqkD32xIyD5fgUC', 'admin', 'TEAM CAPSLOCK'),
-(2, 'michael', '$2y$10$fFsRXfbGagCzmdBJnIxNr.6NiSyr/lAQgpf4irM57C4KUUmOCoFoG', 'student', 'MICHAEL'),
-(3, 'ivy', '$2y$10$tApwfgU8Ak6CkqDyae9tG.nHLU9rhDC.snYBfRAqkD32xIyD5fgUC', 'faculty', 'IVY');
+(1, 'teamcapslock', '$2y$10$oRNCt9.J96VpeJp2/nLxYeht5iPw7Oo1DsBSaJAWfgw8XuBQSADdq', 'admin', 'teamcapslock');
 
 --
 -- Indexes for dumped tables
@@ -207,22 +234,39 @@ ALTER TABLE `criteria`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`evaluationid`),
+  ADD KEY `departmentid` (`departmentid`),
+  ADD KEY `evaluation_ibfk_2` (`facultyid`),
+  ADD KEY `subjectid` (`subjectid`);
+
+--
 -- Indexes for table `faculties`
 --
 ALTER TABLE `faculties`
-  ADD KEY `useridf` (`useridf`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `criteria_id` (`criteria_id`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `department_id` (`department_id`);
 
 --
 -- Indexes for table `subject`
@@ -241,26 +285,76 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `criteria`
+--
+ALTER TABLE `criteria`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `faculties`
+--
+ALTER TABLE `faculties`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` tinyint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `faculties`
+-- Constraints for table `evaluation`
 --
-ALTER TABLE `faculties`
-  ADD CONSTRAINT `faculties_ibfk_1` FOREIGN KEY (`useridf`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `evaluation`
+  ADD CONSTRAINT `evaluation_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `evaluation_ibfk_2` FOREIGN KEY (`facultyid`) REFERENCES `faculties` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `evaluation_ibfk_3` FOREIGN KEY (`subjectid`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
