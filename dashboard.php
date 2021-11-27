@@ -1,13 +1,11 @@
-
-<?php include_once'navbar.php'; ?>
 <head>
 	<title>HOME PAGE</title>
 </head>
+<?php include_once'navbar.php'; ?>
 <body>
   <div class="container mx-1 my-3 py-5">
     <!-- Content Row -->
     <div class="row">
-
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
           <div class="card border-left-primary shadow h-100 py-2">
@@ -62,9 +60,6 @@
               </div>
           </div>
       </div>
-
     </div>
-
   </div>
-
 </body>

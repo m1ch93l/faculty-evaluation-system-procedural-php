@@ -14,7 +14,7 @@
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <!-- sarili kong style -->
-<link rel="stylesheet" type="text/css" href="css/haynaku.css">
+<link rel="stylesheet" type="text/css" href="css/fixednavbar.css">
 
 <!-- kinuha ko sa font awesome free -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -36,9 +36,16 @@
 </head>
 
 <body>
+
 <!-- The sidebar -->
 <header>
 <?php if ($_SESSION['role'] == 'admin') { ?>
+
+  <nav class="fixed-nav-bar">
+    <div class="open" onclick="openSM()"><i class="fas fa-chevron-circle-right"></i></div>
+    <h1 class="title">Evaluation System</h1>
+  </nav>
+
   <div id="mySidemenu" class="sidemenu">
     <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
     <div class="sm-wrapper">
@@ -53,13 +60,13 @@
       ?>
     </div>
   </div>
-  <div id="pg-content">
-    <div class="title_bg">
-      <div class="open" onclick="openSM()">&#9776;</div>
-      <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
-    </div>
-  </div>
+
 <?php } elseif ($_SESSION['role'] == 'student') { ?>
+
+      <nav class="fixed-nav-bar">
+        <div class="open" onclick="openSM()"><i class="fas fa-chevron-circle-right"></i></div>
+        <h1 class="title">Evaluation System</h1>
+      </nav>
 
       <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
@@ -75,13 +82,14 @@
           ?>
         </div>
       </div>
-        <div id="pg-content">
-          <div class="title_bg">
-            <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
-          </div>
-        </div>
+
 <?php }elseif ($_SESSION['role'] == 'faculty') { ?> 
+
+  <nav class="fixed-nav-bar">
+    <div class="open" onclick="openSM()"><i class="fas fa-chevron-circle-right"></i></div>
+    <h1 class="title">Evaluation System</h1>
+  </nav>
+
   <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
         <div class="sm-wrapper">
@@ -96,12 +104,7 @@
           ?>
         </div>
       </div>
-        <div id="pg-content">
-          <div class="title_bg">
-            <div style="font-size: 40px; cursor: pointer; color: #fff; display: inline-block; position: absolute; margin-left: 10px" onclick="openSM()">&#9776;</div>
-            <h1 class="mx-2 px-5 text-white">Evaluation System</h1>
-          </div>
-        </div>
+  
   </header>
 </body>
 
