@@ -48,19 +48,57 @@
                 </form>
             </div>
             <div class="col">
-                <table>
-                    <tr><?php
-                        $qry = "SELECT * FROM evaluation";
-                        $e = mysqli_query($koneksyon, $qry);
-                        while ($row = mysqli_fetch_array($e)){
-                    ?>
-                        <td><?php echo $row['facultyid']; ?></td>
-                        <td><?php echo $row['departmentid']; ?></td>
-                        <td><?php echo $row['subjectid']; ?></td>
-                    <?php } ?>
+                <div class="card">
+                <table class="display" id="myTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>First Name</td>
+                            <td>Department</td>
+                            <td>Subject</td>
+                        </tr>
+                    </thead>
+                    <tr>
+                    <?php
+                        $result = mysqli_query($koneksyon, "SELECT facultyid FROM evaluation");
+                        while ($row = mysqli_fetch_array($result)){
+                            $res = mysqli_query($koneksyon, "SELECT * FROM faculties WHERE id = {$row['facultyid']}");
+                            while ($row = mysqli_fetch_array($res)){
+                                    echo $row['fname'];
+                            }
+                        }
+                        ?>
+                    
+                    
+                        <?php 
+                             $result = mysqli_query($koneksyon, "SELECT departmentid FROM evaluation");
+                             while ($row = mysqli_fetch_array($result)){
+                                 $res = mysqli_query($koneksyon, "SELECT * FROM department WHERE id = {$row['departmentid']}");
+                                 while ($row = mysqli_fetch_array($res)){
+                                     echo $row['course']." ".$row['year'].$row['section'];
+                                 }
+                             }
+                        ?>
+                    
+                    
+                        <?php
+                             $result = mysqli_query($koneksyon, "SELECT subjectid FROM evaluation");
+                             while ($row = mysqli_fetch_array($result)){
+                                 $res = mysqli_query($koneksyon, "SELECT * FROM subject WHERE id = {$row['subjectid']}");
+                                 while ($row = mysqli_fetch_array($res)){
+                                    echo $row['description'];
+                                 }
+                             }
+                        ?>
                     </tr>
                 </table>
+                </div>
+                
             </div>
         </div>
     </div>
 </body>
+<script>
+     $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

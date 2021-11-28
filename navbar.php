@@ -60,6 +60,7 @@
       ?>
     </div>
   </div>
+  <section></section>
 
 <?php } elseif ($_SESSION['role'] == 'student') { ?>
 
