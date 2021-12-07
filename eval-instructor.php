@@ -47,53 +47,30 @@
                 <button type="submit" class="btn btn-primary">ADD TO LIST</button>
                 </form>
             </div>
-            <div class="col">
+            <div class="col bg-success">
                 <div class="card">
-                <table class="display" id="myTable" width="100%" cellspacing="0">
-                    <thead>
+                    <table class="display" id="myTable" width="100%" cellspacing="0">
                         <tr>
-                            <td>First Name</td>
+                            <td>Faculty Name</td>
                             <td>Department</td>
                             <td>Subject</td>
+                            <td>Action</td>
                         </tr>
-                    </thead>
-                    <tr>
                     <?php
-                        $result = mysqli_query($koneksyon, "SELECT facultyid FROM evaluation");
-                        while ($row = mysqli_fetch_array($result)){
-                            $res = mysqli_query($koneksyon, "SELECT * FROM faculties WHERE id = {$row['facultyid']}");
-                            while ($row = mysqli_fetch_array($res)){
-                                    echo $row['fname'];
-                            }
-                        }
+                           $result = mysqli_query($koneksyon, "SELECT fname, lname, course, year, section, description, evaluationid FROM faculties INNER JOIN evaluation ON faculties.id = evaluation.facultyid INNER JOIN department ON department.id = evaluation.departmentid INNER JOIN subject ON subject.id = evaluation.subjectid");
+                           while($row = mysqli_fetch_array($result)){
+                               echo "<tr>";
+                               echo "<td>".$row['fname']." ".$row['lname']."</td>";
+                               echo "<td>".$row['course']." ".$row['year']."".$row['section']."</td>";
+                               echo "<td>".$row['description']."</td>";
+                               echo "<td><a href='delete-eval-ins.php?id=".$row['evaluationid']."' type='button' class='btn btn-danger'>Delete</a></td>";
+                               echo "</tr>";
+                           }
                         ?>
-                    
-                    
-                        <?php 
-                             $result = mysqli_query($koneksyon, "SELECT departmentid FROM evaluation");
-                             while ($row = mysqli_fetch_array($result)){
-                                 $res = mysqli_query($koneksyon, "SELECT * FROM department WHERE id = {$row['departmentid']}");
-                                 while ($row = mysqli_fetch_array($res)){
-                                     echo $row['course']." ".$row['year'].$row['section'];
-                                 }
-                             }
-                        ?>
-                    
-                    
-                        <?php
-                             $result = mysqli_query($koneksyon, "SELECT subjectid FROM evaluation");
-                             while ($row = mysqli_fetch_array($result)){
-                                 $res = mysqli_query($koneksyon, "SELECT * FROM subject WHERE id = {$row['subjectid']}");
-                                 while ($row = mysqli_fetch_array($res)){
-                                    echo $row['description'];
-                                 }
-                             }
-                        ?>
-                    </tr>
-                </table>
+                        </table>
                 </div>
-                
             </div>
+            <a type="button" class="btn btn-primary" href="question-list.php">View Questions</a>
         </div>
     </div>
 </body>

@@ -17,5 +17,17 @@
     $dagdag = "INSERT INTO students (studentno, username, firstname, lastname, usertype, password, department_id) VALUES ('$snum','$fname','$fname','$lname', '$usertype','$password', '$departmet_id')";
     mysqli_query($koneksyon, $dagdag);
 
-    header("Location: student_list.php");
 ?>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                Password: 
+                    <?php echo $systempass?>
+                    <a href="student_list.php" type="button" class="btn btn-primary">View Records</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

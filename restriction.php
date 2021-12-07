@@ -6,5 +6,5 @@ $i = $_POST['faculty'];
 
 $add = "INSERT INTO evaluation (departmentid, subjectid, facultyid) VALUES ('$d', '$s', '$i')";
 mysqli_query($koneksyon, $add);
-header("locaction: eval-instructor.php");
+header("location: eval-instructor.php");
 ?>

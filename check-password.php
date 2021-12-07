@@ -34,6 +34,8 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['snum'] = $row['studentno'];
+                $_SESSION['dept'] = $row['department_id'];
     
                 header("Location: evaluate.php");
             }
