@@ -17,8 +17,8 @@
                                 while($row = mysqli_fetch_array($qry)){
                                     echo $row['fname']." ".$row['lname']."<br>";
                                     echo $row['description'];
-                                    
-                                         
+                                    $sample =  $row['evaluationid'];
+
                                         $qryview = "SELECT criteria, id as cid FROM criteria ";
                                         $result = mysqli_query($koneksyon, $qryview);
                                             while($row = mysqli_fetch_array($result)){
@@ -39,17 +39,21 @@
                                                 
                                                 $tanong = "SELECT question, id as qid FROM questions WHERE criteria_id = {$row['cid']}";
                                                 $resulta = mysqli_query($koneksyon, $tanong);
-                                                while($row1 = mysqli_fetch_array($resulta)){ ?>
+                                                while($row1 = mysqli_fetch_array($resulta)){
+                                                    ?>
                                                     <tr>
+                                                        <input type="hidden" name="evalid[]" value="<?php echo $sample ?>" >
                                                         <input type="hidden" name="quesid[]" value="<?php echo $row1['qid'] ?>" >
                                                         <td><?php echo $row1['question'];?></td>
+                                                        
                                                         <?php for($c=1;$c<=5;$c++): ?>
                                                             <td class="text-center">
                                                                     <input type="checkbox" name="rate[]" <?php echo $c == 5 ? "checked" : '' ?> value="<?php echo $c ?>">  
                                                             </td>
                                                         <?php endfor; ?>
+                                                        
                                                     </tr>
-                                                    <?php } ?>
+                                                <?php } ?>
                                             </tbody> 
                                         </table>
                                         

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 12:23 PM
+-- Generation Time: Dec 08, 2021 at 02:23 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -89,28 +89,6 @@ INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluate`
---
-
-CREATE TABLE `evaluate` (
-  `eval_id` int(30) NOT NULL,
-  `facultyid` int(30) NOT NULL,
-  `student_id` int(30) NOT NULL,
-  `subject_id` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `evaluate`
---
-
-INSERT INTO `evaluate` (`eval_id`, `facultyid`, `student_id`, `subject_id`) VALUES
-(1, 2, 1, 2),
-(2, 2, 1, 1),
-(3, 1, 11, 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `evaluation`
 --
 
@@ -190,6 +168,7 @@ INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
 
 CREATE TABLE `rate` (
   `id` int(30) NOT NULL,
+  `evalid` int(30) NOT NULL,
   `questionid` int(30) NOT NULL,
   `rate` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -198,23 +177,23 @@ CREATE TABLE `rate` (
 -- Dumping data for table `rate`
 --
 
-INSERT INTO `rate` (`id`, `questionid`, `rate`) VALUES
-(1, 1, 5),
-(2, 3, 5),
-(3, 2, 5),
-(4, 4, 5),
-(5, 8, 5),
-(6, 5, 5),
-(7, 6, 5),
-(8, 9, 5),
-(9, 1, 5),
-(10, 3, 5),
-(11, 2, 5),
-(12, 4, 5),
-(13, 8, 5),
-(14, 5, 5),
-(15, 6, 5),
-(16, 9, 5);
+INSERT INTO `rate` (`id`, `evalid`, `questionid`, `rate`) VALUES
+(17, 2, 1, 5),
+(18, 2, 3, 5),
+(19, 2, 2, 5),
+(20, 2, 4, 5),
+(21, 2, 8, 5),
+(22, 2, 5, 5),
+(23, 2, 6, 5),
+(24, 2, 9, 5),
+(25, 6, 1, 5),
+(26, 6, 3, 5),
+(27, 6, 2, 5),
+(28, 6, 4, 5),
+(29, 6, 8, 5),
+(30, 6, 5, 5),
+(31, 6, 6, 5),
+(32, 6, 9, 5);
 
 -- --------------------------------------------------------
 
@@ -301,15 +280,6 @@ ALTER TABLE `department`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `evaluate`
---
-ALTER TABLE `evaluate`
-  ADD PRIMARY KEY (`eval_id`),
-  ADD KEY `student_id` (`student_id`),
-  ADD KEY `subject_id` (`subject_id`),
-  ADD KEY `facultyid` (`facultyid`);
-
---
 -- Indexes for table `evaluation`
 --
 ALTER TABLE `evaluation`
@@ -373,12 +343,6 @@ ALTER TABLE `department`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `evaluate`
---
-ALTER TABLE `evaluate`
-  MODIFY `eval_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
@@ -400,7 +364,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -423,14 +387,6 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `evaluate`
---
-ALTER TABLE `evaluate`
-  ADD CONSTRAINT `evaluate_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `evaluate_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `evaluate_ibfk_3` FOREIGN KEY (`facultyid`) REFERENCES `faculties` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `evaluation`
