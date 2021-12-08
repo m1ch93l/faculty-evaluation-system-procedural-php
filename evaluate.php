@@ -17,8 +17,7 @@
                                 while($row = mysqli_fetch_array($qry)){
                                     echo $row['fname']." ".$row['lname']."<br>";
                                     echo $row['description'];
-                                    echo "<input type='hidden' name='eval-id[]' value=' ".$row['evaluationid']." '>";
-
+                                    
                                          
                                         $qryview = "SELECT criteria, id as cid FROM criteria ";
                                         $result = mysqli_query($koneksyon, $qryview);
