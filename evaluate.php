@@ -1,3 +1,6 @@
+<head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
 <body>
 <?php include'navbar.php'; ?>
     <div class="main-body">
@@ -5,17 +8,21 @@
         <h1>HELLO, <?=$_SESSION['username']?></h1>
             <div class="card my-5 text-center">
                     <div class="card my-5">
-                    
+                        
+                    <form autocomplete="off" action="rate.php" method="post">
+
                     <?php
-                            $qry = mysqli_query($koneksyon, "SELECT departmentid, fname, lname, description FROM evaluation INNER JOIN department ON department.id = evaluation.departmentid
+                            $qry = mysqli_query($koneksyon, "SELECT departmentid, fname, lname, evaluationid, description FROM evaluation INNER JOIN department ON department.id = evaluation.departmentid
                             INNER JOIN faculties ON faculties.id = evaluation.facultyid INNER JOIN subject ON subject.id = evaluation.subjectid WHERE departmentid = {$_SESSION['dept']}");
                                 while($row = mysqli_fetch_array($qry)){
                                     echo $row['fname']." ".$row['lname']."<br>";
                                     echo $row['description'];
+                                    echo "<input type='hidden' name='eval-id[]' value=' ".$row['evaluationid']." '>";
+
                                          
                                         $qryview = "SELECT criteria, id as cid FROM criteria ";
                                         $result = mysqli_query($koneksyon, $qryview);
-                                            while($row = mysqli_fetch_array($result)) {
+                                            while($row = mysqli_fetch_array($result)){
                                         ?>
                                         <table class="table">
                                             <thead>
@@ -30,30 +37,35 @@
                                             </thead>
                                             <tbody>
                                             <?php
-                                                $name = array();
-                                                $tanong = "SELECT question FROM questions WHERE criteria_id = {$row['cid']}";
+                                                
+                                                $tanong = "SELECT question, id as qid FROM questions WHERE criteria_id = {$row['cid']}";
                                                 $resulta = mysqli_query($koneksyon, $tanong);
                                                 while($row1 = mysqli_fetch_array($resulta)){ ?>
                                                     <tr>
+                                                        <input type="hidden" name="quesid[]" value="<?php echo $row1['qid'] ?>" >
                                                         <td><?php echo $row1['question'];?></td>
-                                                        <form>
-                                                            <td><input type="radio" name="name[]" id="" value="1"></td>
-                                                            <td><input type="radio" name="name[]" id="" value="2"></td>
-                                                            <td><input type="radio" name="name[]" id="" value="3"></td>
-                                                            <td><input type="radio" name="name[]" id="" value="4"></td>
-                                                            <td><input type="radio" name="name[]" id="" value="4" checked></td>
-                                                        </form>
-                                                        
+                                                        <?php for($c=1;$c<=5;$c++): ?>
+                                                            <td class="text-center">
+                                                                    <input type="checkbox" name="rate[]" <?php echo $c == 5 ? "checked" : '' ?> value="<?php echo $c ?>">  
+                                                            </td>
+                                                        <?php endfor; ?>
                                                     </tr>
                                                     <?php } ?>
                                             </tbody> 
                                         </table>
                                         
                                         <?php }  ?>
-                              <?php } echo $name[]; ?>
-                                                    
+                              <?php } ?>
+                              <div class="form-group mt-3">
+                                  <button type="submit" name="save_multicheckbox" class="btn btn-primary">Save</button>
+                              </div>
+                    </form>          
                     </div>
             </div>
         </div>
    </div>
 </body>
+
+<script>
+   
+</script>
