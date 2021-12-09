@@ -1,6 +1,4 @@
-<head>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-</head>
+
 <body>
 <?php include'navbar.php'; ?>
     <div class="main-body">
@@ -12,12 +10,13 @@
                     <form autocomplete="off" action="rate.php" method="post">
 
                     <?php
-                            $qry = mysqli_query($koneksyon, "SELECT departmentid, fname, lname, evaluationid, description FROM evaluation INNER JOIN department ON department.id = evaluation.departmentid
+                            $qry = mysqli_query($koneksyon, "SELECT departmentid, fname, lname, evaluationid, description, subjectid FROM evaluation INNER JOIN department ON department.id = evaluation.departmentid
                             INNER JOIN faculties ON faculties.id = evaluation.facultyid INNER JOIN subject ON subject.id = evaluation.subjectid WHERE departmentid = {$_SESSION['dept']}");
                                 while($row = mysqli_fetch_array($qry)){
-                                    echo $row['fname']." ".$row['lname']."<br>";
-                                    echo $row['description'];
+                                    echo "<h3>".$row['fname']." ".$row['lname']."</h3><br>";
+                                    echo "<h3>".$row['description']."</h3>";
                                     $sample =  $row['evaluationid'];
+                                    $sub_id = $row['subjectid'];
 
                                         $qryview = "SELECT criteria, id as cid FROM criteria ";
                                         $result = mysqli_query($koneksyon, $qryview);
@@ -42,6 +41,7 @@
                                                 while($row1 = mysqli_fetch_array($resulta)){
                                                     ?>
                                                     <tr>
+                                                        <input type="hidden" name="sid[]" value="<?php echo $sub_id ?>" >
                                                         <input type="hidden" name="evalid[]" value="<?php echo $sample ?>" >
                                                         <input type="hidden" name="quesid[]" value="<?php echo $row1['qid'] ?>" >
                                                         <td><?php echo $row1['question'];?></td>
@@ -68,7 +68,3 @@
         </div>
    </div>
 </body>
-
-<script>
-   
-</script>

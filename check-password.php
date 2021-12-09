@@ -48,9 +48,9 @@
         $result2 = mysqli_query($koneksyon, $query2);
         while($row = mysqli_fetch_array($result2)){
         
-            if(password_verify($password, $row["password"]) && $row['usertype'] == 'faculties') {
+            if(password_verify($password, $row["password"]) && $row['usertype'] == 'faculty') {
                 //return true;
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['name'] = $row['fname'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
