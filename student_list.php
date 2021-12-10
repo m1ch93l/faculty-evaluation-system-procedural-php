@@ -1,7 +1,7 @@
 <?php include_once'navbar.php'; ?>
 <body>
     <!-- Begin Page Content -->
-<div class="container-fluid py-5 my-5">
+<div class="container-fluid py-5 my-5"> 
 
         <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

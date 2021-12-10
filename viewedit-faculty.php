@@ -69,7 +69,8 @@
         echo "<form action='update-faculty.php' method='post'>";
         $row = mysqli_fetch_assoc($result);
 
-        echo "Student Number: <input type='text' readonly name='facnum' value='".$row["fno"]."'><br>";
+        echo "<input type='hidden' name='fid' value='".$row["id"]."'><br>";
+        echo "Faculty No: <input type='text' readonly name='facnum' value='".$row["fno"]."'><br>";
         echo "First Name <input type='text' name='txfname' value='".$row["fname"]."'><br>";
         echo "Last Name:<input type='text' name='txlname' value='".$row["lname"]."'><br>";
         echo "<input type='submit' value='UPDATE'>";

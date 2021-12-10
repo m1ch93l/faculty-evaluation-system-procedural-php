@@ -2,9 +2,9 @@
     include'navbar.php';
     include 'koneksyon.php';
 
-    $scode = $_GET['scode'];
+    $scode = $_GET['id'];
 
-    $qryview = "SELECT * FROM subject_list WHERE subject_code='$scode'";
+    $qryview = "SELECT * FROM subject WHERE id='$scode'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -50,7 +50,7 @@
         }
         ";
     echo "</style>";
-    echo "<div class='main-body'>";
+    echo "<div class='container py-5'>";
     echo "<H2>Subject List</H2>";
 
     if(mysqli_num_rows($result) > 0)
@@ -58,7 +58,8 @@
         echo "<form action='update_subject_list.php' method='post'>";
         $row = mysqli_fetch_assoc($result);
 
-        echo "Subject Code: <input type='text' name='txtscode' value='".$row["subject_code"]."'><br>";
+        echo "<input type='hidden' name='id' value='".$row["id"]."'><br>";
+        echo "Subject Code: <input type='text' name='txtscode' value='".$row["code"]."'><br>";
         echo "Description: <input type='text' name='txtdescription' value='".$row["description"]."'><br>";
         echo "<input type='submit' value='UPDATE'>";
 

@@ -2,9 +2,9 @@
 
     include 'koneksyon.php';
 
-    $scode = $_GET['scode'];
+    $scode = $_GET['del_sid'];
 
-    $delete = "DELETE FROM subject_list WHERE subject_code = '$scode' ";
+    $delete = "DELETE FROM subject WHERE id = '$scode' ";
 
     if (mysqli_query($koneksyon, $delete))
     {

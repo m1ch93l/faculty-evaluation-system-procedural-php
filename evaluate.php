@@ -48,7 +48,7 @@
                                                         
                                                         <?php for($c=1;$c<=5;$c++): ?>
                                                             <td class="text-center">
-                                                                    <input type="checkbox" name="rate[]" <?php echo $c == 5 ? "checked" : '' ?> value="<?php echo $c ?>">  
+                                                                    <input type="checkbox" name="rate[]" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
                                                             </td>
                                                         <?php endfor; ?>
                                                         
@@ -60,7 +60,7 @@
                                         <?php }  ?>
                               <?php } ?>
                               <div class="form-group mt-3">
-                                  <button type="submit" name="save_multicheckbox" class="btn btn-primary">Save</button>
+                                  <button type="submit" name="save_multicheckbox" class="btn btn-primary">Submit Evaluation</button>
                               </div>
                     </form>          
                     </div>

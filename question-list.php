@@ -82,13 +82,11 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $row1['question']; ?></td>
-                                            <form>
-                                                <td><input type="radio" name="group1" value="1" ></td>
-                                                <td><input type="radio" name="group1" value="2" ></td>
-                                                <td><input type="radio" name="group1" value="3" ></td>
-                                                <td><input type="radio" name="group1" value="4" ></td>
-                                                <td><input type="radio" name="group1" value="5" checked></td>
-                                            </form>
+                                        <?php for($c=1;$c<=5;$c++): ?>
+                                            <td class="text-center">
+                                                    <input type="checkbox" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
+                                            </td>
+                                        <?php endfor; ?>
                                     </tr>
                                     <?php } ?>
                             </tbody> 

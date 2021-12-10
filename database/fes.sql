@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 02:23 PM
+-- Generation Time: Dec 10, 2021 at 12:49 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -54,16 +54,6 @@ CREATE TABLE `criteria` (
   `criteria` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `criteria`
---
-
-INSERT INTO `criteria` (`id`, `criteria`) VALUES
-(1, 'CRITERIA 1'),
-(2, 'CRITERIA 2'),
-(8, 'criteria 103'),
-(9, 'Attendance 1');
-
 -- --------------------------------------------------------
 
 --
@@ -77,15 +67,6 @@ CREATE TABLE `department` (
   `section` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `department`
---
-
-INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
-(1, 'ACT', 2, 'A'),
-(2, 'BSIS', 4, 'A'),
-(3, 'BEED', 3, 'C');
-
 -- --------------------------------------------------------
 
 --
@@ -98,17 +79,6 @@ CREATE TABLE `evaluation` (
   `subjectid` int(30) NOT NULL,
   `facultyid` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `evaluation`
---
-
-INSERT INTO `evaluation` (`evaluationid`, `departmentid`, `subjectid`, `facultyid`) VALUES
-(1, 3, 1, 2),
-(2, 1, 2, 2),
-(3, 3, 1, 1),
-(5, 2, 3, 1),
-(6, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -126,14 +96,6 @@ CREATE TABLE `faculties` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `faculties`
---
-
-INSERT INTO `faculties` (`id`, `fno`, `username`, `fname`, `lname`, `usertype`, `password`) VALUES
-(1, '12-3', 'ivy', 'ivy', 'encarnacion', 'faculty', '$2y$10$LTJtpxGtFzjc9TZIidRUc.sZvyCuk.X5vwYpUGWrLqdvfhkC1rqfi'),
-(2, '0-413', 'kaven rey', 'kaven rey', 'Batac', 'faculty', '');
-
 -- --------------------------------------------------------
 
 --
@@ -146,20 +108,6 @@ CREATE TABLE `questions` (
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
-(1, 1, 'How Frequently checked Attendance'),
-(2, 2, 'show interest in topic'),
-(3, 1, 'sample'),
-(4, 2, 'what are you doing'),
-(5, 9, 'what are you doing'),
-(6, 9, 'hdahudhusa'),
-(8, 8, 'questions to be answer'),
-(9, 9, 'example question');
-
 -- --------------------------------------------------------
 
 --
@@ -169,31 +117,10 @@ INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
 CREATE TABLE `rate` (
   `id` int(30) NOT NULL,
   `evalid` int(30) NOT NULL,
+  `sid` int(30) NOT NULL,
   `questionid` int(30) NOT NULL,
   `rate` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `rate`
---
-
-INSERT INTO `rate` (`id`, `evalid`, `questionid`, `rate`) VALUES
-(17, 2, 1, 5),
-(18, 2, 3, 5),
-(19, 2, 2, 5),
-(20, 2, 4, 5),
-(21, 2, 8, 5),
-(22, 2, 5, 5),
-(23, 2, 6, 5),
-(24, 2, 9, 5),
-(25, 6, 1, 5),
-(26, 6, 3, 5),
-(27, 6, 2, 5),
-(28, 6, 4, 5),
-(29, 6, 8, 5),
-(30, 6, 5, 5),
-(31, 6, 6, 5),
-(32, 6, 9, 5);
 
 -- --------------------------------------------------------
 
@@ -212,15 +139,6 @@ CREATE TABLE `students` (
   `department_id` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`id`, `studentno`, `username`, `firstname`, `lastname`, `usertype`, `password`, `department_id`) VALUES
-(1, '16-1287', 'michael', 'michael', 'banaria', 'student', '$2y$10$LTJtpxGtFzjc9TZIidRUc.sZvyCuk.X5vwYpUGWrLqdvfhkC1rqfi', 1),
-(11, '16-1277', 'Brian', 'Brian', 'Delos Santos', 'student', '$2y$10$HbHN5JmfFxhyzpT6PgymyeeGJodoaoF2rh52AQeVugomHkTpwtGha', 2),
-(12, '20-2021', 'Olive', 'Olive', 'Briones', 'student', '$2y$10$oygvrIubEqHicYuca/FRJe7GEfxlGUtKGTK/plot86LIx0SmcEp7O', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -232,15 +150,6 @@ CREATE TABLE `subject` (
   `code` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `subject`
---
-
-INSERT INTO `subject` (`id`, `code`, `description`) VALUES
-(1, 'CC105', 'Enterprise Architecture'),
-(2, 'CAP102', 'Capstone Project 2'),
-(3, 'DM104', 'Evaluation of Business Performance');
 
 -- --------------------------------------------------------
 
@@ -305,14 +214,17 @@ ALTER TABLE `questions`
 -- Indexes for table `rate`
 --
 ALTER TABLE `rate`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `evalid` (`evalid`),
+  ADD KEY `questionid` (`questionid`),
+  ADD KEY `sid` (`sid`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `department_id` (`department_id`);
+  ADD KEY `students_ibfk_1` (`department_id`);
 
 --
 -- Indexes for table `subject`
@@ -334,13 +246,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
@@ -352,19 +264,19 @@ ALTER TABLE `evaluation`
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -382,7 +294,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -403,10 +315,18 @@ ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `rate`
+--
+ALTER TABLE `rate`
+  ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`evalid`) REFERENCES `evaluation` (`evaluationid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`questionid`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rate_ibfk_3` FOREIGN KEY (`sid`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `students`
 --
 ALTER TABLE `students`
-  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`);
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

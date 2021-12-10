@@ -4,7 +4,7 @@
 
     $clist = $_GET['clist'];
 
-    $qryview = "SELECT * FROM class_list WHERE id='$clist'";
+    $qryview = "SELECT * FROM department WHERE id='$clist'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -50,21 +50,22 @@
         }
         ";
     echo "</style>";
-    echo "<div class='main-body'>";
+    echo "<div class='container py-5'>";
     echo "<H2>CLASS LIST</H2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<form action='update_classlist.php' method='post'>";
         $row = mysqli_fetch_assoc($result);
 
-        echo "Course: <input type='text' name='crclm' value='".$row["curriculum"]."'><br>";
-        echo "Year <input type='text' name='lvl' value='".$row["level"]."'><br>";
+        echo "ID: <input type='text' readonly name='id' value='".$row["id"]."'><br>";
+        echo "Course: <input type='text' name='crclm' value='".$row["course"]."'><br>";
+        echo "Year <input type='text' name='lvl' value='".$row["year"]."'><br>";
         echo "Section:<input type='text' name='section' value='".$row["section"]."'><br>";
         echo "<input type='submit' value='UPDATE'>";
 
         echo "</form>";
 
-        echo "<form action='class_list.php'>";
+        echo "<form action='department.php'>";
         echo "<button type='submit'>Cancel</button>";
         echo "</form>";
         echo "</div>";

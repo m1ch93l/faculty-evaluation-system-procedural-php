@@ -4,6 +4,35 @@
     <!-- Begin Page Content -->
 <div class="container-fluid py-5 my-5">
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Department
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">New Department</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="add-dept.php" method="post">
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Course" name="course"><br>
+                <input type="text" class="form-control" placeholder="Year" name="year"><br>
+                <input type="text" class="form-control" placeholder="Section" name="section"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <hr>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -21,22 +50,24 @@
                 <table class="display" id="myTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <td>Id</td>
-                            <td>Course</td>
-                            <td>Year</td>
-                            <td>Section</td>
+                            <th>ID</th>
+                            <th>Course</th>
+                            <th>Year</th>
+                            <th>Section</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <?php while($row = mysqli_fetch_array($result)) {
-                       echo'
+                    <?php while($row = mysqli_fetch_array($result)) { ?>
                         <tr>
-                            <td>'.$row['id'].'</td>
-                            <td>'.$row['course'].'</td>
-                            <td>'.$row['year'].'</td>
-                            <td>'.$row['section'].'</td>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['course'] ?></td>
+                            <td><?php echo $row['year'] ?></td>
+                            <td><?php echo $row['section'] ?></td>
+                            <td><a type="button" class="btn btn-primary" href="viewedit_classlist.php?clist=<?php echo $row['id']; ?>">EDIT</a></td>
+                            <td><input class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" value="DELETE"></td>
                         </tr>
-                       ';
-                    } ?>
+                    <?php } ?>
                 </table>
             </div>
         </div>
@@ -50,4 +81,12 @@
     $(document).ready( function () {
     $('#myTable').DataTable();
 } );
+
+function deleteme(delid)
+{
+    if(confirm("Do you really want to delete?")){
+        window.location.href='delete_classlist.php?clist=' +delid+ '';
+        return true;
+    }
+}
 </script>

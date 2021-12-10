@@ -10,7 +10,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">New Subject</h5>
@@ -43,26 +43,30 @@
             <?php
             include_once'koneksyon.php';
 
-            $qryview = "SELECT * FROM subject";
+            $qryview = "SELECT * FROM subject ";
             $result = mysqli_query($koneksyon, $qryview);
             ?>
                 <table class="display" id="myTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <td>Id</td>
-                            <td>Subject Code</td>
-                            <td>Description</td>
+                            <th>Id</th>
+                            <th>Subject Code</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <?php while($row = mysqli_fetch_array($result)) {
-                       echo'
+                    <tbody>
+                    <?php while($row = mysqli_fetch_array($result)) { ?>
                         <tr>
-                            <td>'.$row['id'].'</td>
-                            <td>'.$row['code'].'</td>
-                            <td>'.$row['description'].'</td>
+                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $row['code']; ?></td>
+                            <td><?php echo $row['description']; ?></td>
+                            <td><a type="button" class="btn btn-primary" href="viewedit_subjectlist.php?id=<?php echo $row['id']; ?>">EDIT</a></td>
+                            <td><input class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" value="DELETE"></td>
                         </tr>
-                       ';
-                    } ?>
+                        <?php } ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -76,4 +80,12 @@
     $(document).ready( function () {
     $('#myTable').DataTable();
 } );
+
+function deleteme(delid)
+{
+    if(confirm("Do you really want to delete?")){
+        window.location.href='delete_subjectlist.php?del_sid=' +delid+ '';
+        return true;
+    }
+}
 </script>

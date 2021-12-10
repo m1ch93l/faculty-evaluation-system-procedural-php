@@ -11,7 +11,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">New Faculty</h5>
@@ -50,11 +50,11 @@
         <table class="display" id="myTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <td>Faculty No.</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Action</td>
-                    <td>Action</td>
+                    <th>Faculty No.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <?php while($row = mysqli_fetch_array($result)) { ?>

@@ -2,13 +2,11 @@
 
     include 'koneksyon.php';
 
-    $fnum = $_POST['facnum'];
+    $id = $_POST['fid'];
     $fname = $_POST['txfname'];
     $lname = $_POST['txlname'];
 
-    $update = "UPDATE faculties SET fname = '$fname', lname='$lname' WHERE facnum = '$fnum' ";
-
-    mysqli_query($koneksyon, $update)
+    $update = mysqli_query($koneksyon, "UPDATE faculties SET fname = '$fname', lname = '$lname' WHERE id = '$id' ");
 
     header("location: faculty_list.php");
 ?>
