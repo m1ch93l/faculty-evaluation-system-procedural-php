@@ -13,7 +13,7 @@
     $systempass = $fnum.$pass;
     $password = password_hash($systempass, PASSWORD_BCRYPT);
 
-    $dagdag = "INSERT INTO faculties (fno, username, fname, lname, usertype, password) VALUES ('$fnum','$fname','$lname','$usertype','$password')";
+    $dagdag = "INSERT INTO faculties (fno, username, fname, lname, usertype, password) VALUES ('$fnum','$fname', '$fname', '$lname','$usertype','$password')";
     mysqli_query($koneksyon, $dagdag);
 
     ?>
