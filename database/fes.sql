@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 12:49 PM
+-- Generation Time: Dec 15, 2021 at 03:41 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -30,18 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `academic` (
   `id` tinyint(30) NOT NULL,
   `academic_year` varchar(30) NOT NULL,
-  `semester` int(30) NOT NULL
+  `semester` int(30) NOT NULL,
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `academic`
 --
 
-INSERT INTO `academic` (`id`, `academic_year`, `semester`) VALUES
-(1, '2021-2022', 1),
-(2, '2021-2022', 2),
-(3, '2022-2023', 1),
-(4, '2022-2023', 2);
+INSERT INTO `academic` (`id`, `academic_year`, `semester`, `status`) VALUES
+(2, '2021-2022', 2, 'active'),
+(3, '2022-2023', 1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -53,6 +52,13 @@ CREATE TABLE `criteria` (
   `id` int(30) NOT NULL,
   `criteria` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `criteria`
+--
+
+INSERT INTO `criteria` (`id`, `criteria`) VALUES
+(12, 'Criteria 1');
 
 -- --------------------------------------------------------
 
@@ -67,6 +73,14 @@ CREATE TABLE `department` (
   `section` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
+(9, 'BSIS', 4, 'A'),
+(10, 'BEED', 2, 'S');
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +93,13 @@ CREATE TABLE `evaluation` (
   `subjectid` int(30) NOT NULL,
   `facultyid` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`evaluationid`, `departmentid`, `subjectid`, `facultyid`) VALUES
+(9, 10, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -93,8 +114,16 @@ CREATE TABLE `faculties` (
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `usertype` varchar(30) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `view` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faculties`
+--
+
+INSERT INTO `faculties` (`id`, `fno`, `username`, `fname`, `lname`, `usertype`, `password`, `view`) VALUES
+(6, '7514', 'Brian', 'Brian', 'Delos Santos', 'faculty', '$2y$10$cE32fs0sgfY808arZet82.lUBsqotPOzjASwKUGBip6lcfUIbk3jG', 'evAnrd9j');
 
 -- --------------------------------------------------------
 
@@ -107,6 +136,13 @@ CREATE TABLE `questions` (
   `criteria_id` int(30) NOT NULL,
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
+(11, 12, 'The teacher was accessible and willing to provide help');
 
 -- --------------------------------------------------------
 
@@ -136,8 +172,17 @@ CREATE TABLE `students` (
   `lastname` varchar(255) NOT NULL,
   `usertype` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `department_id` int(30) NOT NULL
+  `department_id` int(30) NOT NULL,
+  `view` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `studentno`, `username`, `firstname`, `lastname`, `usertype`, `password`, `department_id`, `view`) VALUES
+(16, '333', 'olive', 'olivewqwq', 'briones', 'student', '$2y$10$Mdj5WBCJ7aQUi/k7PCeGR.SK91/Tiv/hOVuqKSgcSvwFAdJPf0LFy', 9, ''),
+(17, '20-2021', 'Brian', 'Brian', 'delos', 'student', '$2y$10$bNqSmtFlhKA.CT0znR/qSOwFhbJVyRswGOM7FKUjD2hn20gNUF8fC', 9, '6yLl3Gab');
 
 -- --------------------------------------------------------
 
@@ -150,6 +195,13 @@ CREATE TABLE `subject` (
   `code` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`id`, `code`, `description`) VALUES
+(4, 'ADV 07', 'Business Intelligence');
 
 -- --------------------------------------------------------
 
@@ -175,6 +227,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `usertype`, `name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `academic`
+--
+ALTER TABLE `academic`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `criteria`
@@ -243,52 +301,58 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `academic`
+--
+ALTER TABLE `academic`
+  MODIFY `id` tinyint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

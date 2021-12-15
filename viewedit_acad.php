@@ -4,7 +4,7 @@
 
     $id = $_GET['id'];
 
-    $qryview = "SELECT studentno, firstname, lastname, view, course, year, section, department.id as deptid FROM students INNER JOIN department ON department.id = students.department_id WHERE students.id = '$id'";
+    $qryview = "SELECT * FROM academic WHERE id = '$id'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -66,27 +66,17 @@
     echo "<H2>STUDENT INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
-        echo "<form action='update.php' method='post'>";
+        echo "<form action='update-acad.php' method='post'>";
         $row = mysqli_fetch_assoc($result);
 
-        echo "Student Number: <input type='text' readonly name='txtstudentnum' value='".$row["studentno"]."'><br>";
-        echo "First Name <input type='text' name='txtfname' value='".$row["firstname"]."'><br>";
-        echo "Last Name: <input type='text' name='txtlname' value='".$row["lastname"]."'><br>";
-        echo "Password: <input type='text' readonly value='".$row["view"]."'><br>";
-        
-        
-        echo "<select name='departmentid' class='form-select'>";
-
-        echo "<option value='".$row["deptid"]." '>  ".$row["course"]." ".$row["year"]."".$row["section"]." </option>";
-        $res = mysqli_query($koneksyon, "SELECT * FROM department");
-        while($row1 = mysqli_fetch_array($res)){
-        echo " <option value='".$row1["id"]." '>".$row1["course"]." ".$row1["year"]."".$row1["section"]."</option>";
-            }
-        echo"</select>";
+        echo "<input type='hidden' name='aId' value='".$row["id"]."'>";
+        echo "Academic Year: <input type='text' name='acadyear' value='".$row["academic_year"]."'><br>";
+        echo "Semester :<input type='text' name='sem' value='".$row["semester"]."'><br>";
+        echo "Status :<input type='text' name='status' value='".$row["status"]."'><br>";
         echo "<input type='submit' value='UPDATE'>";
         echo "</form>";
 
-        echo "<form action='student_list.php'>";
+        echo "<form action='academic_list.php'>";
         echo "<button type='submit'>Cancel</button>";
         echo "</form>";
         echo "</div>";

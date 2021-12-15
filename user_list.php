@@ -41,20 +41,24 @@
             echo "<h1>User List</h1>";
             if(mysqli_num_rows($result) > 0){
                 echo "<table class='table'>";
-                echo "<thead align='center'>";
+                echo "<tr style='background-color: #eddc02;'>";
+                echo "<th>ID</th>";
                 echo "<th>Username</th>";
                 echo "<th>Action</th>";
                 echo "<th>Action</th>";
-                echo "</thead>";
+                echo "</tr>";
+                $no = 1;
                 while($row = mysqli_fetch_assoc($result)){
                     echo "<tbody>";
                     echo "<tr>";
+                    echo "<td data-label='ID'>".$no."</td>";
                     echo "<td data-label='Username'>".$row['username']."</td>";
                     echo "<td><a type='button' class='btn btn-primary' href='viewedituser.php?user=".$row["username"]."' >Edit</a></td>";
                     echo "<td><a type='button' class='btn btn-danger' onClick=\"javascript: return confirm('Please confirm deletion');\" href='#delete.php?pass=".$row['password']."' >Delete</a></td>";
                     echo "</div>";
                     echo "</tr>";
                     echo "</tbody>";
+                    $no++;
               }
               echo "</table>";
               echo "</div>";

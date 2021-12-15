@@ -54,7 +54,7 @@
   }
   .sm-wrapper a:hover,
   .sm-wrapper a.active {
-    background-color: #b09335;
+    background-color: #eddc02;
   }
 
 @media (max-width : 500px) {

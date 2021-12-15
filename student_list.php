@@ -52,28 +52,34 @@
     <?php
     include_once'koneksyon.php';
 
-    $qryview = "SELECT * FROM students";
+    $qryview = "SELECT studentno, firstname, lastname, course, year, section, students.id as id FROM students INNER JOIN department ON department.id = students.department_id";
     $result = mysqli_query($koneksyon, $qryview);
     ?>
         <table class="display" id="myTable" width="100%" cellspacing="0">
-            <thead>
+            <thead style="background-color: #eddc02;">
                 <tr>
+                    <td>ID</td>
                     <td>Student No.</td>
                     <td>First Name</td>
                     <td>Last Name</td>
+                    <td>Department</td>
                     <td>Action</td>
                     <td>Action</td>
                 </tr>
             </thead>
-            <?php while($row = mysqli_fetch_array($result)) { ?>
+            <?php 
+            $no = 1;
+            while($row = mysqli_fetch_array($result)) { ?>
                 <tr>
+                    <td><?php echo $no; ?></td>
                     <td><?php echo $row['studentno']; ?></td>
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
-                    <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>">EDIT</a></td>
-                    <td><input class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" value="DELETE"></td>
+                    <td><?php echo $row['course']." ".$row['year'].$row['section']; ?></td>
+                    <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
+                    <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" ><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                 </tr>
-            <?php } ?>
+            <?php $no++; } ?>
         </table>
     </div>
 </div>
@@ -81,7 +87,6 @@
 
 </div>
 <!-- End of Main Content -->
-
 
 </body>
 

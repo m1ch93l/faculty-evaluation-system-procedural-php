@@ -3,18 +3,26 @@
 </head>
 <?php include_once'navbar.php'; ?>
 <body>
-  <div class="container mx-1 my-3 py-5">
+  <div class="container-md py-5">
+    <div class="row">
+      <h2>HOME</h2>
+      <h2>Welcome! <?=$_SESSION['name'] ?></h2>
+      <h5>Academic Year: <?=$_SESSION['academic']?></h5>
+      <hr>
+    </div>
+
     <!-- Content Row -->
     <div class="row">
-      <!-- Earnings (Monthly) Card Example -->
+
+      <!--  Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card border-left-primary shadow-lg h-100 py-2" style="color: #fff;background-color: #000080;">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                          <div class="text-lg font-weight-bold text-light text-uppercase mb-1">
                               Total Students</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          <div class="h2 mb-0 font-weight-bold text-gray-800">
 
                           <?php require_once'koneksyon.php'; 
                             $query = "SELECT COUNT(studentno) AS count FROM students";
@@ -34,15 +42,15 @@
           </div>
       </div>
 
-      <!-- Earnings (Monthly) Card Example -->
+      <!-- Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card border-left-primary shadow-lg h-100 py-2" style="color: #fff;background-color: #000080;">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                          <div class="text-lg font-weight-bold text-light text-uppercase mb-1">
                               Total Faculties</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          <div class="h2 mb-0 font-weight-bold text-gray-800">
                         <?php
                           $query2 = "SELECT COUNT(fno) AS count1 FROM faculties";
                             $result1 =mysqli_query($koneksyon, $query2);

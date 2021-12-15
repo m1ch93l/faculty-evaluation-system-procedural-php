@@ -1,15 +1,17 @@
-
 <body>
 <?php include'navbar.php'; ?>
     <div class="main-body">
         <div class="container py-5">
-        <h1>HELLO, <?=$_SESSION['username']?></h1>
-            <div class="card my-5 text-center">
-                    <div class="card my-5">
+          <h2>Welcome! <?=$_SESSION['username'] ?></h2>
+          <h5>Academic Year: <?=$_SESSION['academic']?></h5>
+          <hr>
+            <div class="card my-5 text-center shadow-lg">
                         
                     <form autocomplete="off" action="rate.php" method="post">
 
                     <?php
+
+
                             $qry = mysqli_query($koneksyon, "SELECT departmentid, fname, lname, evaluationid, description, subjectid FROM evaluation INNER JOIN department ON department.id = evaluation.departmentid
                             INNER JOIN faculties ON faculties.id = evaluation.facultyid INNER JOIN subject ON subject.id = evaluation.subjectid WHERE departmentid = {$_SESSION['dept']}");
                                 while($row = mysqli_fetch_array($qry)){
@@ -63,7 +65,7 @@
                                   <button type="submit" name="save_multicheckbox" class="btn btn-primary">Submit Evaluation</button>
                               </div>
                     </form>          
-                    </div>
+                    
             </div>
         </div>
    </div>

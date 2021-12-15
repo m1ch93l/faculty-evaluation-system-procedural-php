@@ -2,6 +2,7 @@
     session_start();
     include_once'koneksyon.php';
 
+
     $username = mysqli_real_escape_string($koneksyon, $_POST["username"]);
     $password = mysqli_real_escape_string($koneksyon, $_POST["password"]);
 
@@ -16,6 +17,11 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
+
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $row = mysqli_fetch_array($qry);
+                $_SESSION['academic'] = $row['academic_year'];
+                $_SESSION['semester'] = $row['semester'];
     
                 header("Location: dashboard.php");
             }
@@ -36,6 +42,11 @@
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['snum'] = $row['studentno'];
                 $_SESSION['dept'] = $row['department_id'];
+
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $row = mysqli_fetch_array($qry);
+                $_SESSION['academic'] = $row['academic_year'];
+                $_SESSION['semester'] = $row['semester'];
     
                 header("Location: evaluate.php");
             }
@@ -54,6 +65,11 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
+
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $row = mysqli_fetch_array($qry);
+                $_SESSION['academic'] = $row['academic_year'];
+                $_SESSION['semester'] = $row['semester'];
     
                 header("Location: evaluation_result.php");
             }

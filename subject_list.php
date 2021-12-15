@@ -47,9 +47,9 @@
             $result = mysqli_query($koneksyon, $qryview);
             ?>
                 <table class="display" id="myTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead style="background-color: #eddc02;">
                         <tr>
-                            <th>Id</th>
+                            <th>ID</th>
                             <th>Subject Code</th>
                             <th>Description</th>
                             <th>Action</th>
@@ -57,15 +57,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php while($row = mysqli_fetch_array($result)) { ?>
+                    <?php
+                    $no = 1;
+                    while($row = mysqli_fetch_array($result)) { ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $no; ?></td>
                             <td><?php echo $row['code']; ?></td>
                             <td><?php echo $row['description']; ?></td>
-                            <td><a type="button" class="btn btn-primary" href="viewedit_subjectlist.php?id=<?php echo $row['id']; ?>">EDIT</a></td>
-                            <td><input class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" value="DELETE"></td>
+                            <td><a type="button" class="btn btn-primary" href="viewedit_subjectlist.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
+                            <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete"><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                         </tr>
-                        <?php } ?>
+                        <?php $no++; } ?>
                     </tbody>
                 </table>
             </div>

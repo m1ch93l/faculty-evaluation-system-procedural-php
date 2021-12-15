@@ -5,7 +5,9 @@
 <body>
 	<div class="container py-5">
       <div class="row text-center">
-	      <h1>HELLO, <?=$_SESSION['name']?></h1>
+          <h2>Welcome! <?=$_SESSION['name'] ?></h2>
+          <h5>Academic Year: <?=$_SESSION['academic']?></h5>
+          <hr>
           <?php
                 $qry = mysqli_query($koneksyon, "SELECT description, evaluationid, subjectid FROM evaluation INNER JOIN faculties ON faculties.id = evaluation.facultyid
                 INNER JOIN subject ON subject.id = evaluation.subjectid WHERE facultyid = {$_SESSION['id']}");
@@ -17,15 +19,24 @@
                        while($row = mysqli_fetch_array($query)){
                           $id = $row['id'];
 
-                            $qry1 = mysqli_query($koneksyon, "SELECT AVG(rate) as total, question FROM rate INNER JOIN questions ON questions.id = rate.questionid WHERE evalid = '$e' AND questionid = '$id' ");
+                            $qry1 = mysqli_query($koneksyon, "SELECT AVG(rate) as sum, question FROM rate INNER JOIN questions ON questions.id = rate.questionid WHERE evalid = '$e' AND questionid = '$id' ");
                             while($row = mysqli_fetch_array($qry1)){ ?>
                             <div class="container">
                                 <table>
-                                    <thead>
-                                        <td><?php echo $row['question']; ?></td>
+                                    <thead style="background-color: #000080;">
+                                        <tr>
+                                            <th style="color: #fff"><?php echo $row['question']; ?></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                        <td><?php echo $row['total']; ?></td>
+                                        <tr>
+                                            <?php
+                                            $sum = $row['sum'];
+                                            $total = $sum/5 * 100;
+
+                                            echo "<td style='background-color: maroon; color: #fff;'>Performance: ".$total."%</td>";
+                                            ?> 
+                                        </tr>
                                     </tbody>
                                 </table> 
                             </div>      

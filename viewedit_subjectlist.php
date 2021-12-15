@@ -50,7 +50,7 @@
         }
         ";
     echo "</style>";
-    echo "<div class='container py-5'>";
+    echo "<div class='container-sm p-5 py-5'>";
     echo "<H2>Subject List</H2>";
 
     if(mysqli_num_rows($result) > 0)

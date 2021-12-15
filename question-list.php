@@ -49,13 +49,11 @@
 
 
     <div class="container bg-primary">
-        <form action="" method="post">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <!-- Button trigger modal -->
                 <a type="button" class="btn btn-success" href="eval-instructor.php">
-                Choose Intructor
+                Choose Instructor
                 </a>
-                <button type="submit" class="btn btn-success">SAVE</button>
             </div>  
                     <div class="card my-5">
                     <?php
@@ -93,6 +91,5 @@
                         </table>
                         <?php } ?> 
                     </div>
-        </form>
     </div>
 </body>
