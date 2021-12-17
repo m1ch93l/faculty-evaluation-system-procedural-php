@@ -63,7 +63,7 @@
     echo "</style>";
     echo "<div class='main-body'>";
     echo "<div class='padding'>";
-    echo "<H2>STUDENT INFORMATION</H2>";
+    echo "<H2>FACULTY INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<form action='update-faculty.php' method='post'>";

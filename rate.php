@@ -4,21 +4,19 @@ include_once'koneksyon.php';
 
 if(isset($_POST['save_multicheckbox']))
 {
-    $s = $_POST['sid'];
     $e = $_POST['evalid'];
     $q = $_POST['quesid'];
     $rate = $_POST['rate'];
     
     $mi = new MultipleIterator();
-    $mi->attachIterator(new ArrayIterator($s));
     $mi->attachIterator(new ArrayIterator($e));
     $mi->attachIterator(new ArrayIterator($q));
     $mi->attachIterator(new ArrayIterator($rate));
 
     foreach ( $mi as $value ) {
-        list($s, $e, $q, $rate) = $value;
+        list($e, $q, $rate) = $value;
         
-        $dagdag = mysqli_query($koneksyon, "INSERT INTO rate (sid, evalid, questionid, rate) VALUES ('$s','$e', '$q', '$rate')");
+        $dagdag = mysqli_query($koneksyon, "INSERT INTO rate (evalid, questionid, rate) VALUES ('$e', '$q', '$rate')");
     }
 }
 ?>

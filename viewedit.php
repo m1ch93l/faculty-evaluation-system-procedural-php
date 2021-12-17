@@ -4,7 +4,7 @@
 
     $id = $_GET['id'];
 
-    $qryview = "SELECT studentno, firstname, lastname, view, course, year, section, department.id as deptid FROM students INNER JOIN department ON department.id = students.department_id WHERE students.id = '$id'";
+    $qryview = "SELECT studentno,firstname,lastname,view,course,year,section FROM subject_enrolled INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON students.department_id=department.id WHERE students.id = '$id'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -77,7 +77,7 @@
         
         echo "<select name='departmentid' class='form-select'>";
 
-        echo "<option value='".$row["deptid"]." '>  ".$row["course"]." ".$row["year"]."".$row["section"]." </option>";
+        echo "<option disabled selected value='".$row["deptid"]." '>  ".$row["course"]." ".$row["year"]."".$row["section"]." </option>";
         $res = mysqli_query($koneksyon, "SELECT * FROM department");
         while($row1 = mysqli_fetch_array($res)){
         echo " <option value='".$row1["id"]." '>".$row1["course"]." ".$row1["year"]."".$row1["section"]."</option>";

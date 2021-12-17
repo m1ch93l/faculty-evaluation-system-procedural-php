@@ -4,7 +4,7 @@
 
     $scode = $_GET['id'];
 
-    $qryview = "SELECT * FROM subject WHERE id='$scode'";
+    $qryview = "SELECT subject.id as id, code, description, faculties.id as fid,fname,lname FROM subject INNER JOIN faculties ON faculties.id=subject.faculty_id WHERE subject.id='$scode'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -53,14 +53,22 @@
     echo "<div class='container-sm p-5 py-5'>";
     echo "<H2>Subject List</H2>";
 
-    if(mysqli_num_rows($result) > 0)
-    {
         echo "<form action='update_subject_list.php' method='post'>";
-        $row = mysqli_fetch_assoc($result);
+        while($row = mysqli_fetch_array($result)){
 
-        echo "<input type='hidden' name='id' value='".$row["id"]."'><br>";
-        echo "Subject Code: <input type='text' name='txtscode' value='".$row["code"]."'><br>";
-        echo "Description: <input type='text' name='txtdescription' value='".$row["description"]."'><br>";
+        echo "<input type='hidden' name='idid' value='".$row["id"]."'><br>";
+        echo "Subject Code: <input type='text' name='txtsubcode' value='".$row["code"]."'><br>";
+        echo "Description: <input type='text' name='description' value='".$row["description"]."'><br>";
+ }     
+        echo "<select class='form-select' name='facuid'>";
+        echo "<option selected disabled value='".$row["fid"]."'>".$row["fname"]." ".$row["lname"]."</option>";
+
+        $qry=mysqli_query($koneksyon,"SELECT * FROM faculties");
+        while($rows=mysqli_fetch_array($qry)){
+        echo "<option value='".$rows["id"]."'> ".$rows["fname"]." ".$rows["lname"]."</option>";
+          }
+        echo "<select>";
+
         echo "<input type='submit' value='UPDATE'>";
 
         echo "</form>";
@@ -69,9 +77,5 @@
         echo "<button type='submit'>Cancel</button>";
         echo "</form>";
         echo "</div>";
-    }
-    else {
-      echo "No records found";
-    }
 
 ?>

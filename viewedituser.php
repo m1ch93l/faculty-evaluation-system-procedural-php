@@ -8,7 +8,7 @@
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<div class='container py-5'>";
-    echo "<H2>STUDENT INFORMATION</H2>";
+    echo "<H2>USERS INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<form action='#update.php' method='post'>";

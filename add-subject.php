@@ -4,8 +4,9 @@
 
     $code = $_POST['code'];
     $description = $_POST['description'];
+    $firstlast = $_POST['firstlastname'];
 
-    $dagdag = "INSERT INTO subject (code, description) VALUES ('$code', '$description')";
+    $dagdag = "INSERT INTO subject (code, description, faculty_id) VALUES ('$code', '$description','$firstlast')";
 
     mysqli_query($koneksyon, $dagdag);
         

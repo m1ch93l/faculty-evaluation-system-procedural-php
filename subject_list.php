@@ -20,6 +20,15 @@
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Subject Code" name="code"><br>
                 <input type="text" class="form-control" placeholder="Description" name="description"><br>
+    
+                <select class="form-select" name="firstlastname">
+                    <option disabled selected>Select Faculty</option>
+                    <?php
+                    $qry=mysqli_query($koneksyon,"SELECT * FROM faculties");
+                    while($row=mysqli_fetch_array($qry)){ ?>
+                    <option value="<?php echo $row['id'];?>"> <?php echo $row['fname']." ".$row['lname'];?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -43,7 +52,7 @@
             <?php
             include_once'koneksyon.php';
 
-            $qryview = "SELECT * FROM subject ";
+            $qryview = "SELECT code,description,fname,lname,subject.id as id FROM subject INNER JOIN faculties ON faculties.id = subject.faculty_id";
             $result = mysqli_query($koneksyon, $qryview);
             ?>
                 <table class="display" id="myTable" width="100%" cellspacing="0">
@@ -52,6 +61,7 @@
                             <th>ID</th>
                             <th>Subject Code</th>
                             <th>Description</th>
+                            <th>Faculty Assigned</th>
                             <th>Action</th>
                             <th>Action</th>
                         </tr>
@@ -64,6 +74,7 @@
                             <td><?php echo $no; ?></td>
                             <td><?php echo $row['code']; ?></td>
                             <td><?php echo $row['description']; ?></td>
+                            <td><?php echo $row['fname']." ".$row['lname']; ?></td>
                             <td><a type="button" class="btn btn-primary" href="viewedit_subjectlist.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
                             <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete"><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                         </tr>

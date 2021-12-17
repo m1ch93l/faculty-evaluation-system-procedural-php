@@ -18,7 +18,7 @@
         </div>
         <form action="add-student.php" method="post">
             <div class="modal-body">
-            <select class="form-select" name="departmentid" id="">
+            <select class="form-select" name="departmentid">
                             <?php include_once'koneksyon.php'; 
                                 $view = "SELECT * FROM department";
                                 $result = mysqli_query($koneksyon, $view);
@@ -52,19 +52,20 @@
     <?php
     include_once'koneksyon.php';
 
-    $qryview = "SELECT studentno, firstname, lastname, course, year, section, students.id as id FROM students INNER JOIN department ON department.id = students.department_id";
+    $qryview = "SELECT studentno, firstname, lastname, course, year, section, students.id as id FROM students INNER JOIN department ON department.id=students.department_id";
     $result = mysqli_query($koneksyon, $qryview);
     ?>
         <table class="display" id="myTable" width="100%" cellspacing="0">
             <thead style="background-color: #eddc02;">
                 <tr>
-                    <td>ID</td>
-                    <td>Student No.</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Department</td>
-                    <td>Action</td>
-                    <td>Action</td>
+                    <th>ID</th>
+                    <th>Student No.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <?php 
@@ -76,6 +77,7 @@
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
                     <td><?php echo $row['course']." ".$row['year'].$row['section']; ?></td>
+                    <td><a type="button" class="btn btn-primary" href="student_info.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-book"></span> VIEW SUBJECT</a></td>
                     <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
                     <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" ><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                 </tr>

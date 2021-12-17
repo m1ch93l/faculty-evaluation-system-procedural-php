@@ -15,5 +15,6 @@
 
     $dagdag = "INSERT INTO faculties (fno, username, fname, lname, usertype, password, view) VALUES ('$fnum','$fname', '$fname', '$lname','$usertype','$password', '$systempass')";
     mysqli_query($koneksyon, $dagdag);
+    header("location: faculty_list.php");
 
     ?>

@@ -63,7 +63,7 @@
     echo "</style>";
     echo "<div class='main-body'>";
     echo "<div class='padding'>";
-    echo "<H2>STUDENT INFORMATION</H2>";
+    echo "<H2>ACADEMIC INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<form action='update-acad.php' method='post'>";
@@ -72,7 +72,18 @@
         echo "<input type='hidden' name='aId' value='".$row["id"]."'>";
         echo "Academic Year: <input type='text' name='acadyear' value='".$row["academic_year"]."'><br>";
         echo "Semester :<input type='text' name='sem' value='".$row["semester"]."'><br>";
-        echo "Status :<input type='text' name='status' value='".$row["status"]."'><br>";
+
+        echo "<select name='status' class='form-select'>";
+
+        $res = mysqli_query($koneksyon, "SELECT * FROM academic");
+        while($row1 = mysqli_fetch_array($res)){
+        echo " <option value='".$row1["status"]." '>".$row1["status"]."</option>";
+            }
+        echo " <option value='active'>active</option>";
+        echo " <option value='pending'>pending</option>";
+        echo " <option value='closed'>closed</option>";
+        echo"</select>";
+
         echo "<input type='submit' value='UPDATE'>";
         echo "</form>";
 
