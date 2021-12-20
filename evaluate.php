@@ -10,7 +10,7 @@
                     <form autocomplete="off" action="rate.php" method="post">
 
                     <?php 
-                            $qry=mysqli_query($koneksyon,"SELECT * FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON faculties.id=subject.faculty_id WHERE department_id = {$_SESSION['dept']}");
+                            $qry=mysqli_query($koneksyon,"SELECT * FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON faculties.id=subject.faculty_id WHERE student_id = {$_SESSION['id']}");
                             while($row=mysqli_fetch_array($qry)){
                                 echo "<h4>".$row['fname']." ".$row['lname']."</h4>";
                                 echo "<h4>".$row['description']."</h4>";
@@ -46,7 +46,7 @@
                                                         <td><?php echo $row1['question'];?></td>
                                                         
                                                         <?php for($c=1;$c<=5;$c++): ?>
-                                                            <td>
+                                                            <td style="width: 8%;">
                                                                     <input type="checkbox" name="rate[]" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
                                                             </td>
                                                         <?php endfor; ?>

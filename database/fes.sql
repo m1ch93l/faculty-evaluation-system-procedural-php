@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2021 at 11:49 AM
+-- Generation Time: Dec 20, 2021 at 03:43 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -40,7 +40,7 @@ CREATE TABLE `academic` (
 
 INSERT INTO `academic` (`id`, `academic_year`, `semester`, `status`) VALUES
 (2, '2021-2022', 2, 'active'),
-(3, '2022-2023', 1, 'pending');
+(3, '2022-2023', 1, 'closed');
 
 -- --------------------------------------------------------
 
@@ -98,10 +98,10 @@ CREATE TABLE `evaluation` (
 --
 
 INSERT INTO `evaluation` (`evaluationid`, `sub_enrolled_id`) VALUES
-(22, 80),
-(23, 82),
-(24, 83),
-(25, 85);
+(29, 90),
+(30, 91),
+(31, 92),
+(32, 93);
 
 -- --------------------------------------------------------
 
@@ -166,10 +166,30 @@ CREATE TABLE `rate` (
 --
 
 INSERT INTO `rate` (`id`, `evalid`, `questionid`, `rate`) VALUES
-(145, 22, 11, 1),
-(146, 22, 12, 3),
-(147, 25, 11, 3),
-(148, 25, 12, 2);
+(157, 30, 11, 1),
+(158, 30, 12, 2),
+(159, 29, 11, 1),
+(160, 29, 12, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(30) NOT NULL,
+  `eval_status` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `eval_status`) VALUES
+(1, 'active'),
+(2, 'pending'),
+(3, 'closed');
 
 -- --------------------------------------------------------
 
@@ -194,8 +214,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `studentno`, `username`, `firstname`, `lastname`, `usertype`, `password`, `view`, `department_id`) VALUES
-(55, '20-2021', 'Brian', 'Brian', 'Delos Santos', 'student', '$2y$10$FASDL1KB945nM4laFXlc1OwH8QyS/Tr1762sOq3DeSGG7CEy77jcq', '8UDNRvw3', 11),
-(57, '00-0000', 'Kaven Rey', 'Kaven Rey', 'Batac', 'student', '$2y$10$8V2NowJbFuDl6.zottyf4OOnv5qRZWH.QOnBsup/9n9Dd8fSFu4ei', '1A895z0E', 9);
+(61, '20-2021', 'haha', 'haha', 'haha', 'student', '$2y$10$WetvOXZR25ahRmXqo5lGWuIbjD1R9q6pzU9TUUs5Ms6nU9hLc0quW', 'SwkmVCU4', 9),
+(62, '12-345', 'huhu', 'huhu', 'jiji', 'student', '$2y$10$Wj31.QJkbQRDXQzN7ZQjrO38Enn6HZrAnPB.omxWXdcMpaeesa3/6', 'rwn0JX3T', 9);
 
 -- --------------------------------------------------------
 
@@ -235,10 +255,10 @@ CREATE TABLE `subject_enrolled` (
 --
 
 INSERT INTO `subject_enrolled` (`id`, `student_id`, `subject_take`) VALUES
-(80, 55, 9),
-(82, 57, 7),
-(83, 57, 9),
-(85, 55, 7);
+(90, 61, 7),
+(91, 61, 9),
+(92, 62, 7),
+(93, 62, 9);
 
 -- --------------------------------------------------------
 
@@ -312,6 +332,12 @@ ALTER TABLE `rate`
   ADD KEY `questionid` (`questionid`);
 
 --
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -365,7 +391,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `faculties`
@@ -383,13 +409,19 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -401,7 +433,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `subject_enrolled`
 --
 ALTER TABLE `subject_enrolled`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `users`

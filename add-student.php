@@ -16,5 +16,5 @@
 
     $dagdag = "INSERT INTO students (studentno, username, firstname, lastname, usertype, password, view, department_id) VALUES ('$snum','$fname','$fname','$lname', '$usertype','$password', '$systempass','$department_id')";
     mysqli_query($koneksyon, $dagdag);
-    header("location: student_list.php");
+    header("location: add_sub.php");
 ?>

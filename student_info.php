@@ -11,27 +11,7 @@
 <body>
     <div class="container-md py-5 my-5 shadow-lg">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card shadow-sm">
-                <form action="add-subject-taken.php" method="post">
-                    <div class="card-header"><h4>Name: <?php echo $name; ?></h4></div>
-                    <div class="card-body">
-                    <?php
-
-                        $check=mysqli_query($koneksyon,"SELECT * FROM subject");
-                        while($row=mysqli_fetch_array($check)){ ?>
-                            <input type="hidden" value="<?php echo $sid; ?>" name="sid[]">
-                        <h6><input type="checkbox" value="<?php echo $row['id']; ?>" name="sub_take[]"><?php echo " ".$row['description']; ?></h6>
-                    <?php } ?>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" name="save">SAVE</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+            <h3>Subject Taken</h3>
             <div class="col-lg-12">
                 <div class="table-responsive">
                     <table class="display" id="myTable" width="100%" cellspacing="0">

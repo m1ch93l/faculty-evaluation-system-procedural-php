@@ -92,7 +92,7 @@
                                     <tr>
                                         <td><?php echo $row1['question']; ?></td>
                                         <?php for($c=1;$c<=5;$c++): ?>
-                                            <td class="text-center">
+                                            <td style="width: 8%;">
                                                     <input type="checkbox" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
                                             </td>
                                         <?php endfor; ?>

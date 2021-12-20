@@ -5,5 +5,5 @@ $info = $_GET['delsinfo'];
 
 mysqli_query($koneksyon,"DELETE FROM subject_enrolled WHERE id = '$info' ");
 
-header("location: student_list.php");
+header("location: student_info.php");
 ?>

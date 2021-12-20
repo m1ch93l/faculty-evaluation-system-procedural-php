@@ -44,11 +44,19 @@
                 $_SESSION['dept'] = $row['department_id'];
 
                 $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
-                $row = mysqli_fetch_array($qry);
+                while($row = mysqli_fetch_array($qry)):
+                if($row['status'] == 'active')
+                {
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
-    
                 header("Location: evaluate.php");
+                }
+                elseif($row['status'] == 'pending')
+                {
+                echo '<script>alert("Sorry! The evaluation has not yet started!")</script>';
+                
+                }else{echo "haha";} 
+                endwhile;
             }
             else{
                 header("Location: index.php");
