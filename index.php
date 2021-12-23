@@ -10,7 +10,7 @@
     <meta property="og:title" content="BCC Faculty Evaluation System">
     <meta property="og:description" content="Faculty evaluation system with online admin be significant to the following departments in school to manage the evaluation by using our system. Evaluation can, and should, however be used as an ongoing management and learning tool to improve the organizations effectiveness...">
     <meta property="og:url" content="https://www.bccevaluationsystem.online">
-    <meta property="og:image" content="img/faces.jpg">
+    <meta property="og:image" content="img/faces1.jpg">
 </head>
 <body>
 <div class="container">
