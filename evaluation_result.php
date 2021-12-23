@@ -4,15 +4,14 @@
 <!DOCTYPE html>
 <body>
 	<div class="container py-5">
-      <div class="row text-center">
+      <div class="row text-center shadow-lg">
           <h2>Welcome! <?=$_SESSION['name'] ?></h2>
           <h5>Academic Year: <?=$_SESSION['academic']?></h5>
           <hr>
           <?php
-                $qry = mysqli_query($koneksyon, "SELECT description, evaluationid, subjectid FROM evaluation INNER JOIN faculties ON faculties.id = evaluation.facultyid
-                INNER JOIN subject ON subject.id = evaluation.subjectid WHERE facultyid = {$_SESSION['id']}");
+                $qry=mysqli_query($koneksyon,"SELECT * FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON faculties.id=subject.faculty_id WHERE faculties.id = {$_SESSION['id']}");
                 while($row = mysqli_fetch_array($qry)){
-                    echo "<h3>".$row['description']."</h3>";
+                    echo "<h3>Subject: ".$row['description']."</h3>";
                     $e = $row['evaluationid'];
 
                     $query = mysqli_query($koneksyon, "SELECT id FROM questions ");

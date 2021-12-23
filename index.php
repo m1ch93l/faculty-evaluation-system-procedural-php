@@ -10,6 +10,7 @@
     <meta property="og:title" content="BCC Faculty Evaluation System">
     <meta property="og:description" content="Faculty evaluation system with online admin be significant to the following departments in school to manage the evaluation by using our system. Evaluation can, and should, however be used as an ongoing management and learning tool to improve the organizations effectiveness...">
     <meta property="og:url" content="https://www.bccevaluationsystem.online">
+    <meta property="og:image" content="img/faces.jpg">
 </head>
 <body>
 <div class="container">
@@ -27,7 +28,7 @@
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Faculty Evaluation System</h1>
                                     </div>
                                     <form action="check-password.php" method="POST">
                                         <div class="form-floating mb-3">

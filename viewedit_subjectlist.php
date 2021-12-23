@@ -54,14 +54,14 @@
     echo "<H2>Subject List</H2>";
 
         echo "<form action='update_subject_list.php' method='post'>";
-        while($row = mysqli_fetch_array($result)){
+        $row = mysqli_fetch_array($result);
 
         echo "<input type='hidden' name='idid' value='".$row["id"]."'><br>";
         echo "Subject Code: <input type='text' name='txtsubcode' value='".$row["code"]."'><br>";
         echo "Description: <input type='text' name='description' value='".$row["description"]."'><br>";
- }     
+      
         echo "<select class='form-select' name='facuid'>";
-        echo "<option selected disabled value='".$row["fid"]."'>".$row["fname"]." ".$row["lname"]."</option>";
+        echo "<option selected value='".$row["fid"]."'>".$row["fname"]." ".$row["lname"]."</option>";
 
         $qry=mysqli_query($koneksyon,"SELECT * FROM faculties");
         while($rows=mysqli_fetch_array($qry)){

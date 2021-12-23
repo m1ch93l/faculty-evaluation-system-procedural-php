@@ -61,9 +61,9 @@
         }
         ";
     echo "</style>";
-    echo "<div class='main-body'>";
+    echo "<div class='container-md py-5'>";
     echo "<div class='padding'>";
-    echo "<H2>STUDENT INFORMATION</H2>";
+    echo "<br><br><br><H2>STUDENT INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<form action='update.php' method='post'>";

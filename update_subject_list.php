@@ -7,7 +7,7 @@
     $description = $_POST['description'];
     $facultyid = $_POST['facuid'];
 
-    mysqli_query($koneksyon, "UPDATE subject SET code ='$scode', description ='$description', faculty_id='$facultyid' WHERE id = '$id' ");
+    mysqli_query($koneksyon, "UPDATE subject SET code ='$scode', description ='$description', faculty_id='$facultyid' WHERE subject.id = '$id' ");
     
     header("location: subject_list.php");
 

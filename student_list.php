@@ -77,7 +77,7 @@
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
                     <td><?php echo $row['course']." ".$row['year'].$row['section']; ?></td>
-                    <td><a type="button" class="btn btn-primary" href="student_info.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-book"></span> VIEW SUBJECT</a></td>
+                    <td><a type="button" class="btn btn-success" href="student_info.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-book"></span> VIEW SUBJECT</a></td>
                     <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
                     <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" ><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                 </tr>

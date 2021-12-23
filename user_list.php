@@ -18,9 +18,9 @@
         <form action="new_user.php" method="post">
             <div class="modal-body">
             <label for="username">Username:</label><br>
-                        <input type="text" id="username" name="username"><br>
+                        <input class="form-control" type="text" id="username" name="username"><br>
                         <label for="password">Password:</label><br>
-                        <input type="text" id="password" name="password"><br>
+                        <input class="form-control" type="text" id="password" name="password"><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

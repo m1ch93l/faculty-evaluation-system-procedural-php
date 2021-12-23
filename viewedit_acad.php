@@ -74,14 +74,11 @@
         echo "Semester :<input type='text' name='sem' value='".$row["semester"]."'><br>";
 
         echo "<select name='status' class='form-select'>";
-
-        $res = mysqli_query($koneksyon, "SELECT * FROM academic");
+        echo " <option value='".$row['status']."'>".$row['status']."</option>";
+        $res = mysqli_query($koneksyon, "SELECT * FROM status");
         while($row1 = mysqli_fetch_array($res)){
-        echo " <option value='".$row1["status"]." '>".$row1["status"]."</option>";
+        echo " <option value='".$row1["eval_status"]." '>".$row1["eval_status"]."</option>";
             }
-        echo " <option value='active'>active</option>";
-        echo " <option value='pending'>pending</option>";
-        echo " <option value='closed'>closed</option>";
         echo"</select>";
 
         echo "<input type='submit' value='UPDATE'>";
