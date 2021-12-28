@@ -4,7 +4,7 @@
 
     $id = $_GET['id'];
 
-    $qryview = "SELECT studentno,firstname,lastname,view,course,year,section FROM subject_enrolled INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON students.department_id=department.id WHERE students.id = '$id'";
+    $qryview = "SELECT studentno,firstname,lastname,view,course,year,section, username FROM subject_enrolled INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON students.department_id=department.id WHERE students.id = '$id'";
     $result = mysqli_query($koneksyon, $qryview);
 
     echo "<style>";
@@ -72,8 +72,8 @@
         echo "Student Number: <input type='text' readonly name='txtstudentnum' value='".$row["studentno"]."'><br>";
         echo "First Name <input type='text' name='txtfname' value='".$row["firstname"]."'><br>";
         echo "Last Name: <input type='text' name='txtlname' value='".$row["lastname"]."'><br>";
+        echo "UserName: <input type='text' name='uname' value='".$row["username"]."'><br>";
         echo "Password: <input type='text' readonly value='".$row["view"]."'><br>";
-        
         
         echo "<select name='departmentid' class='form-select'>";
 

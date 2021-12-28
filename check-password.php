@@ -3,8 +3,8 @@
     include_once'koneksyon.php';
 
 
-    $username = mysqli_real_escape_string($koneksyon, $_POST["username"]);
-    $password = mysqli_real_escape_string($koneksyon, $_POST["password"]);
+    $username = mysqli_real_escape_string($koneksyon, $_POST['username']);
+    $password = mysqli_real_escape_string($koneksyon, $_POST['password']);
 
 
         $query = "SELECT * FROM users WHERE username = '$username' ";
@@ -26,7 +26,7 @@
                 header("Location: dashboard.php");
             }
             else{
-                header("Location: index.php");
+                echo '<script>alert("User not found!");history.go(-1);</script>';
             }
 
     }
@@ -34,32 +34,34 @@
         $result1 = mysqli_query($koneksyon, $query1);
         while($row = mysqli_fetch_array($result1)){
         
-            if(password_verify($password, $row["password"]) && $row['usertype'] == 'student') {
+            if(password_verify($password, $row['password']) && $row['usertype'] == 'student') {
                 //return true;
-                $_SESSION['name'] = $row['name'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['snum'] = $row['studentno'];
                 $_SESSION['dept'] = $row['department_id'];
 
-                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic ");
                 while($row = mysqli_fetch_array($qry)):
-                if($row['status'] == 'active')
-                {
+                if($row['status'] === 'active'){
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
                 header("Location: evaluate.php");
                 }
-                elseif($row['status'] == 'pending')
-                {
-                echo '<script>alert("Sorry! The evaluation has not yet started!")</script>';
-                
-                }else{echo "haha";} 
+                elseif($row['status'] === 'pending'){
+                    echo '<script>alert("Sorry! The Evaluation has not yet Start!");history.go(-1);</script>';
+                }
+                elseif($row['status'] === 'closed'){
+                    echo '<script>alert("Sorry! The Evaluation has been closed!");history.go(-1);</script>';
+                }else{
+                    header("Location: index.php");
+                }
                 endwhile;
+                
             }
             else{
-                header("Location: index.php");
+                echo '<script>alert("User not found!");history.go(-1);</script>';
             }
     }
 
@@ -67,7 +69,7 @@
         $result2 = mysqli_query($koneksyon, $query2);
         while($row = mysqli_fetch_array($result2)){
         
-            if(password_verify($password, $row["password"]) && $row['usertype'] == 'faculty') {
+            if(password_verify($password, $row['password']) && $row['usertype'] == 'faculty') {
                 //return true;
                 $_SESSION['name'] = $row['fname'];
                 $_SESSION['id'] = $row['id'];
@@ -82,10 +84,7 @@
                 header("Location: evaluation_result.php");
             }
             else{
-                header("Location: index.php");
+                echo '<script>alert("User not found!");history.go(-1);</script>';
             }
     }
-
-    echo '<script>alert("User not found!");history.go(-1);</script>';
-
 ?>
