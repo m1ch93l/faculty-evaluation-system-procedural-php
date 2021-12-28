@@ -43,21 +43,24 @@
                 $_SESSION['dept'] = $row['department_id'];
 
                 $qry = mysqli_query($koneksyon, "SELECT * FROM academic ");
-                while($row = mysqli_fetch_array($qry)):
-                if($row['status'] === 'active'){
-                $_SESSION['academic'] = $row['academic_year'];
-                $_SESSION['semester'] = $row['semester'];
+                while($row12 = mysqli_fetch_array($qry)){
+                    $status = $row12['status'];
+                }
+                if($status == 'active'){
+                $_SESSION['academic'] = $row12['academic_year'];
+                $_SESSION['semester'] = $row12['semester'];
                 header("Location: evaluate.php");
                 }
-                elseif($row['status'] === 'pending'){
+                elseif($status == 'pending'){
                     echo '<script>alert("Sorry! The Evaluation has not yet Start!");history.go(-1);</script>';
                 }
-                elseif($row['status'] === 'closed'){
+                elseif($status == 'closed'){
                     echo '<script>alert("Sorry! The Evaluation has been closed!");history.go(-1);</script>';
-                }else{
+                }
+                else{
                     header("Location: index.php");
                 }
-                endwhile;
+                
                 
             }
             else{

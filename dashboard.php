@@ -21,7 +21,7 @@
                   <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                           <div class="text-lg font-weight-bold text-light text-uppercase mb-1">
-                              Total Students</div>
+                              <a href="student_list.php" class="text-decoration-none text-light">Total Students</a></div>
                           <div class="h2 mb-0 font-weight-bold text-gray-800">
 
                           <?php require_once'koneksyon.php'; 
@@ -49,7 +49,7 @@
                   <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                           <div class="text-lg font-weight-bold text-light text-uppercase mb-1">
-                              Total Faculties</div>
+                              <a href="faculty_list.php" class="text-decoration-none text-light">Total Faculties</a></div>
                           <div class="h2 mb-0 font-weight-bold text-gray-800">
                         <?php
                           $query2 = "SELECT COUNT(fno) AS count1 FROM faculties";
