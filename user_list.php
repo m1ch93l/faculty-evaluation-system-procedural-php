@@ -1,8 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+include'includes/header.php'; ?>
 <body>
-  <?php include'navbar.php'; ?>
-    <div class="container py-5">
-
-<!-- Button trigger modal -->
+    <?php include'includes/admin-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add user
     </button>
@@ -67,5 +71,7 @@
               echo "No records found!";
             }
         ?>
-    </div>
+        </div>
+    </main>
 </body>
+</html>

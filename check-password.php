@@ -23,7 +23,7 @@
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
     
-                header("Location: dashboard.php");
+                header("Location: check-user.php");
             }
             else{
                 echo '<script>alert("User not found!");history.go(-1);</script>';
@@ -43,13 +43,13 @@
                 $_SESSION['dept'] = $row['department_id'];
 
                 $qry = mysqli_query($koneksyon, "SELECT * FROM academic ");
-                while($row12 = mysqli_fetch_array($qry)){
-                    $status = $row12['status'];
-                }
+                while($row = mysqli_fetch_array($qry)){
+                    $status = $row['status'];
+                
                 if($status == 'active'){
-                $_SESSION['academic'] = $row12['academic_year'];
-                $_SESSION['semester'] = $row12['semester'];
-                header("Location: evaluate.php");
+                $_SESSION['academic'] = $row['academic_year'];
+                $_SESSION['semester'] = $row['semester'];
+                header("Location: check-user.php");
                 }
                 elseif($status == 'pending'){
                     echo '<script>alert("Sorry! The Evaluation has not yet Start!");history.go(-1);</script>';
@@ -60,7 +60,7 @@
                 else{
                     header("Location: index.php");
                 }
-                
+                }
                 
             }
             else{
@@ -84,7 +84,7 @@
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
     
-                header("Location: evaluation_result.php");
+                header("Location: check-user.php");
             }
             else{
                 echo '<script>alert("User not found!");history.go(-1);</script>';

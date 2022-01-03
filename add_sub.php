@@ -1,9 +1,11 @@
-<?php
-include_once'navbar.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<?php include'includes/header.php'; ?>
 <body>
-	<div class="container-md py-5">
-		<div class="row">
+    <?php include'includes/admin-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow-sm m-5">
                 <form action="add-subject-taken.php" method="post">
@@ -13,7 +15,7 @@ include_once'navbar.php';
                         include_once'koneksyon.php';
                         $dagdag=mysqli_query($koneksyon,"SELECT * FROM students");
                         while($row=mysqli_fetch_array($dagdag)){
-                        	$sid=$row['id'];
+                            $sid=$row['id'];
                         }
 
                         $check=mysqli_query($koneksyon,"SELECT * FROM subject");
@@ -29,5 +31,7 @@ include_once'navbar.php';
                 </div>
             </div>
         </div>
-	</div>
+        </div>
+    </main>
 </body>
+</html>

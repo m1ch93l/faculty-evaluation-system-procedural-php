@@ -1,17 +1,12 @@
-<?php
-    include_once'navbar.php';
-?>
-<head>
-    <script>
-        if(window.history.replaceState){
-        window.history.replaceState(null, null, window.location.href);
-    }
-    </script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+include'includes/header.php'; ?>
 <body>
-
-<div class="container-md py-5 my-5 border shadow-lg">
-    <div class="row">
+    <?php include'includes/admin-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <div class="row">
         <div class="col-md-4">
             <div class="content-center">
             <div class="card m-1 shadow-sm bg-success">
@@ -90,5 +85,7 @@
             </div>
         </div>
     </div>
-</div>
+        </div>
+    </main>
 </body>
+</html>

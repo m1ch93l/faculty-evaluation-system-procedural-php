@@ -1,17 +1,20 @@
-<head>
-	<title>HOME PAGE</title>
-</head>
-<?php include_once'navbar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
+include'includes/header.php'; ?>
 <body>
-  <div class="container-md py-5">
-    <div class="row">
-      <h2>HOME</h2>
-      <h2>Welcome! <?=$_SESSION['name'] ?></h2>
-      <h5>Academic Year: <?=$_SESSION['academic']?></h5>
-      <hr>
-    </div>
-
-    <!-- Content Row -->
+  <?php include'includes/admin-navbar.php'; ?>
+  <main class="mt-5 pt-3">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 fw-bold fs-3">
+          HOME
+          <h2>Welcome! <?=$_SESSION['name'] ?></h2>
+          <h5>Academic Year: <?=$_SESSION['academic']?></h5>
+          <hr>
+        </div>
+      </div>
+      <!-- Content Row -->
     <div class="row">
 
       <!--  Card Example -->
@@ -68,7 +71,9 @@
               </div>
           </div>
       </div>
-
     </div>
-  </div>
+    <!--End Content Row -->
+    </div>
+  </main>
 </body>
+</html>

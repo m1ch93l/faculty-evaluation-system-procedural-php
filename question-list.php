@@ -1,9 +1,12 @@
-<?php include_once'navbar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+include'includes/header.php'; ?>
 <body>
-    
-    <div class="container bg-primary">
-             
-                    <div class="card my-5">
+    <?php include'includes/admin-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <div class="card my-5">
                 <div class="row">
                     <div class="col-lg-4 col-md-5 col-md-7">
                         <div class="card-body" style="background-color: #000080; width: 18rem;">
@@ -38,17 +41,19 @@
                                         <tr>
                                             <th>Subject</th>
                                             <th>Faculty</th>
+                                            <th>Course</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $view=mysqli_query($koneksyon, "SELECT evaluation.evaluationid as id, description,fname,lname FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON subject.faculty_id=faculties.id");
+                                        $view=mysqli_query($koneksyon, "SELECT evaluation.evaluationid as id, description,fname,lname,course,year,section FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON subject.faculty_id=faculties.id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id ");
                                         while($row=mysqli_fetch_array($view)){
                                         ?>
                                         <tr>
                                             <td><?php echo $row['description'] ?></td>
                                             <td><?php echo $row['fname']." ".$row['lname'] ?></td>
+                                            <td><?php echo $row['course']." ".$row['year']." ".$row['section'] ?></td>
                                             <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" ><span class="fa fa-fw fa-trash"></span> DELETE</button></td>
                                         </tr>
                                     <?php } ?>
@@ -103,15 +108,37 @@
                                             while($row=mysqli_fetch_array($qry)){ ?>
                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="sub-en[]">
                                     <?php } ?>
-                
-                                    <button type="submit" class="btn btn-primary">SAVE EVALUATION</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    SAVE EVALUATION
+    </button>
+                                    <!-- modal-dialog-centered -->
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Save Evaluation</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            
+                                                <div class="modal-body">
+                                                make sure the evealuation has been all set!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">SAVE EVALUATION</button>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                    <!-- end modal-dialog-centered -->
                                 </form>
                             </div>
                         </div>
                     </div>
-    </div>
+        </div>
+    </main>
 </body>
-
 <script>
     $(document).ready( function () {
     $('#myTable').DataTable();
@@ -125,3 +152,4 @@
     }
 }
 </script>
+</html>

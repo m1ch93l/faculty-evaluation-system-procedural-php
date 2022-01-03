@@ -1,15 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+session_start();
+include'includes/header.php'; ?>
 <body>
-<?php include'navbar.php'; ?>
-    <div class="main-body">
-        <div class="container py-5">
-          <h2>Welcome! <?=$_SESSION['username'] ?></h2>
+    <?php include'includes/student-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <h2>Welcome! <?=$_SESSION['username'] ?></h2>
           <h5>Academic Year: <?=$_SESSION['academic']?></h5>
           <hr>
             <div class="card my-5 text-center shadow-lg">
                         
                     <form autocomplete="off" action="rate.php" method="post">
 
-                    <?php 
+                    <?php include_once'koneksyon.php';
                             $qry=mysqli_query($koneksyon,"SELECT * FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON faculties.id=subject.faculty_id WHERE student_id = {$_SESSION['id']}");
                             while($row=mysqli_fetch_array($qry)){
                                 echo "<h4>".$row['fname']." ".$row['lname']."</h4>";
@@ -65,6 +70,6 @@
                     
             </div>
         </div>
-   </div>
+    </main>
 </body>
-
+</html>

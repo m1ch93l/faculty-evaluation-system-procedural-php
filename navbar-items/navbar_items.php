@@ -46,11 +46,6 @@
             'icon'  => 'fa-users',
             'pages' => ['user_list.php']
         ],
-        [
-            'label' => 'Logout',
-            'icon'  => 'fa-sign-out-alt',
-            'pages' => ['logout.php']
-        ],
     ]
 
 ?>

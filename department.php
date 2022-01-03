@@ -1,8 +1,11 @@
-<?php include_once'navbar.php'; ?>
-<body id="page-top">
-
-    <!-- Begin Page Content -->
-<div class="container-fluid py-5 my-5">
+<!DOCTYPE html>
+<html lang="en">
+<?php include'includes/header.php'; ?>
+<body>
+    <?php include'includes/admin-navbar.php'; ?>
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <!-- Begin Page Content -->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -74,11 +77,10 @@
             </div>
         </div>
     </div>
-
-</div>
 <!-- End of Main Content -->
+        </div>
+    </main>
 </body>
-
 <script>
     $(document).ready( function () {
     $('#myTable').DataTable();
@@ -92,3 +94,4 @@ function deleteme(delid)
     }
 }
 </script>
+</html>
