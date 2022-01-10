@@ -3,7 +3,7 @@
 <?php include_once'includes/header.php'; ?>
 <body>
     <?php include_once'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -21,8 +21,8 @@
         <form action="add-faculty.php" method="post">
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Faculty No." name="fnum"><br>
-                <input type="text" class="form-control" placeholder="Fisrt Name" name="firstname"><br>
-                <input type="text" class="form-control" placeholder="Last Name" name="lastname"><br>
+                <input type="text" class="form-control text-capitalize" placeholder="Fisrt Name" name="firstname"><br>
+                <input type="text" class="form-control text-capitalize" placeholder="Last Name" name="lastname"><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -65,8 +65,8 @@
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $row['fno']; ?></td>
-                                <td><?php echo $row['fname']; ?></td>
-                                <td><?php echo $row['lname']; ?></td>
+                                <td class="text-capitalize"><?php echo $row['fname']; ?></td>
+                                <td class="text-capitalize"><?php echo $row['lname']; ?></td>
                                 <td><a type="button" class="btn btn-primary" href="viewedit-faculty.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
                                 <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" ><span class="fa fa-fw fa-trash"></span> DELETE </button></td>
                             </tr>

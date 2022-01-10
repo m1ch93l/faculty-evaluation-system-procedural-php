@@ -4,14 +4,14 @@
 include'includes/header.php'; ?>
 <body>
     <?php include'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <div class="card my-5">
                 <div class="row">
                     <div class="col-lg-4 col-md-5 col-md-7">
                         <div class="card-body" style="background-color: #000080; width: 18rem;">
                         <form action="add-criteria.php" method="post">  
-                            <input type="text" class="form-control" placeholder="Criteria" name="criteria"><br>
+                            <input type="text" class="form-control text-uppercase" placeholder="Criteria" name="criteria"><br>
                             <button type="submit" class="btn btn-primary">Add</button>
                         </form>
                         </div>
@@ -33,8 +33,10 @@ include'includes/header.php'; ?>
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5 col-md-12">
+
+                    <div class="col-lg-8 col-md-5 col-md-12">
                         <div class="card-body border" style="background-color: #ef7953;">
+<!--
                             <div class="table-responsive">
                                 <table class="display" id="myTable" width="100%" cellspacing="0">
                                     <thead style="background-color: #eddc02;">
@@ -46,6 +48,7 @@ include'includes/header.php'; ?>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        /*
                                         <?php
                                         $view=mysqli_query($koneksyon, "SELECT evaluation.evaluationid as id, description,fname,lname,course,year,section FROM evaluation INNER JOIN subject_enrolled ON subject_enrolled.id=evaluation.sub_enrolled_id INNER JOIN subject ON subject_enrolled.subject_take=subject.id INNER JOIN faculties ON subject.faculty_id=faculties.id INNER JOIN students ON students.id=subject_enrolled.student_id INNER JOIN department ON department.id=students.department_id ");
                                         while($row=mysqli_fetch_array($view)){
@@ -60,82 +63,84 @@ include'includes/header.php'; ?>
                                     </tbody>
                                 </table>
                             </div>
+-->
+            <?php
+                                    $qryview = "SELECT * FROM criteria";
+                                    $result = mysqli_query($koneksyon, $qryview);
+                                        while($row = mysqli_fetch_array($result)) {
+                                    ?>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"><?php echo $row['criteria']; ?></th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                                <th>4</th>
+                                                <th>5</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                            $tanong = "SELECT * FROM questions where criteria_id = {$row['id']}";
+                                            $resulta = mysqli_query($koneksyon, $tanong);
+                                            while($row1 = mysqli_fetch_array($resulta)){
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row1['question']; ?></td>
+                                                    <?php for($c=1;$c<=5;$c++): ?>
+                                                        <td style="width: 8%;">
+                                                                <input type="checkbox" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
+                                                        </td>
+                                                    <?php endfor; ?>
+                                                </tr>
+                                                <?php } ?>
+                                        </tbody> 
+                                    </table>
+                                    <?php } ?> 
+
+                                    <div class="container-sm text-center">
+                                        <div class="row m-auto">
+                                            <form action="add-evaluation.php" method="post"> 
+                                                <?php 
+                                                    include_once'koneksyon.php';
+                                                        $qry=mysqli_query($koneksyon, "SELECT * FROM subject_enrolled");
+                                                        while($row=mysqli_fetch_array($qry)){ ?>
+                                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="sub-en[]">
+                                                <?php } ?>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                SAVE EVALUATION
+                </button>
+                                                <!-- modal-dialog-centered -->
+                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Save Evaluation</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        
+                                                            <div class="modal-body">
+                                                            make sure the evealuation has been all set!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary">SAVE EVALUATION</button>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                <!-- end modal-dialog-centered -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
 
-                    <?php
-                        $qryview = "SELECT * FROM criteria";
-                        $result = mysqli_query($koneksyon, $qryview);
-                            while($row = mysqli_fetch_array($result)) {
-                        ?>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><?php echo $row['criteria']; ?></th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>5</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                $tanong = "SELECT * FROM questions where criteria_id = {$row['id']}";
-                                $resulta = mysqli_query($koneksyon, $tanong);
-                                while($row1 = mysqli_fetch_array($resulta)){
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row1['question']; ?></td>
-                                        <?php for($c=1;$c<=5;$c++): ?>
-                                            <td style="width: 8%;">
-                                                    <input type="checkbox" <?php echo $c == 5 ? : '' ?> value="<?php echo $c ?>">  
-                                            </td>
-                                        <?php endfor; ?>
-                                    </tr>
-                                    <?php } ?>
-                            </tbody> 
-                        </table>
-                        <?php } ?> 
-
-                        <div class="container-sm text-center">
-                            <div class="row m-auto">
-                                <form action="add-evaluation.php" method="post"> 
-                                    <?php 
-                                        include_once'koneksyon.php';
-                                            $qry=mysqli_query($koneksyon, "SELECT * FROM subject_enrolled");
-                                            while($row=mysqli_fetch_array($qry)){ ?>
-                                        <input type="hidden" value="<?php echo $row['id']; ?>" name="sub-en[]">
-                                    <?php } ?>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    SAVE EVALUATION
-    </button>
-                                    <!-- modal-dialog-centered -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Save Evaluation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            
-                                                <div class="modal-body">
-                                                make sure the evealuation has been all set!
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary">SAVE EVALUATION</button>
-                                                </div>
-                                            
-                                            </div>
-                                        </div>
-                                        </div>
-                                    <!-- end modal-dialog-centered -->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    
         </div>
     </main>
 </body>

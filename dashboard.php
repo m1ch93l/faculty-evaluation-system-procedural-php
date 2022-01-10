@@ -4,10 +4,10 @@
 include'includes/header.php'; ?>
 <body>
   <?php include'includes/admin-navbar.php'; ?>
-  <main class="mt-5 pt-3">
+  <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 fw-bold fs-3">
+        <div class="col-md-12 fw-bold fs-3 bg-light mb-3">
           HOME
           <h2>Welcome! <?=$_SESSION['name'] ?></h2>
           <h5>Academic Year: <?=$_SESSION['academic']?></h5>

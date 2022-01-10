@@ -9,7 +9,7 @@
         [
             'label' => 'Faculty',
             'icon'  => 'fa-chalkboard-teacher',
-            'pages' => ['faculty_list.php', 'viewedit_faculty.php', 'update-faculty.php']
+            'pages' => ['faculty_list.php', 'viewedit-faculty.php', 'update-faculty.php']
         ],
         [
             'label' => 'Subject',

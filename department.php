@@ -3,7 +3,7 @@
 <?php include'includes/header.php'; ?>
 <body>
     <?php include'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <!-- Begin Page Content -->
 
@@ -22,9 +22,9 @@
         </div>
         <form action="add-dept.php" method="post">
             <div class="modal-body">
-                <input type="text" class="form-control" placeholder="Course" name="course"><br>
-                <input type="text" class="form-control" placeholder="Year" name="year"><br>
-                <input type="text" class="form-control" placeholder="Section" name="section"><br>
+                <input type="text" class="form-control text-uppercase" placeholder="Course" name="course"><br>
+                <input type="text" class="form-control text-uppercase" placeholder="Year" name="year"><br>
+                <input type="text" class="form-control text-uppercase" placeholder="Section" name="section"><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

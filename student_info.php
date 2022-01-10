@@ -1,4 +1,6 @@
-<?php include_once'navbar.php'; 
+<?php include'includes/header.php'; ?>
+<body>
+    <?php include_once'includes/admin-navbar.php'; 
     include_once'koneksyon.php';
 
     $id = $_GET['id'];
@@ -8,9 +10,8 @@
         $sid = $row['id'];
     }
 ?>
-<body>
-    <div class="container-md py-5 my-5 shadow-lg">
-        <div class="row">
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
             <h3>Subject Taken</h3>
             <div class="col-lg-12">
                 <div class="table-responsive">
@@ -36,7 +37,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 <script>
     $(document).ready( function () {

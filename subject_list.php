@@ -85,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            <!--End DataTales Example -->
         </div>
     </main>
 </body>

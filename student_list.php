@@ -4,7 +4,7 @@
 include'includes/header.php'; ?>
 <body>
     <?php include'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -31,8 +31,8 @@ include'includes/header.php'; ?>
                                 <?php } ?>
                             </select><br>
                 <input type="text" class="form-control" placeholder="Student No." name="snum"><br>
-                <input type="text" class="form-control" placeholder="Fisrt Name" name="firstname"><br>
-                <input type="text" class="form-control" placeholder="Last Name" name="lastname"><br>
+                <input type="text" class="form-control text-capitalize" placeholder="Fisrt Name" name="firstname"><br>
+                <input type="text" class="form-control text-capitalize" placeholder="Last Name" name="lastname"><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -77,8 +77,8 @@ include'includes/header.php'; ?>
                 <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $row['studentno']; ?></td>
-                    <td><?php echo $row['firstname']; ?></td>
-                    <td><?php echo $row['lastname']; ?></td>
+                    <td class="text-capitalize"><?php echo $row['firstname']; ?></td>
+                    <td class="text-capitalize"><?php echo $row['lastname']; ?></td>
                     <td><?php echo $row['course']." ".$row['year'].$row['section']; ?></td>
                     <td><a type="button" class="btn btn-success" href="student_info.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-book"></span> VIEW SUBJECT</a></td>
                     <td><a type="button" class="btn btn-primary" href="viewedit.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>

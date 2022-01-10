@@ -3,7 +3,7 @@
 <?php include'includes/header.php'; ?>
 <body>
     <?php include'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <!-- Begin Page Content -->
 
@@ -22,12 +22,12 @@
         </div>
         <form action="add-acad.php" method="post">
             <div class="modal-body">
-                <input type="text" class="form-control" placeholder="Academic Year" name="academic_year"><br>
-                <input type="text" class="form-control" placeholder="Semester" name="semester"><br>
+                <input type="text" class="form-control text-uppercase" placeholder="Academic Year" name="academic_year"><br>
+                <input type="text" class="form-control text-uppercase" placeholder="Semester" name="semester"><br>
                 <select class="form-select" name="status" id="">
-                    <option value="active">Active</option>
-                    <option value="pending">Pending</option>
-                    <option value="closed">Closed</option>
+                    <option value="active">active</option>
+                    <option value="pending">pending</option>
+                    <option value="closed">closed</option>
                 </select>
             </div>
             <div class="modal-footer">

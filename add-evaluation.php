@@ -11,5 +11,7 @@ $mi = new MultipleIterator();
         
         $dagdag = mysqli_query($koneksyon, "INSERT INTO evaluation (sub_enrolled_id) VALUES ('$sub_e')");
     }
-    	header("location: question-list.php");
+        echo "<script>alert('The evaluation has been saved!');
+        window.location.href='question-list.php';
+        </script>";
 ?>

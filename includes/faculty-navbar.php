@@ -16,8 +16,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <form class="d-flex ms-auto">
 	        <div class="input-group my-3 my-lg-0">
-			  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-			  <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+			  <?=$_SESSION['username']?>
 			</div>
 	      </form>
 	      <ul class="navbar-nav mb-2 mb-lg-0">
@@ -26,8 +25,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
 	            <i class="bi bi-person-circle"></i>
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+<!--
 	            <li><a class="dropdown-item" href="#">Action</a></li>
 	            <li><a class="dropdown-item" href="#">Another action</a></li>
+-->
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="logout.php">Log out</a></li>
 	          </ul>
