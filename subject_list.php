@@ -1,49 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include'includes/header.php'; ?>
+<?php 
+include'includes/header.php'; ?>
 <body>
     <?php include'includes/admin-navbar.php'; ?>
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="background-image: url(img/bcc_cover.jpg); background-repeat: no-repeat; background-size: cover; height: 569px;">
         <div class="container-fluid">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Add Subject
             </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">New Subject</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="add-subject.php" method="post">
-                    <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Subject Code" name="code"><br>
-                        <input type="text" class="form-control" placeholder="Description" name="description"><br>
-            
-                        <select class="form-select" name="firstlastname">
-                            <option disabled selected>Select Faculty</option>
-                            <?php
-                            $qry=mysqli_query($koneksyon,"SELECT * FROM faculties");
-                            while($row=mysqli_fetch_array($qry)){ ?>
-                            <option value="<?php echo $row['id'];?>"> <?php echo $row['fname']." ".$row['lname'];?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-            </div>
-            <hr>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
+<!-- DataTales Example -->
+            <div class="card shadow mb-4 mt-2">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Subject List</h6>
                 </div>
@@ -86,6 +55,40 @@
                 </div>
             </div>
             <!--End DataTales Example -->
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">New Subject</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="add-subject.php" method="post">
+                    <div class="modal-body">
+                        <input type="text" class="form-control" placeholder="Subject Code" name="code"><br>
+                        <input type="text" class="form-control" placeholder="Description" name="description"><br>
+            
+                        <select class="form-select" name="firstlastname">
+                            <option disabled selected>Select Faculty</option>
+                            <?php
+                            $qry=mysqli_query($koneksyon,"SELECT * FROM faculties");
+                            while($row=mysqli_fetch_array($qry)){ ?>
+                            <option value="<?php echo $row['id'];?>"> <?php echo $row['fname']." ".$row['lname'];?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+
         </div>
     </main>
 </body>
