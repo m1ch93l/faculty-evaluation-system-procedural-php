@@ -25,9 +25,9 @@
                 <input type="text" class="form-control text-uppercase" placeholder="Academic Year" name="academic_year"><br>
                 <input type="text" class="form-control text-uppercase" placeholder="Semester" name="semester"><br>
                 <select class="form-select" name="status" id="">
-                    <option value="active">active</option>
-                    <option value="pending">pending</option>
-                    <option value="closed">closed</option>
+                    <option value="1">Active</option>
+                    <option value="2">Pending</option>
+                    <option value="0">Closed</option>
                 </select>
             </div>
             <div class="modal-footer">
@@ -73,7 +73,15 @@
                             <td><?php echo $no ?></td>
                             <td><?php echo $row['academic_year'] ?></td>
                             <td><?php echo $row['semester'] ?></td>
-                            <td><?php echo $row['status'] ?></td>
+                            <td><?php
+                            if($row['status'] == 1){
+                                echo '<a class="btn btn-primary" href="set_acad.php?id='.$row['id'].'&status=0">Active</a>';
+                            }elseif($row['status'] == 2){
+                                echo '<a class="btn btn-success" href="set_acad.php?id='.$row['id'].'&status=1">Pending</a>';
+                            }else{
+                                echo '<a class="btn btn-danger" href="set_acad.php?id='.$row['id'].'&status=2">Closed</a>';
+                            }
+                        ?></td>
                             <td><a type="button" class="btn btn-primary" href="viewedit_acad.php?id=<?php echo $row['id']; ?>"><span class="fa fa-fw fa-edit"></span> EDIT</a></td>
                             <td><button class="btn btn-danger" type="button" onClick="deleteme(<?php echo $row['id']; ?>)" name="delete" ><span class="fa fa-fw fa-trash"></span> DELETE </button></td>
                         </tr>

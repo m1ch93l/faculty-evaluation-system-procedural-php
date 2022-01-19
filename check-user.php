@@ -8,7 +8,7 @@ session_start();
    	header("location: dashboard.php");
    }if ($_SESSION['role'] == 'student')
    {
-   	header("location: evaluate.php");
+   	header("location: check-acad.php");
    }if ($_SESSION['role'] == 'faculty')
    {
    	header("location: evaluation_result.php");

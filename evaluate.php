@@ -2,13 +2,14 @@
 <html lang="en">
 <?php 
 session_start();
-include'includes/header.php'; ?>
+include'includes/header.php';
+?>
 <body>
     <?php include'includes/student-navbar.php'; ?>
     <main class="mt-5 pt-3">
         <div class="container-fluid">
             <h2>Welcome! <?=$_SESSION['username'] ?></h2>
-          <h5>Academic Year: <?=$_SESSION['academic']?></h5>
+          <h5>Academic Year: <?=$_SESSION['academic'] ?></h5>
           <hr>
             <div class="card my-5 text-center shadow-lg">
                         

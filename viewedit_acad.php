@@ -23,13 +23,6 @@
         echo "Academic Year: <input class='form-control text-uppercase' type='text' name='acadyear' value='".$row["academic_year"]."'><br>";
         echo "Semester :<input class='form-control text-uppercase' type='text' name='sem' value='".$row["semester"]."'><br>";
         echo "<label>Status:</label>";
-        echo "<select name='status' class='form-select mb-3'>";
-        echo " <option value='".$row['status']."'>".$row['status']."</option>";
-        $res = mysqli_query($koneksyon, "SELECT * FROM status");
-        while($row1 = mysqli_fetch_array($res)){
-        echo " <option value='".$row1["eval_status"]." '>".$row1["eval_status"]."</option>";
-            }
-        echo"</select>";
 
         echo "<input class='form-control btn-primary' type='submit' value='UPDATE'>";
         echo "</form>";

@@ -18,7 +18,7 @@
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
 
-                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='1' ");
                 $row = mysqli_fetch_array($qry);
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
@@ -42,26 +42,8 @@
                 $_SESSION['snum'] = $row['studentno'];
                 $_SESSION['dept'] = $row['department_id'];
 
-                $qry = mysqli_query($koneksyon, "SELECT * FROM academic ");
-                while($row = mysqli_fetch_array($qry)){
-                    $status = $row['status'];
-                
-                if($status == 'active'){
-                $_SESSION['academic'] = $row['academic_year'];
-                $_SESSION['semester'] = $row['semester'];
                 header("Location: check-user.php");
-                }
-                elseif($status == 'pending'){
-                    echo '<script>alert("Sorry! The Evaluation has not yet Start!");history.go(-1);</script>';
-                }
-                elseif($status == 'closed'){
-                    echo '<script>alert("Sorry! The Evaluation has been closed!");history.go(-1);</script>';
-                }
-                else{
-                    header("Location: index.php");
-                }
-                }
-                
+
             }
             else{
                 echo '<script>alert("User not found!");history.go(-1);</script>';
