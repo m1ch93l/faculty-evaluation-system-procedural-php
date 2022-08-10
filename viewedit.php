@@ -17,7 +17,7 @@
     echo "<H2>STUDENT INFORMATION</H2>";
 
     if(mysqli_num_rows($result) > 0) {
-        echo "<form action='update.php' method='post'>";
+        echo "<form action='update.php' method='post' autocomplete='on'>";
         $row = mysqli_fetch_assoc($result);
 
         echo "Student Number: <input class='form-control' type='text' readonly name='txtstudentnum' value='".$row["studentno"]."'><br>";
@@ -28,10 +28,11 @@
         
         echo "<select name='departmentid' class='form-select mb-3'>";
 
-        echo "<option disabled selected value='".$row["deptid"]." '>  ".$row["course"]." ".$row["year"]."".$row["section"]." </option>";
+        echo "<option value='".$row["department_id"]."'>  ".$row["course"]." ".$row["year"]."".$row["section"]." </option>";
+        
         $res = mysqli_query($koneksyon, "SELECT * FROM department");
-        while($row1 = mysqli_fetch_array($res)){
-        echo " <option value='".$row1["id"]." '>".$row1["course"]." ".$row1["year"]."".$row1["section"]."</option>";
+        while($row1 = mysqli_fetch_assoc($res)){
+        echo " <option selected value='".$row1["id"]." '>".$row1["course"]." ".$row1["year"]."".$row1["section"]."</option>";
             }
         echo"</select>";
         echo "<input class='form-control btn-primary' type='submit' value='UPDATE'>";

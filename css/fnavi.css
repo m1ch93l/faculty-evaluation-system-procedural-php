@@ -11,10 +11,10 @@ button{
 	width: var(--offcanvas-width);
 }
 .bg-nav{
-	background-color: #000080;
+	background-color: #3434a5;
 }
 .bg-offc{
-	background-color: #000080;
+	background-color: #3434a5;
 }
 .sm-wrapper a{
 	padding: 8px 8px 8px 32px;

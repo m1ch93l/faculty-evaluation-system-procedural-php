@@ -45,6 +45,8 @@ include'includes/header.php'; ?>
     <hr>
 
 <!-- DataTales Example -->
+<div class="row mb-3">
+    
 <div class="card shadow mb-4">
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
@@ -55,7 +57,9 @@ include'includes/header.php'; ?>
     <?php
     include_once'koneksyon.php';
 
-    $qryview = "SELECT studentno, firstname, lastname, course, year, section, students.id as id FROM students INNER JOIN department ON department.id=students.department_id";
+    //$c = $_POST['cr'];
+
+    $qryview = "SELECT studentno, firstname, lastname, course, year, section, students.id as id FROM students INNER JOIN department ON department.id=students.department_id ";
     $result = mysqli_query($koneksyon, $qryview);
     ?>
         <table class="display" id="myTable" width="100%" cellspacing="0">
@@ -104,6 +108,5 @@ function deleteme(delid)
         return true;
     }
 }
-
 </script>
 </html>

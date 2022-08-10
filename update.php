@@ -2,11 +2,11 @@
 
     include 'koneksyon.php';
 
-    $snum = $_POST['txtstudentnum'];
-    $fname = $_POST['txtfname'];
-    $lname = $_POST['txtlname'];
-    $dept = $_POST['departmentid'];
-    $username = $_POST['uname'];
+    echo$snum = $_POST['txtstudentnum'];
+    echo$fname = $_POST['txtfname'];
+    echo$lname = $_POST['txtlname'];
+    echo$dept = $_POST['departmentid'];
+    echo$username = $_POST['uname'];
 
     //UPDATE tablename SET column1 = value1, column2 = value WHERE condition;
 

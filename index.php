@@ -24,7 +24,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image m-auto"></div>
-                            <img src="img/bcc.png" alt="">
+                            <img src="img/bcc.png" alt="" width="10%" height="10%">
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center">

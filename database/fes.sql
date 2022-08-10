@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 09:31 AM
+-- Generation Time: Jan 19, 2022 at 08:44 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -31,7 +31,7 @@ CREATE TABLE `academic` (
   `id` tinyint(30) NOT NULL,
   `academic_year` varchar(30) NOT NULL,
   `semester` int(30) NOT NULL,
-  `status` varchar(30) NOT NULL
+  `status` int(11) NOT NULL COMMENT '0=closed, 1=active, 2=pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `academic` (
 --
 
 INSERT INTO `academic` (`id`, `academic_year`, `semester`, `status`) VALUES
-(1, '2021-2022', 1, 'pending');
+(1, '2021-2022', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,9 @@ CREATE TABLE `criteria` (
 --
 
 INSERT INTO `criteria` (`id`, `criteria`) VALUES
-(1, 'CRITERIA 1');
+(1, 'CRITERIA 1'),
+(2, 'criteria 2'),
+(3, 'criteria 3');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,8 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id`, `course`, `year`, `section`) VALUES
-(1, 'BSIS', 4, 'A');
+(1, 'BSIS', 4, 'A'),
+(2, 'ACT', 1, 'A');
 
 -- --------------------------------------------------------
 
@@ -107,6 +110,16 @@ CREATE TABLE `faculties` (
   `view` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `faculties`
+--
+
+INSERT INTO `faculties` (`id`, `fno`, `username`, `fname`, `lname`, `usertype`, `password`, `view`) VALUES
+(1, '0001', 'Jocelyn', 'Jocelyn', 'Beriña', 'faculty', '$2y$10$CEOQt0wUjClUy36v/bib5e6dQYSIbThuFuqAu2rSdXRKmjiSBF.dS', '3eMQvkWu'),
+(2, '0002', 'Ivy', 'Ivy', 'Encarnacion', 'faculty', '$2y$10$.m8TCTdyzzd1si1qhIpb3uIZtMHmDcNSaJ5zPEoTsL6TbXj0hV16.', 'APlgVusr'),
+(3, '0003', 'Kaven Rey', 'Kaven Rey', 'Batac', 'faculty', '$2y$10$CURoQGNtlYJbJrFRWZMzWOabTNcHvXxCZstFubSNjj.AiNHQhy1Zu', 'ZBV2e1Tk'),
+(6, '0004', 'anna rhodora', 'anna rhodora', 'Priolo', 'faculty', '$2y$10$JYiTm0bQvQShVOI7YoLty.gNbQcPS67t8LGHO7FHHRjaoA3grwnZi', 'CcV7h02K');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +131,15 @@ CREATE TABLE `questions` (
   `criteria_id` int(30) NOT NULL,
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `criteria_id`, `question`) VALUES
+(1, 1, 'The teacher was accessible and willing to provide help'),
+(2, 2, 'how frequently checked the attendance?'),
+(3, 3, 'Excellence Teaching');
 
 -- --------------------------------------------------------
 
@@ -170,6 +192,16 @@ CREATE TABLE `students` (
   `department_id` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `studentno`, `username`, `firstname`, `lastname`, `usertype`, `password`, `view`, `department_id`) VALUES
+(9, '753-22', 'merryrose7209', 'merryrose', 'Ellorde', 'student', '$2y$10$bmADIB6ddqgq1uogc9aPneyhUrGSe8NBWA37p7GHYgo220vBip/ry', 'M76Gu8op', 1),
+(10, '8474-26', 'Olive0935', 'Olive', 'Briones', 'student', '$2y$10$.Ndtmc.z7CcfNLCmu88Ene2TxCYGJFDQr4NtbcvebMpN5FL9gAjVO', 'gq768XMi', 1),
+(11, '16-1287', 'michael0941', 'michael', 'bañaria', 'student', '$2y$10$scDiS5kJTquAKhukmxLRaeimGTh5zL5pcHaQf2AgBG0Xr/xhzRsXa', 'WX3nPfoe', 1),
+(12, '21-5632', 'Brian7934', 'Brian', 'Delos Santos', 'student', '$2y$10$JOQQ.JlcMNNI3UJN6Wf9..Z3/7b0oZLsWiSNdFqH8LdO6L9KGac/S', 'T0rkyv13', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -183,6 +215,14 @@ CREATE TABLE `subject` (
   `faculty_id` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`id`, `code`, `description`, `faculty_id`) VALUES
+(1, 'CAP102', 'Capstone Project 2', 1),
+(2, 'IS 105', 'Enterprise Architecture', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -194,6 +234,20 @@ CREATE TABLE `subject_enrolled` (
   `student_id` int(30) NOT NULL,
   `subject_take` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject_enrolled`
+--
+
+INSERT INTO `subject_enrolled` (`id`, `student_id`, `subject_take`) VALUES
+(17, 9, 1),
+(18, 9, 2),
+(19, 10, 1),
+(20, 10, 2),
+(21, 11, 1),
+(22, 11, 2),
+(23, 12, 1),
+(24, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -314,37 +368,37 @@ ALTER TABLE `academic`
 -- AUTO_INCREMENT for table `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `evaluationid` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -356,19 +410,19 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subject_enrolled`
 --
 ALTER TABLE `subject_enrolled`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`

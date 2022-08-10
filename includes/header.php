@@ -8,7 +8,7 @@
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <!-- sarili kong style -->
-<link rel="stylesheet" type="text/css" href="css/fnav.css"> 
+<link rel="stylesheet" type="text/css" href="css/fnavi.css"> 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 <!-- kinuha ko sa font awesome free -->

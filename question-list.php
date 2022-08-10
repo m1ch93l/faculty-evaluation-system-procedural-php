@@ -72,7 +72,7 @@ include'includes/header.php'; ?>
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col"><?php echo $row['criteria']; ?></th>
+                                                <th class="text-uppercase" scope="col"><?php echo $row['criteria']; ?></th>
                                                 <th>1</th>
                                                 <th>2</th>
                                                 <th>3</th>
@@ -121,7 +121,7 @@ include'includes/header.php'; ?>
                                                         </div>
                                                         
                                                             <div class="modal-body">
-                                                            make sure the evealuation has been all set!
+                                                            make sure the evaluation has been all set!
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

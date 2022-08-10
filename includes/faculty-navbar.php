@@ -15,7 +15,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <form class="d-flex ms-auto">
-	        <div class="input-group my-3 my-lg-0">
+	        <div class="input-group my-3 my-lg-0 text-white">
 			  <?=$_SESSION['username']?>
 			</div>
 	      </form>

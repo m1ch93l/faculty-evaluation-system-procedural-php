@@ -61,7 +61,7 @@
                 $_SESSION['role'] = $row['usertype'];
                 $_SESSION['username'] = $row['username'];
 
-                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='active' ");
+                $qry = mysqli_query($koneksyon, "SELECT * FROM academic WHERE status='1' ");
                 $row = mysqli_fetch_array($qry);
                 $_SESSION['academic'] = $row['academic_year'];
                 $_SESSION['semester'] = $row['semester'];
